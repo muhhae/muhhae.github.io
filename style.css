@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  background: url("./File/Images/Background.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#header {
+  padding: 30px;
+  font-size: 25px;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+  box-sizing: content-box;
+  background-color: rgba(59, 138, 250, 0.3);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* display: flex; */
+  border-radius: 15px;
+}
+
+#foto img {
+  margin: 20px;
+  height: 200px;
+  border-radius: 15px;
+}
+
+.content {
+  padding: 30px;
+  font-size: 25px;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  box-sizing: content-box;
+  background-color: rgba(59, 138, 250, 0.3);
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  border-radius: 15px;
+}
+
+.sub {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#diri {
+  text-align: center;
+}
+
+#footer {
+  padding: 40px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+}
+img {
+  margin-left: 20px;
+  height: 30px;
+}
+
+#git img {
+  height: 50px;
+}
