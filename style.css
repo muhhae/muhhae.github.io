@@ -16,7 +16,7 @@ body {
 
 #header {
   padding: 30px;
-  font-size: 25px;
+  font-size: 1.3em;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
@@ -39,7 +39,7 @@ body {
 .content {
   padding: 60px;
   padding-top: 30px;
-  font-size: 25px;
+  font-size: 1.3em;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
