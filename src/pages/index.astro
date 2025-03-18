@@ -125,4 +125,13 @@ import ContentPublications from "../components/ContentPublications.astro";
   #tab2:checked ~ .flex .tab-link:nth-child(2) {
     @apply border-b-2 border-b-primary;
   }
+
+  /* When tab2 is checked, show content2 and highlight its tab */
+  #tab3:checked ~ * #content2 {
+    @apply block opacity-100;
+  }
+
+  #tab3:checked ~ .flex .tab-link:nth-child(2) {
+    @apply border-b-2 border-b-primary;
+  }
 </style>
