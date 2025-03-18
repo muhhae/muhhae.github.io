@@ -3,12 +3,13 @@ package cv
 type Researcher struct {
 	ResearchInterest []string
 	Education        []Education
-	TechnicalSkill   map[string]any
+	Skill            map[string]any
 }
 
 type Education struct {
-	SchoolName     string
-	GraduationDate string
+	Degree     string
+	SchoolName string
+	Date       string
 }
 
 var Muhhae = Researcher{
@@ -18,11 +19,12 @@ var Muhhae = Researcher{
 	},
 	Education: []Education{
 		{
-			SchoolName:     "Sepuluh Nopember Institute of Technology",
-			GraduationDate: "Dec 2025 (Expected)",
+			Degree:     "B.Eng in Computer Engineering",
+			SchoolName: "Sepuluh Nopember Institute of Technology",
+			Date:       "Aug 2022 - Dec 2025 (Expected)",
 		},
 	},
-	TechnicalSkill: map[string]any{
+	Skill: map[string]any{
 		"Programming Language": []string{
 			"C",
 			"C++",
