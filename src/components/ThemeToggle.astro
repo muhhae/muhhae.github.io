@@ -28,15 +28,6 @@
  * - Focus visible para navegación por teclado
  * - Indicador visual del tema actual
  */
-
-// PROPS
-// -----
-interface Props {
-  lang?: string;  // Idioma para textos de accesibilidad ('es' o 'en')
-}
-
-// Obtiene el idioma desde props, por defecto español
-const { lang = 'es' } = Astro.props;
 ---
 
 <!--
@@ -55,8 +46,8 @@ const { lang = 'es' } = Astro.props;
 -->
 <button
   id="theme-toggle"
-  aria-label={lang === 'es' ? 'Cambiar tema' : 'Toggle theme'}
-  title={lang === 'es' ? 'Cambiar tema' : 'Toggle theme'}
+  aria-label='Toggle theme'
+  title='Toggle theme'
 >
   <!--
     ICONO: SOL (Modo Claro)

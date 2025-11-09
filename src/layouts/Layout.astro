@@ -24,9 +24,9 @@
  * - Analytics: Preparado para Google Analytics
  *
  * USO:
- * <Layout title="Mi Página" description="Descripción" lang="es">
- *   <YourContent />
- * </Layout>
+ * <Layout title="Mi Página" description="Descripción">
+   <YourContent />
+ </Layout>
  *
  * PERSONALIZACIÓN:
  * - Meta tags: Edita abajo en la sección correspondiente
@@ -36,10 +36,6 @@
  * - OG Image: Crea /public/og-image.jpg (1200x630px recomendado)
  */
 
-// IMPORTACIONES
-// -------------
-// Componentes globales que aparecen en todas las páginas
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 
 // PROPS
@@ -47,22 +43,15 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 interface Props {
   title: string;         // Título de la página (obligatorio)
   description?: string;  // Meta description para SEO
-  lang?: 'es' | 'en';    // Idioma de la página
   image?: string;        // Imagen Open Graph (redes sociales)
 }
 
 // Obtiene props con valores por defecto
 const {
   title,
-  description = "Tech portfolio - Full stack developer",  // CAMBIAR: Tu descripción
-  lang = 'es',
-  image = '/og-image.jpg'  // CAMBIAR: Crea esta imagen en public/
+  description = "Tech portfolio - Full stack developer",
+  image = '/og-image.jpg'
 } = Astro.props;
-
-// RUTAS Y URLs
-// ------------
-// Obtiene la ruta actual para el LanguageSwitcher
-const currentPath = Astro.url.pathname;
 
 /**
  * CANONICAL URL:
@@ -71,19 +60,6 @@ const currentPath = Astro.url.pathname;
  * Previene problemas de contenido duplicado.
  */
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-/**
- * ALTERNATE URL:
- * URL de la versión en el idioma alternativo.
- * Para SEO multiidioma (hreflang tags).
- *
- * LÓGICA:
- * - Si lang='es': alternate es /en o /en{path}
- * - Si lang='en': alternate es / o {path sin /en}
- */
-const alternateURL = lang === 'es'
-  ? new URL(currentPath === '/' ? '/en' : `/en${currentPath}`, Astro.site)
-  : new URL(currentPath.replace('/en', '') || '/', Astro.site);
 
 /**
  * OPEN GRAPH IMAGE:
@@ -110,7 +86,7 @@ const ogImage = new URL(image, Astro.site);
   - <body>: Componentes globales + contenido de la página
 -->
 <!doctype html>
-<html lang={lang}>
+<html>
   <head>
     <!--
       META TAGS BÁSICOS
@@ -148,22 +124,6 @@ const ogImage = new URL(image, Astro.site);
     <link rel="canonical" href={canonicalURL} />
 
     <!--
-      ALTERNATE LANGUAGE LINKS (SEO MULTIIDIOMA)
-      ------------------------------------------
-      Indica a Google que existen versiones en otros idiomas.
-
-      hreflang: Código de idioma (es, en)
-      x-default: Versión por defecto si no coincide idioma del usuario
-
-      BENEFICIO:
-      Google muestra la versión correcta según idioma del usuario.
-      Mejora SEO internacional.
-    -->
-    <link rel="alternate" hreflang={lang} href={canonicalURL} />
-    <link rel="alternate" hreflang={lang === 'es' ? 'en' : 'es'} href={alternateURL} />
-    <link rel="alternate" hreflang="x-default" href={Astro.site} />
-
-    <!--
       OPEN GRAPH (FACEBOOK)
       ---------------------
       Meta tags para preview cuando compartes en Facebook, LinkedIn, WhatsApp.
@@ -181,8 +141,7 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:site_name" content="Your Portfolio" />  <!-- CAMBIAR -->
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
-    <meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
+    <meta property="og:locale" content='en_US' />
 
     <!--
       TWITTER CARD
@@ -316,10 +275,7 @@ const ogImage = new URL(image, Astro.site);
   -->
   <body>
     <!-- Botón de cambio de tema (light/dark) -->
-    <ThemeToggle lang={lang} />
-
-    <!-- Botón de cambio de idioma (es/en) -->
-    <LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+    <ThemeToggle />
 
     <!-- Contenido de la página actual -->
     <slot />
@@ -358,7 +314,6 @@ const ogImage = new URL(image, Astro.site);
   <Layout
     title="Mi Página - Portfolio"
     description="Descripción de mi página"
-    lang="es"
   >
     <YourContent />
   </Layout>
@@ -366,6 +321,5 @@ const ogImage = new URL(image, Astro.site);
   PROPS DISPONIBLES:
   - title (obligatorio): Título de la página
   - description (opcional): Meta description
-  - lang (opcional): 'es' o 'en' (default: 'es')
   - image (opcional): Ruta a imagen OG (default: '/og-image.jpg')
 -->

@@ -41,20 +41,7 @@
 // Utilidad de internacionalización para obtener traducciones
 import { useI18n } from '../lib/i18n.js';
 
-// PROPS
-// -----
-interface Props {
-  lang?: string;  // Idioma de la página ('es' o 'en')
-}
-
-// Obtiene props con valores por defecto
-const { lang = 'es' } = Astro.props;
-
-// TRADUCCIONES
-// ------------
-// Obtiene todas las traducciones según el idioma actual
-// 't' contiene todos los textos: heroGreeting, heroTitle, etc.
-const { t } = useI18n(lang);
+const { t } = useI18n();
 ---
 
 <!--

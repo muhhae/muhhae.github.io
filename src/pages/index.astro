@@ -52,7 +52,7 @@ import { useI18n } from '../lib/i18n.js';
 // -----------------------
 // Obtiene las traducciones en español desde translations.ts
 // La const 't' contiene todos los textos en español
-const { t } = useI18n('es');
+const { t } = useI18n();
 ---
 
 <!--
@@ -73,7 +73,6 @@ const { t } = useI18n('es');
 <Layout
   title={t.siteTitle}
   description={t.siteDescription}
-  lang="es"
 >
   <!--
     MAIN CONTENT
@@ -90,9 +89,9 @@ const { t } = useI18n('es');
     contenido en español desde translations.ts
   -->
   <main id="main-content">
-    <Hero lang="es" />
-    <Projects lang="es" />
-    <Footer lang="es" />
+    <Hero />
+    <Projects />
+    <Footer />
   </main>
 </Layout>
 

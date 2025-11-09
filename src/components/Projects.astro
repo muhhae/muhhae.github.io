@@ -54,20 +54,7 @@ import { getAllProjects } from '../lib/projects.js';
 // Utilidad de internacionalización
 import { useI18n } from '../lib/i18n.js';
 
-// PROPS
-// -----
-interface Props {
-  lang?: string;  // Idioma de la página ('es' o 'en')
-}
-
-// Obtiene props con valores por defecto
-const { lang = 'es' } = Astro.props;
-
-// TRADUCCIONES
-// ------------
-// Obtiene todas las traducciones según el idioma actual
-// 't' contiene: projectsTitle, projectsDemo, projectsCode, etc.
-const { t } = useI18n(lang);
+const { t } = useI18n();
 
 // PROYECTOS
 // ---------
@@ -135,7 +122,7 @@ const projects = getAllProjects();
       <div class="filter-output" id="filter-container" style="display: none;">
         <!-- Botón "all": Muestra todos los proyectos -->
         <button class="filter-btn active mono" data-filter="all">
-          {lang === 'es' ? 'all' : 'all'}
+          all
         </button>
 
         <!--
@@ -211,10 +198,10 @@ const projects = getAllProjects();
           )}
 
           {/* Título del proyecto (bilingüe) */}
-          <h3>{project.title[lang]}</h3>
+          <h3>{project.title['en']}</h3>
 
           {/* Descripción (soporta HTML con set:html) */}
-          <p set:html={project.description[lang]}></p>
+          <p set:html={project.description['en']}></p>
 
           {/* Tech Stack: Etiquetas de tecnologías usadas */}
           <div class="tech-stack">
@@ -232,7 +219,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_demo"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 <span class="mono">{t.projectsDemo}</span>
               </a>
@@ -245,7 +232,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_code"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 <span class="mono">{t.projectsCode}</span>
               </a>
@@ -258,7 +245,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_web"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 <span class="mono">{t.projectsWeb}</span>
               </a>
@@ -268,9 +255,9 @@ const projects = getAllProjects();
             {project.images && (
               <button
                 class="btn-images mono"
-                data-gallery={`gallery-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
+                data-gallery={`gallery-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_images"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 {t.projectsImages}
               </button>
@@ -280,9 +267,9 @@ const projects = getAllProjects();
             {project.explanation && (
               <button
                 class="btn-explanation mono"
-                data-explanation={`explanation-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
+                data-explanation={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_explanation"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 {t.projectsExplanation}
               </button>
@@ -295,7 +282,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="download_csv"
-                data-project={project.title[lang]}
+                data-project={project.title['en']}
               >
                 <span class="mono">{t.projectsCsv}</span>
               </a>
@@ -316,7 +303,7 @@ const projects = getAllProjects();
   -->
   {projects.map(project =>
     project.images && (
-      <ImageGallery images={project.images} projectTitle={project.title[lang]} />
+      <ImageGallery images={project.images} projectTitle={project.title['en']} />
     )
   )}
 
@@ -345,10 +332,10 @@ const projects = getAllProjects();
     project.explanation && (
       <div
         class="explanation-modal"
-        id={`explanation-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
+        id={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={`modal-title-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
+        aria-labelledby={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
       >
         {/* Overlay oscuro de fondo */}
         <div class="modal-overlay" aria-hidden="true"></div>
@@ -356,45 +343,17 @@ const projects = getAllProjects();
         {/* Contenido del modal */}
         <div class="modal-content">
           {/* Botón cerrar (X) */}
-          <button class="modal-close" aria-label={lang === 'es' ? 'Cerrar modal' : 'Close modal'}>×</button>
+          <button class="modal-close" aria-label='Close modal'>×</button>
 
           {/* Cuerpo del modal con scroll */}
           <div class="modal-body">
             {/* Título del proyecto */}
-            <h3 class="mono" id={`modal-title-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}>
-              {project.title[lang]}
+            <h3 class="mono" id={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}>
+              {project.title['en']}
             </h3>
 
             {/* Texto de explicación (soporta HTML) */}
-            <div class="explanation-text" set:html={project.explanation ? project.explanation[lang] : ''}>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  )}
-
-  {projects.map(project =>
-    project.images && (
-      <ImageGallery images={project.images} projectTitle={project.title[lang]} />
-    )
-  )}
-  
-  {projects.map(project =>
-    project.explanation && (
-      <div
-        class="explanation-modal"
-        id={`explanation-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={`modal-title-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}
-      >
-        <div class="modal-overlay" aria-hidden="true"></div>
-        <div class="modal-content">
-          <button class="modal-close" aria-label={lang === 'es' ? 'Cerrar modal' : 'Close modal'}>×</button>
-          <div class="modal-body">
-            <h3 class="mono" id={`modal-title-${project.title[lang].toLowerCase().replace(/\s+/g, '-')}`}>{project.title[lang]}</h3>
-            <div class="explanation-text" set:html={project.explanation ? project.explanation[lang] : ''}>
+            <div class="explanation-text" set:html={project.explanation ? project.explanation['en'] : ''}>
             </div>
           </div>
         </div>

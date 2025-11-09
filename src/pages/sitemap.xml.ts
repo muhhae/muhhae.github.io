@@ -82,54 +82,20 @@ export const GET: APIRoute = async ({ site }) => {
    */
   const pages = [
     {
-      url: '',  // Página principal español (/)
-      lastmod: currentDate,
-      changefreq: 'weekly', // Se actualiza semanalmente
-      priority: '1.0',      // Máxima prioridad
-      lang: 'es',
-      alternate: '/en'      // Versión inglés
-    },
-    {
-      url: '/en',  // Página principal inglés
+      url: '',
       lastmod: currentDate,
       changefreq: 'weekly',
-      priority: '0.9',      // Muy alta prioridad (solo un poco menos que español)
-      lang: 'en',
-      alternate: '/'        // Versión español
-    }
+      priority: '1.0',
+    },
   ];
 
-  /**
-   * GENERACIÓN DEL XML
-   * ------------------
-   * Crea el contenido XML del sitemap según el estándar sitemaps.org
-   *
-   * ESTRUCTURA:
-   * - <?xml>: Declaración XML
-   * - <urlset>: Contenedor principal con namespaces
-   *   - xmlns: Namespace estándar de sitemaps
-   *   - xmlns:xhtml: Namespace para enlaces alternativos multiidioma
-   * - <url>: Un elemento por cada página
-   *   - <loc>: URL completa de la página
-   *   - <lastmod>: Fecha de última modificación
-   *   - <changefreq>: Frecuencia de actualización estimada
-   *   - <priority>: Importancia relativa de la página
-   *   - <xhtml:link>: Enlaces a versiones alternativas (multiidioma)
-   *
-   * NOTA SOBRE ALTERNATES:
-   * Los <xhtml:link> ayudan a Google a entender que las páginas en diferentes
-   * idiomas son versiones de la misma página, mejorando SEO internacional.
-   */
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages.map(page => `  <url>
     <loc>${baseUrl}${page.url}</loc>
     <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-    <xhtml:link rel="alternate" hreflang="${page.lang}" href="${baseUrl}${page.url}" />
-    <xhtml:link rel="alternate" hreflang="${page.lang === 'es' ? 'en' : 'es'}" href="${baseUrl}${page.alternate}" />
   </url>`).join('\n')}
 </urlset>`;
 

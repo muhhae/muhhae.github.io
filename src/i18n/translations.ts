@@ -85,45 +85,6 @@ export interface Translations {
  */
 export const translations: Record<string, Translations> = {
   /**
-   * TRADUCCIONES EN ESPAÑOL
-   * -----------------------
-   * Cambia estos valores para personalizar tu portfolio en español.
-   * Recuerda mantener la coherencia con la versión en inglés.
-   */
-  es: {
-    // Meta tags para SEO
-    siteTitle: "Tu Nombre - Portfolio Tech",
-    siteDescription: "Portfolio de desarrollo web full stack. Especializado en tecnologías modernas y soluciones innovadoras.",
-
-    // Sección Hero (Principal)
-    heroGreeting: "$ whoami",
-    heroTitle: "Tu Nombre", // Cambia esto por tu nombre real
-    heroSubtitle: "Tu Título Profesional", // Ej: "Full Stack Developer", "Frontend Engineer", "Data Scientist"
-    heroDescription: "Aquí va tu descripción profesional. Cuenta quién eres y qué haces.<br><span class=\"terminal-info\">Esta es una línea adicional de texto más pequeña</span>",
-    heroCta: "cd ~/projects",
-    heroTemplateButton: "git clone template",
-
-    // Sección Proyectos
-    projectsTitle: "$ ls ~/projects",
-    projectsFeatured: "PINNED",
-    projectsDemo: "[demo]",
-    projectsCode: "[code]",
-    projectsImages: "[images]",
-    projectsExplanation: "[explicación]",
-    projectsCsv: "[csv]",
-    projectsWeb: "[web]",
-
-    // Sección Contacto (Footer)
-    contactTitle: "$ contact --me",
-    contactEmailButton: "cat email.txt",
-    contactLinks: "Links",
-
-    // Footer
-    footerCopyright: "© {year} Tu Nombre", // {year} se reemplaza automáticamente
-    footerStatus: "● All systems operational"
-  },
-
-  /**
    * TRADUCCIONES EN INGLÉS
    * -----------------------
    * English translations. Maintain consistency with Spanish version.
@@ -184,41 +145,7 @@ export const translations: Record<string, Translations> = {
  * FALLBACK:
  * Si se pasa un idioma no soportado (ej: 'fr'), devuelve español.
  */
-export function getTranslations(lang: string = 'es'): Translations {
-  return translations[lang] || translations.es;
+export function getTranslations(): Translations {
+  return translations['en'];
 }
 
-/**
- * FUNCIÓN: getBrowserLanguage
- * ----------------------------
- * Detecta automáticamente el idioma del navegador del usuario.
- * Útil para mostrar el sitio en el idioma preferido del visitante.
- *
- * RETORNA:
- * @returns {string} Código de idioma ('es' o 'en')
- *
- * LÓGICA:
- * 1. Verifica que window esté disponible (solo en cliente)
- * 2. Lee navigator.language o navigator.languages[0]
- * 3. Si el idioma empieza con 'en', devuelve 'en'
- * 4. En cualquier otro caso, devuelve 'es' (español por defecto)
- *
- * EJEMPLO:
- * ```typescript
- * const userLang = getBrowserLanguage();
- * // Usuario en UK: "en"
- * // Usuario en España: "es"
- * // Usuario en Francia: "es" (fallback)
- * ```
- *
- * NOTA:
- * - Esta función solo funciona en el navegador (client-side)
- * - En el servidor (SSR), siempre devuelve 'es'
- */
-export function getBrowserLanguage(): string {
-  if (typeof window !== 'undefined') {
-    const browserLang = navigator.language || navigator.languages?.[0];
-    return browserLang?.startsWith('en') ? 'en' : 'es';
-  }
-  return 'es';
-}
