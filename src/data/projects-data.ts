@@ -22,6 +22,7 @@ export const projectsData: Project[] = [
     title: "Tetromino - Tetromania Castle",
     description: "Implemented the <strong>game mechanics and 2D collision detection</strong> from scratch using C++.",
     link: "https://github.com/muhhae/tetromania-castle",
+    web: "https://muhhae.itch.io/tetromania-castle",
     featured: false,
   },
   {
