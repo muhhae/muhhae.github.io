@@ -44,6 +44,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';      // Main presentation section
 import Projects from '../components/Projects.astro';  // Project gallery
 import Publications from '../components/Pubs.astro';  // Project gallery
+import Teaching from '../components/Teaching.astro'; // Teaching section
 import Footer from '../components/Footer.astro';     // Footer with contact
 
 // Internationalization utility to get translations
@@ -93,6 +94,7 @@ const { t } = useI18n();
     <Hero />
     <Publications />
     <Projects />
+    <Teaching />
     <Footer />
   </main>
 </Layout>

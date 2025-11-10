@@ -13,38 +13,27 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    title: "Complete Example Project",
-    description: "<strong>Project featured title.</strong><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Here you briefly describe your project. <strong>Feature 1</strong>, <strong>Feature 2</strong>, <strong>Feature 3</strong>.",
-    explanation:"Here goes the EXTENDED explanation of the project (optional).<br><br><strong>Section 1:</strong><br>• Point 1<br>• Point 2<br>• Point 3<br><br><strong>Section 2:</strong><br>• Additional detail<br>• More information<br><br>Use this field to give detailed context of the project.",
-    tech: ["Skill 1", "Skill 2", "Skill 3", "Skill 4"], // CHANGE: Replace with real technologies (React, Node, etc.)
-    link: "https://github.com/yourusername/repo-name", // CHANGE: URL of your GitHub repository
-    demo: "https://demo.yourproject.com", // CHANGE: URL of your live demo (Vercel, Netlify, etc.)
-    web: "https://www.yourproject.com", // CHANGE: URL of the official website
-    csv: "/assets/example-data/sample-data.csv", // CHANGE: Path to your CSV file in public/assets/
-    featured: true, // true = appears as "PINNED" at the top
-    images: [ // CHANGE: Paths to your screenshots (without .png, .jpg extension)
-      "/screenshots/example-project/screenshot-01",
-      "/screenshots/example-project/screenshot-02",
-      "/screenshots/example-project/screenshot-03"
-    ]
+    title: "Interpreted Programming Language",
+    description: "Implemented core programming language features like <strong>variables, arithmetic, functions, and classes</strong>. Designed and implemented a <strong>custom IDE</strong> with syntax highlighting and an interactive shell.",
+    link: "https://github.com/muhhae/interpreted-lang-py",
+    featured: false,
   },
   {
-    title: "Another Example Project",
-    description: "<strong>Another featured title.</strong><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Here you briefly describe your project. <strong>Feature 1</strong>, <strong>Feature 2</strong>, <strong>Feature 3</strong>.",
-    explanation:"Here goes the EXTENDED explanation of the project (optional).<br><br><strong>Section 1:</strong><br>• Point 1<br>• Point 2<br>• Point 3<br><br><strong>Section 2:</strong><br>• Additional detail<br>• More information<br><br>Use this field to give detailed context of the project.",
-    tech: ["Skill 5", "Skill 6", "Skill 7", "Skill 8"], // CHANGE: Replace with real technologies (React, Node, etc.)
-    link: "https://github.com/yourusername/repo-name-2", // CHANGE: URL of your GitHub repository
-    demo: "https://demo.yourproject2.com", // CHANGE: URL of your live demo (Vercel, Netlify, etc.)
-    web: "https://www.yourproject2.com", // CHANGE: URL of the official website
-    csv: "/assets/example-data/sample-data.csv", // CHANGE: Path to your CSV file in public/assets/
-    featured: false, // true = appears as "PINNED" at the top
-    images: [ // CHANGE: Paths to your screenshots (without .png, .jpg extension)
-      "/screenshots/example-project/screenshot-01",
-      "/screenshots/example-project/screenshot-02",
-      "/screenshots/example-project/screenshot-03"
-    ]
+    title: "Tetromino - Tetromania Castle",
+    description: "Implemented the <strong>game mechanics and 2D collision detection</strong> from scratch using C++.",
+    link: "https://github.com/muhhae/tetromania-castle",
+    featured: false,
   },
-]
-
-
-
+  {
+    title: "ESP32 PingPong Game",
+    description: "A Ping-Pong game written in C++ for ESP32 and a dot-matrix display. Features <strong>dot-matrix display rendering</strong> and a <strong>buzzer-based music player</strong>.",
+    link: "https://github.com/muhhae/esp32-pingpong",
+    featured: false,
+  },
+  {
+    title: "Image sharing platform - Lorem Ipsum",
+    description: "Developed a web application for sharing random images using Go and HTMX. Includes <strong>authentication</strong> and a <strong>light-weight image loader</strong> algorithm.",
+    link: "https://github.com/muhhae/lorem-ipsum",
+    featured: false,
+  },
+];

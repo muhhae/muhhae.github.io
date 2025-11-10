@@ -1,0 +1,93 @@
+---
+import { teachingData } from '../data/teaching-data.js';
+import { useI18n } from '../lib/i18n.js';
+
+const { t } = useI18n();
+const teaching = teachingData;
+---
+<section id="teaching" class="teaching border-top">
+  <div class="container">
+    <h2 class="mono">{t.teachingTitle}</h2>
+    <div class="teaching-grid">
+      {teaching.map((entry, index) => (
+        <article
+          class="teaching-card fade-in"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <h3>{entry.courseTitle}</h3>
+          <p><strong>{entry.university}</strong> - {entry.department}</p>
+          <p class="date">{entry.date}</p>
+          {entry.description && <p set:html={entry.description}></p>}
+          {entry.link && (
+            <div class="teaching-links">
+              <a
+                href={entry.link}
+                target="_blank"
+                rel="noopener"
+                data-event="click_teaching_link"
+                data-course={entry.courseTitle}
+              >
+                <span class="mono">[link]</span>
+              </a>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .teaching {
+    padding: 6rem 0;
+  }
+
+  .teaching-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .teaching-card {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .teaching-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--text);
+  }
+
+  .teaching-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .teaching-card p {
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-family: var(--mono);
+    line-height: 1.7;
+  }
+
+  .teaching-card p.date {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .teaching-links {
+    margin-top: 1rem;
+  }
+
+  .teaching-links a {
+    font-size: 0.9rem;
+  }
+</style>

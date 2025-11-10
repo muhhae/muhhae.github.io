@@ -134,7 +134,7 @@ const projects = getAllProjects();
         <article
           class={`project-card ${project.featured ? 'featured' : ''} fade-in`}
           style={`animation-delay: ${index * 0.1}s`}
-          data-tech={project.tech.join(',')}
+          data-tech={project.tech ? project.tech.join(',') : ''}
         >
           {/* Badge PINNED para proyectos destacados */}
           {project.featured && (
@@ -148,11 +148,13 @@ const projects = getAllProjects();
           <p set:html={project.description}></p>
 
           {/* Tech Stack: Etiquetas de tecnologías usadas */}
-          <div class="tech-stack">
-            {project.tech.map(tech => (
-              <span class="tech-tag">{tech}</span>
-            ))}
-          </div>
+          {project.tech && project.tech.length > 0 && (
+            <div class="tech-stack">
+              {project.tech.map(tech => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+          )}
 
           {/* Enlaces del proyecto (solo se muestran si existen) */}
           <div class="project-links">
@@ -636,21 +638,21 @@ const projects = getAllProjects();
     margin: 5% auto;
     background: var(--bg);
     border: 1px solid var(--border);
-    padding: 2rem;
+    padding: 3rem 2rem 2rem 2rem; /* Increased top padding */
     display: flex;
     flex-direction: column;
   }
 
   .explanation-modal .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
     background: transparent;
     border: 2px solid var(--text);
     color: var(--text);
-    font-size: 2rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     font-family: var(--mono);
     line-height: 1;

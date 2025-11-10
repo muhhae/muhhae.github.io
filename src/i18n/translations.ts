@@ -59,6 +59,7 @@ export interface Translations {
   projectsImages: string;     // "[images]" button (opens gallery)
   projectsExplanation: string;// "[explanation]" button (opens modal)
   projectsCsv: string;        // "[csv]" button (downloads data)
+  teachingTitle: string;      // Section title "$ ls ~/teaching"
 
   // Contact Section (Footer)
   contactTitle: string;       // Title "$ contact --me"
@@ -99,7 +100,7 @@ export const translations: Record<string, Translations> = {
     heroGreeting: "$ whoami",
     heroTitle: "Muhammad Haekal Muhyidin Al-Araby", // Change this to your real name
     heroSubtitle: "Undergraduate Researcher", // E.g: "Full Stack Developer", "Frontend Engineer", "Data Scientist"
-    heroDescription: "Senior undergraduate student at Sepuluh Nopember Institute of Technology. Interested in <strong>SYSTEM</strong> research. Have experience in Cache. <br><br><strong>WARNING: WEBSITE IS UNDER CONSTRUCTION!</strong>",
+    heroDescription: "Senior undergraduate student at Sepuluh Nopember Institute of Technology with a strong interest in <strong>SYSTEM</strong> research, particularly in Cache mechanisms. Passionate about building efficient and robust systems.",
     heroCta: "cd ~/projects",
     heroTemplateButton: "CV",
 
@@ -112,6 +113,9 @@ export const translations: Record<string, Translations> = {
     projectsExplanation: "[explanation]",
     projectsCsv: "[csv]",
     projectsWeb: "[web]",
+
+    // Teaching Section
+    teachingTitle: "$ ls ~/teaching",
 
     // Contact Section (Footer)
     contactTitle: "$ contact --me",

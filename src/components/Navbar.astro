@@ -1,20 +1,24 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
 ---
 <nav class="navbar">
   <div class="container">
+    <div class="navbar-left-spacer"></div>
     <ul class="nav-menu">
       <li><a href="/">Home</a></li>
-      <li><a href="/#projects">Projects</a></li>
       <li><a href="/#publications">Publications</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#teaching">Teaching</a></li>
     </ul>
+    <ThemeToggle />
   </div>
 </nav>
 
 <style>
   .navbar {
     background-color: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 0;
+    border-bottom: none;
+    padding: 1.5rem 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,7 +28,7 @@
 
   .navbar .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -46,5 +50,10 @@
 
   .nav-menu a:hover {
     opacity: 0.7;
+  }
+
+  .navbar-left-spacer {
+    width: 40px; /* Matches the width of the ThemeToggle */
+    height: 40px; /* Matches the height of the ThemeToggle */
   }
 </style>

@@ -2,41 +2,14 @@
 import ImageGallery from './ImageGallery.astro';
 import { getAllPubs } from '../lib/pubs.js';
 import { useI18n } from '../lib/i18n.js';
+import { MY_AUTHOR_MARKER } from '../data/pubs-data.ts';
 
 const { t } = useI18n();
 const pubs = getAllPubs();
 ---
-
-<!--
-  SECCIÓN PROJECTS
-  ================
-
-  ESTRUCTURA:
-  - id="projects": Permite navegación directa con #projects
-  - .border-top: Línea separadora superior (global.css)
-  - .container: Clase para centrar contenido (global.css)
-
-  COMPONENTES PRINCIPALES:
-  1. Filtro de tecnologías (estilo terminal)
-  2. Grid de tarjetas de proyectos
-  3. Galerías de imágenes (ImageGallery)
-  4. Modales de explicación
--->
 <section id="publications" class="projects border-top">
   <div class="container">
     <h2 class="mono">ls ~/publications</h2>
-    <!-- <div class="filter-wrapper"> -->
-    <!--   <div class="filter-output" id="filter-container" style="display: none;"> -->
-    <!--     <button class="filter-btn active mono" data-filter="all"> -->
-    <!--       all -->
-    <!--     </button> -->
-    <!--     {Array.from(new Set(pubs.flatMap(p => p.tech))).sort().map(tech => ( -->
-    <!--       <button class="filter-btn mono" data-filter={tech}> -->
-    <!--         {tech} -->
-    <!--       </button> -->
-    <!--     ))} -->
-    <!--   </div> -->
-    <!-- </div> -->
     <div class="projects-grid">
       {pubs.map((project, index) => (
         <article
@@ -50,27 +23,25 @@ const pubs = getAllPubs();
           <h3>{project.title}</h3>
           <p set:html={project.description}></p>
           <div class="authors">
-            {project.author.map(author => (
-              <span class="author">{author}</span>
-            ))}
+            {project.author.map(author => {
+              const isMyAuthor = author.startsWith(MY_AUTHOR_MARKER);
+              const displayName = isMyAuthor ? author.substring(MY_AUTHOR_MARKER.length) : author;
+              return (
+                <span class={`author ${isMyAuthor ? 'my-author' : ''}`} set:html={displayName}></span>
+              );
+            })}
           </div>
-          <!-- <div class="tech-stack"> -->
-          <!--   {project.tech.map(tech => ( -->
-          <!--     <span class="tech-tag">{tech}</span> -->
-          <!--   ))} -->
-          <!-- </div> -->
-
           {/* Enlaces del proyecto (solo se muestran si existen) */}
           <div class="project-links">
-            {project.demo && (
+            {project.artifact && (
               <a
-                href={project.demo}
+                href={project.artifact}
                 target="_blank"
                 rel="noopener"
                 data-event="click_demo"
                 data-project={project.title}
               >
-                <span class="mono">{t.projectsDemo}</span>
+                <span class="mono">[artifact]</span>
               </a>
             )}
 
@@ -83,7 +54,7 @@ const pubs = getAllPubs();
                 data-event="click_code"
                 data-project={project.title}
               >
-                <span class="mono">{t.projectsCode}</span>
+                <span class="mono">[link]</span>
               </a>
             )}
 
@@ -113,14 +84,14 @@ const pubs = getAllPubs();
             )}
 
             {/* EXPLANATION: Botón para abrir modal de explicación */}
-            {project.explanation && (
+            {project.abstract && (
               <button
                 class="btn-explanation mono"
                 data-explanation={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_explanation"
                 data-project={project.title}
               >
-                {t.projectsExplanation}
+                [abstract]
               </button>
             )}
 
@@ -178,7 +149,7 @@ const pubs = getAllPubs();
     - aria-label: Etiqueta para el botón de cerrar
   -->
   {pubs.map(project =>
-    project.explanation && (
+    project.abstract && (
       <div
         class="explanation-modal"
         id={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
@@ -201,7 +172,7 @@ const pubs = getAllPubs();
               {project.title}
             </h3>
             {/* Texto de explicación (soporta HTML) */}
-            <div class="explanation-text" set:html={project.explanation ? project.explanation : ''}>
+            <div class="explanation-text" set:html={project.abstract ? project.abstract : ''}>
             </div>
           </div>
         </div>
@@ -467,6 +438,18 @@ const pubs = getAllPubs();
     background: var(--bg);
   }
 
+  .my-author {
+    background-color: var(--text); /* Example background color */
+    color: var(--bg); /* Example text color */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem; /* Add some space after the button */
+    display: inline-block; /* To apply padding and margin correctly */
+    position: relative; /* For pseudo-element positioning */
+  }
+
+  
+
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
@@ -557,21 +540,21 @@ const pubs = getAllPubs();
     margin: 5% auto;
     background: var(--bg);
     border: 1px solid var(--border);
-    padding: 2rem;
+    padding: 3rem 2rem 2rem 2rem; /* Increased top padding */
     display: flex;
     flex-direction: column;
   }
 
   .explanation-modal .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
     background: transparent;
     border: 2px solid var(--text);
     color: var(--text);
-    font-size: 2rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     font-family: var(--mono);
     line-height: 1;
