@@ -37,6 +37,7 @@
  */
 
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Navbar from '../components/Navbar.astro';
 
 // PROPS
 // -----
@@ -274,6 +275,9 @@ const ogImage = new URL(image, Astro.site);
     Those components are rendered in the <slot />.
   -->
   <body>
+    <!-- Navbar -->
+    <Navbar />
+
     <!-- Theme toggle button (light/dark) -->
     <ThemeToggle />
 
@@ -299,6 +303,10 @@ const ogImage = new URL(image, Astro.site);
 -->
 <style is:global>
   @import '../styles/global.css';
+
+  body {
+    padding-top: 3.5rem; /* Adjust this value based on the navbar height */
+  }
 </style>
 
 <!--

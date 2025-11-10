@@ -1,66 +1,10 @@
 ---
-/**
- * COMPONENTE: Projects
- * ====================
- *
- * Sección principal de proyectos del portfolio con filtrado por tecnología.
- * Es la sección más compleja del template.
- *
- * PROPÓSITO:
- * - Mostrar todos tus proyectos en tarjetas (project cards)
- * - Filtrar proyectos por tecnología/skill
- * - Destacar proyectos importantes (featured/pinned)
- * - Mostrar galerías de imágenes de proyectos
- * - Mostrar explicaciones extendidas en modales
- * - Enlaces a demos, código fuente, sitios web, CSVs
- * - Tracking completo de interacciones con Google Analytics
- *
- * CARACTERÍSTICAS:
- * - Filtro de tecnologías con estilo terminal (ls -C)
- * - Proyectos destacados con badge "PINNED"
- * - Múltiples tipos de enlaces por proyecto
- * - Galerías de imágenes lightbox
- * - Modales de explicación con scroll
- * - Animaciones escalonadas al cargar
- * - Grid responsive adaptable
- * - Focus trap en modales (accesibilidad)
- *
- * ARQUITECTURA:
- * - HTML: Tarjetas de proyectos + filtros + modales
- * - CSS: Grid layout + responsive + animaciones
- * - JavaScript: Filtrado + modales + tracking + accesibilidad
- * - Datos: Vienen de projects-data.ts
- * - Internacionalización: Todo el contenido bilingüe
- *
- * INTEGRACIÓN:
- * - ImageGallery: Componente para galerías de screenshots
- * - getAllProjects(): Función que obtiene proyectos ordenados
- * - useI18n(): Traducciones según idioma
- *
- * PERSONALIZACIÓN:
- * - NO modificar este archivo
- * - Añadir/editar proyectos en: src/data/projects-data.ts
- * - Cambiar textos en: src/i18n/translations.ts
- */
-
-// IMPORTACIONES
-// -------------
-// Componente de galería de imágenes lightbox
 import ImageGallery from './ImageGallery.astro';
-
-// Utilidad para obtener proyectos ordenados (featured primero)
-import { getAllProjects } from '../lib/projects.js';
-
-// Utilidad de internacionalización
+import { getAllPubs } from '../lib/pubs.js';
 import { useI18n } from '../lib/i18n.js';
 
 const { t } = useI18n();
-
-// PROYECTOS
-// ---------
-// Obtiene todos los proyectos desde projects-data.ts
-// Ya vienen ordenados: featured primero, luego el resto
-const projects = getAllProjects();
+const pubs = getAllPubs();
 ---
 
 <!--
@@ -78,148 +22,53 @@ const projects = getAllProjects();
   3. Galerías de imágenes (ImageGallery)
   4. Modales de explicación
 -->
-<section id="projects" class="projects border-top">
-  <!-- Contenedor centrado (global.css) -->
+<section id="publications" class="projects border-top">
   <div class="container">
-    <!-- Título de la sección -->
     <h2 class="mono">ls ~/publications</h2>
-
-    <!--
-      FILTRO DE TECNOLOGÍAS
-      =====================
-
-      Sistema de filtrado con estilo de comando terminal.
-      Simula el comando: $ ls -C technologies/
-
-      FUNCIONAMIENTO:
-      1. Botón toggle muestra/oculta la lista de tecnologías
-      2. Lista se genera dinámicamente desde todos los proyectos
-      3. Al hacer clic en una tecnología, filtra proyectos
-      4. "all" muestra todos los proyectos
-
-      ESTILO TERMINAL:
-      - $ (prompt): Simula prompt de terminal
-      - ls -C technologies/: Comando Unix para listar
-      - _ (cursor): Cursor parpadeante animado
-    -->
-    <div class="filter-wrapper">
-      <!--
-        BOTÓN TOGGLE: Muestra/oculta filtros
-        Al hacer clic, aparece el output estilo terminal
-      -->
-      <!-- <button class="filter-toggle mono" id="filter-toggle"> -->
-      <!--   <span class="prompt">$</span> -->
-      <!--   <span class="command">ls -C technologies/</span> -->
-      <!--   <span class="cursor">_</span> -->
-      <!-- </button> -->
-
-      <!--
-        OUTPUT DEL FILTRO:
-        Lista de tecnologías en formato columnar
-        Inicialmente oculto (display: none)
-        JavaScript lo muestra al hacer clic en toggle
-      -->
-      <div class="filter-output" id="filter-container" style="display: none;">
-        <!-- Botón "all": Muestra todos los proyectos -->
-        <button class="filter-btn active mono" data-filter="all">
-          all
-        </button>
-
-        <!--
-          BOTONES DE TECNOLOGÍAS:
-          Se generan dinámicamente desde los proyectos
-
-          LÓGICA:
-          1. projects.flatMap(p => p.tech): Obtiene todas las tecnologías
-          2. new Set(): Elimina duplicados
-          3. Array.from(): Convierte Set a Array
-          4. sort(): Ordena alfabéticamente
-          5. map(): Genera un botón por cada tecnología
-
-          RESULTADO:
-          Lista única y ordenada de todas las tecnologías usadas
-        -->
-        {Array.from(new Set(projects.flatMap(p => p.tech))).sort().map(tech => (
-          <button class="filter-btn mono" data-filter={tech}>
-            {tech}
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <!--
-      GRID DE PROYECTOS
-      =================
-
-      Grid adaptable de tarjetas de proyectos.
-      Se genera dinámicamente desde el array projects.
-
-      CADA TARJETA INCLUYE:
-      - Título del proyecto (bilingüe)
-      - Descripción breve (soporta HTML)
-      - Tech stack (etiquetas de tecnologías)
-      - Enlaces condicionales según disponibilidad:
-        • [demo]: Si project.demo !== null
-        • [code]: Si project.link !== null
-        • [web]: Si project.web !== null
-        • [images]: Si project.images !== null
-        • [explicación]: Si project.explanation !== undefined
-        • [csv]: Si project.csv !== null
-
-      CARACTERÍSTICAS:
-      - Badge "PINNED" si project.featured === true
-      - Animación escalonada (cada tarjeta +0.1s delay)
-      - data-tech: Para filtrado por tecnología
-      - data-event: Para tracking de Google Analytics
-      - class "featured": Estilo destacado para proyectos importantes
-
-      LAYOUT:
-      - Grid adaptable: auto-fit con mínimo 300px
-      - En mobile: 1 columna
-      - En tablet: 2 columnas
-      - En desktop: 3+ columnas (según ancho)
-
-      ACCESIBILIDAD:
-      - <article>: Elemento semántico para cada proyecto
-      - target="_blank": Links externos abren en nueva pestaña
-      - rel="noopener": Seguridad para links externos
-      - fade-in: Animación de aparición (global.css)
-    -->
+    <!-- <div class="filter-wrapper"> -->
+    <!--   <div class="filter-output" id="filter-container" style="display: none;"> -->
+    <!--     <button class="filter-btn active mono" data-filter="all"> -->
+    <!--       all -->
+    <!--     </button> -->
+    <!--     {Array.from(new Set(pubs.flatMap(p => p.tech))).sort().map(tech => ( -->
+    <!--       <button class="filter-btn mono" data-filter={tech}> -->
+    <!--         {tech} -->
+    <!--       </button> -->
+    <!--     ))} -->
+    <!--   </div> -->
+    <!-- </div> -->
     <div class="projects-grid">
-      {projects.map((project, index) => (
+      {pubs.map((project, index) => (
         <article
           class={`project-card ${project.featured ? 'featured' : ''} fade-in`}
           style={`animation-delay: ${index * 0.1}s`}
-          data-tech={project.tech.join(',')}
+          }
         >
-          {/* Badge PINNED para proyectos destacados */}
           {project.featured && (
             <span class="featured-badge mono">{t.projectsFeatured}</span>
           )}
-
-          {/* Título del proyecto (bilingüe) */}
-          <h3>{project.title['en']}</h3>
-
-          {/* Descripción (soporta HTML con set:html) */}
-          <p set:html={project.description['en']}></p>
-
-          {/* Tech Stack: Etiquetas de tecnologías usadas */}
-          <div class="tech-stack">
-            {project.tech.map(tech => (
-              <span class="tech-tag">{tech}</span>
+          <h3>{project.title}</h3>
+          <p set:html={project.description}></p>
+          <div class="authors">
+            {project.author.map(author => (
+              <span class="author">{author}</span>
             ))}
           </div>
+          <!-- <div class="tech-stack"> -->
+          <!--   {project.tech.map(tech => ( -->
+          <!--     <span class="tech-tag">{tech}</span> -->
+          <!--   ))} -->
+          <!-- </div> -->
 
           {/* Enlaces del proyecto (solo se muestran si existen) */}
           <div class="project-links">
-            {/* DEMO: Link a demo en vivo */}
             {project.demo && (
               <a
                 href={project.demo}
                 target="_blank"
                 rel="noopener"
                 data-event="click_demo"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsDemo}</span>
               </a>
@@ -232,7 +81,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_code"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsCode}</span>
               </a>
@@ -245,7 +94,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_web"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsWeb}</span>
               </a>
@@ -255,9 +104,9 @@ const projects = getAllProjects();
             {project.images && (
               <button
                 class="btn-images mono"
-                data-gallery={`gallery-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+                data-gallery={`gallery-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_images"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 {t.projectsImages}
               </button>
@@ -267,9 +116,9 @@ const projects = getAllProjects();
             {project.explanation && (
               <button
                 class="btn-explanation mono"
-                data-explanation={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+                data-explanation={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_explanation"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 {t.projectsExplanation}
               </button>
@@ -282,7 +131,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="download_csv"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsCsv}</span>
               </a>
@@ -301,9 +150,9 @@ const projects = getAllProjects();
     Las galerías son modales lightbox con navegación entre imágenes.
     JavaScript las conecta con los botones [images] de arriba.
   -->
-  {projects.map(project =>
+  {pubs.map(project =>
     project.images && (
-      <ImageGallery images={project.images} projectTitle={project.title['en']} />
+      <ImageGallery images={project.images} projectTitle={project.title} />
     )
   )}
 
@@ -328,14 +177,14 @@ const projects = getAllProjects();
     - aria-labelledby: Conecta con el título del modal (accesibilidad)
     - aria-label: Etiqueta para el botón de cerrar
   -->
-  {projects.map(project =>
+  {pubs.map(project =>
     project.explanation && (
       <div
         class="explanation-modal"
-        id={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+        id={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+        aria-labelledby={`modal-title-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {/* Overlay oscuro de fondo */}
         <div class="modal-overlay" aria-hidden="true"></div>
@@ -348,12 +197,11 @@ const projects = getAllProjects();
           {/* Cuerpo del modal con scroll */}
           <div class="modal-body">
             {/* Título del proyecto */}
-            <h3 class="mono" id={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}>
-              {project.title['en']}
+            <h3 class="mono" id={`modal-title-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              {project.title}
             </h3>
-
             {/* Texto de explicación (soporta HTML) */}
-            <div class="explanation-text" set:html={project.explanation ? project.explanation['en'] : ''}>
+            <div class="explanation-text" set:html={project.explanation ? project.explanation : ''}>
             </div>
           </div>
         </div>
@@ -533,8 +381,8 @@ const projects = getAllProjects();
   }
 
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-top: 3rem;
   }
@@ -600,6 +448,23 @@ const projects = getAllProjects();
     font-family: var(--mono);
     line-height: 1.7;
     flex-grow: 1;
+  }
+
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 3.5rem;
+    align-content: flex-start;
+  }
+
+  .author {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
   }
 
   .tech-stack {

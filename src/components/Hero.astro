@@ -1,46 +1,5 @@
 ---
-/**
- * COMPONENT: Hero
- * ================
- *
- * Main presentation section of the portfolio.
- * First section visitors see when they arrive at the site.
- *
- * PURPOSE:
- * - Personal presentation with name, title, and description
- * - Call-to-action (CTA) to view projects
- * - Button to access the template on GitHub
- * - Create a professional first impression
- *
- * CONTENT DISPLAYED:
- * - Greeting (e.g., "Hello, I'm")
- * - Name/Main title with blinking cursor
- * - Subtitle (e.g., "Full Stack Developer")
- * - Brief description of skills and experience
- * - CTA buttons (View projects + View template)
- *
- * ARCHITECTURE:
- * - HTML: Semantic content with <section>, <h1>, etc.
- * - CSS: Minimalist design with subtle animations
- * - Internationalization: All content comes from translations.ts
- * - Responsive: Adapts perfectly to mobile
- *
- * ANIMATIONS:
- * - Blinking cursor (_) at the end of the title
- * - Fade-in animation on load (defined in global.css)
- * - Hover effect on buttons with movement
- *
- * CUSTOMIZATION:
- * - DO NOT modify this file
- * - All content is edited in: src/i18n/translations.ts
- * - Look for the keys: heroGreeting, heroTitle, heroSubtitle, etc.
- */
-
-// IMPORTS
-// -------------
-// Internationalization utility to get translations
 import { useI18n } from '../lib/i18n.js';
-
 const { t } = useI18n();
 ---
 
@@ -109,25 +68,10 @@ const { t } = useI18n();
         - Secondary button: Link to the template repo on GitHub
       -->
       <div class="cta">
-        <!--
-          PRIMARY BUTTON: View projects
-          - href="#projects": Smooth scroll to section (global.css)
-          - Highlighted style (solid background)
-        -->
-        <a href="#projects" class="btn-primary mono">{t.heroCta}</a>
-
-        <!--
-          SECONDARY BUTTON: View template
-          - External link to GitHub with your template
-          - target="_blank": Opens in a new tab
-          - rel="noopener": Security (prevents tabnabbing)
-          - Secondary style (transparent background)
-
-          CUSTOMIZE:
-          Change "yourusername/your-template-repo" to your real repo
-        -->
+        <!-- <a href="#projects" class="btn-primary mono">{t.heroCta}</a> -->
+        <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-primary mono">cat ~/cv.pdf</a>
         <!-- <a href="https://github.com/yourusername/your-template-repo" target="_blank" rel="noopener" class="btn-secondary mono">{t.heroTemplateButton}</a> -->
-        <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-secondary mono">cat ~/cv.pdf</a>
+        <!-- <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-secondary mono">cat ~/cv.pdf</a> -->
       </div>
     </div>
   </div>

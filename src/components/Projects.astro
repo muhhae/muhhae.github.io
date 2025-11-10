@@ -1,65 +1,9 @@
 ---
-/**
- * COMPONENTE: Projects
- * ====================
- *
- * Sección principal de proyectos del portfolio con filtrado por tecnología.
- * Es la sección más compleja del template.
- *
- * PROPÓSITO:
- * - Mostrar todos tus proyectos en tarjetas (project cards)
- * - Filtrar proyectos por tecnología/skill
- * - Destacar proyectos importantes (featured/pinned)
- * - Mostrar galerías de imágenes de proyectos
- * - Mostrar explicaciones extendidas en modales
- * - Enlaces a demos, código fuente, sitios web, CSVs
- * - Tracking completo de interacciones con Google Analytics
- *
- * CARACTERÍSTICAS:
- * - Filtro de tecnologías con estilo terminal (ls -C)
- * - Proyectos destacados con badge "PINNED"
- * - Múltiples tipos de enlaces por proyecto
- * - Galerías de imágenes lightbox
- * - Modales de explicación con scroll
- * - Animaciones escalonadas al cargar
- * - Grid responsive adaptable
- * - Focus trap en modales (accesibilidad)
- *
- * ARQUITECTURA:
- * - HTML: Tarjetas de proyectos + filtros + modales
- * - CSS: Grid layout + responsive + animaciones
- * - JavaScript: Filtrado + modales + tracking + accesibilidad
- * - Datos: Vienen de projects-data.ts
- * - Internacionalización: Todo el contenido bilingüe
- *
- * INTEGRACIÓN:
- * - ImageGallery: Componente para galerías de screenshots
- * - getAllProjects(): Función que obtiene proyectos ordenados
- * - useI18n(): Traducciones según idioma
- *
- * PERSONALIZACIÓN:
- * - NO modificar este archivo
- * - Añadir/editar proyectos en: src/data/projects-data.ts
- * - Cambiar textos en: src/i18n/translations.ts
- */
-
-// IMPORTACIONES
-// -------------
-// Componente de galería de imágenes lightbox
 import ImageGallery from './ImageGallery.astro';
-
-// Utilidad para obtener proyectos ordenados (featured primero)
 import { getAllProjects } from '../lib/projects.js';
-
-// Utilidad de internacionalización
 import { useI18n } from '../lib/i18n.js';
 
 const { t } = useI18n();
-
-// PROYECTOS
-// ---------
-// Obtiene todos los proyectos desde projects-data.ts
-// Ya vienen ordenados: featured primero, luego el resto
 const projects = getAllProjects();
 ---
 
@@ -198,10 +142,10 @@ const projects = getAllProjects();
           )}
 
           {/* Título del proyecto (bilingüe) */}
-          <h3>{project.title['en']}</h3>
+          <h3>{project.title}</h3>
 
           {/* Descripción (soporta HTML con set:html) */}
-          <p set:html={project.description['en']}></p>
+          <p set:html={project.description}></p>
 
           {/* Tech Stack: Etiquetas de tecnologías usadas */}
           <div class="tech-stack">
@@ -219,7 +163,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_demo"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsDemo}</span>
               </a>
@@ -232,7 +176,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_code"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsCode}</span>
               </a>
@@ -245,7 +189,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="click_web"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsWeb}</span>
               </a>
@@ -255,9 +199,9 @@ const projects = getAllProjects();
             {project.images && (
               <button
                 class="btn-images mono"
-                data-gallery={`gallery-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+                data-gallery={`gallery-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_images"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 {t.projectsImages}
               </button>
@@ -267,9 +211,9 @@ const projects = getAllProjects();
             {project.explanation && (
               <button
                 class="btn-explanation mono"
-                data-explanation={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+                data-explanation={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 data-event="view_explanation"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 {t.projectsExplanation}
               </button>
@@ -282,7 +226,7 @@ const projects = getAllProjects();
                 target="_blank"
                 rel="noopener"
                 data-event="download_csv"
-                data-project={project.title['en']}
+                data-project={project.title}
               >
                 <span class="mono">{t.projectsCsv}</span>
               </a>
@@ -303,7 +247,7 @@ const projects = getAllProjects();
   -->
   {projects.map(project =>
     project.images && (
-      <ImageGallery images={project.images} projectTitle={project.title['en']} />
+      <ImageGallery images={project.images} projectTitle={project.title} />
     )
   )}
 
@@ -332,10 +276,10 @@ const projects = getAllProjects();
     project.explanation && (
       <div
         class="explanation-modal"
-        id={`explanation-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+        id={`explanation-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}
+        aria-labelledby={`modal-title-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {/* Overlay oscuro de fondo */}
         <div class="modal-overlay" aria-hidden="true"></div>
@@ -348,12 +292,12 @@ const projects = getAllProjects();
           {/* Cuerpo del modal con scroll */}
           <div class="modal-body">
             {/* Título del proyecto */}
-            <h3 class="mono" id={`modal-title-${project.title['en'].toLowerCase().replace(/\s+/g, '-')}`}>
-              {project.title['en']}
+            <h3 class="mono" id={`modal-title-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              {project.title}
             </h3>
 
             {/* Texto de explicación (soporta HTML) */}
-            <div class="explanation-text" set:html={project.explanation ? project.explanation['en'] : ''}>
+            <div class="explanation-text" set:html={project.explanation ? project.explanation : ''}>
             </div>
           </div>
         </div>
