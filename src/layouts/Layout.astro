@@ -3,37 +3,37 @@
  * LAYOUT: Main HTML Wrapper
  * ==========================
  *
- * Componente wrapper principal que genera la estructura HTML completa.
- * Todas las páginas (.astro) usan este layout para tener estructura consistente.
+ * Main wrapper component that generates the complete HTML structure.
+ * All pages (.astro) use this layout for a consistent structure.
  *
- * PROPÓSITO:
- * - Generar estructura HTML (<html>, <head>, <body>)
- * - Configurar meta tags para SEO
- * - Configurar Open Graph para redes sociales
- * - Incluir fuentes y recursos globales
- * - Incluir componentes globales (ThemeToggle, LanguageSwitcher)
- * - Importar estilos globales
- * - Configurar JSON-LD para Rich Snippets de Google
+ * PURPOSE:
+ * - Generate HTML structure (<html>, <head>, <body>)
+ * - Configure meta tags for SEO
+ * - Configure Open Graph for social media
+ * - Include global fonts and resources
+ * - Include global components (ThemeToggle, LanguageSwitcher)
+ * - Import global styles
+ * - Configure JSON-LD for Google Rich Snippets
  *
- * CARACTERÍSTICAS:
- * - SEO completo: title, description, canonical, alternates
+ * FEATURES:
+ * - Full SEO: title, description, canonical, alternates
  * - Open Graph: Facebook, Twitter cards
- * - JSON-LD: Datos estructurados para Google
- * - Multiidioma: hreflang tags para SEO internacional
- * - Performance: Preconnect a Google Fonts
- * - Analytics: Preparado para Google Analytics
+ * - JSON-LD: Structured data for Google
+ * - Multilingual: hreflang tags for international SEO
+ * - Performance: Preconnect to Google Fonts
+ * - Analytics: Ready for Google Analytics
  *
- * USO:
- * <Layout title="Mi Página" description="Descripción">
+ * USAGE:
+ * <Layout title="My Page" description="Description">
    <YourContent />
  </Layout>
  *
- * PERSONALIZACIÓN:
- * - Meta tags: Edita abajo en la sección correspondiente
- * - JSON-LD: Actualiza tu información personal (línea 82-100)
- * - Google Analytics: Descomenta y añade tu ID (línea 104-111)
- * - Twitter: Actualiza @yourusername (línea 70)
- * - OG Image: Crea /public/og-image.jpg (1200x630px recomendado)
+ * CUSTOMIZATION:
+ * - Meta tags: Edit below in the corresponding section
+ * - JSON-LD: Update your personal information (lines 82-100)
+ * - Google Analytics: Uncomment and add your ID (lines 104-111)
+ * - Twitter: Update @yourusername (line 70)
+ * - OG Image: Create /public/og-image.jpg (1200x630px recommended)
  */
 
 import ThemeToggle from '../components/ThemeToggle.astro';
@@ -41,12 +41,12 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 // PROPS
 // -----
 interface Props {
-  title: string;         // Título de la página (obligatorio)
-  description?: string;  // Meta description para SEO
-  image?: string;        // Imagen Open Graph (redes sociales)
+  title: string;         // Page title (required)
+  description?: string;  // Meta description for SEO
+  image?: string;        // Open Graph image (social media)
 }
 
-// Obtiene props con valores por defecto
+// Gets props with default values
 const {
   title,
   description = "Tech portfolio - Full stack developer",
@@ -55,45 +55,45 @@ const {
 
 /**
  * CANONICAL URL:
- * URL canónica de la página actual.
- * Indica a Google cuál es la versión "oficial" de esta página.
- * Previene problemas de contenido duplicado.
+ * Canonical URL of the current page.
+ * Tells Google which is the "official" version of this page.
+ * Prevents duplicate content problems.
  */
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 /**
  * OPEN GRAPH IMAGE:
- * URL completa de la imagen para Open Graph.
- * Necesaria para preview en Facebook, Twitter, etc.
+ * Full URL of the image for Open Graph.
+ * Necessary for preview on Facebook, Twitter, etc.
  *
- * REQUISITOS:
- * - Tamaño recomendado: 1200x630px
- * - Formato: JPG o PNG
- * - Ubicación: public/og-image.jpg
+ * REQUIREMENTS:
+ * - Recommended size: 1200x630px
+ * - Format: JPG or PNG
+ * - Location: public/og-image.jpg
  */
 const ogImage = new URL(image, Astro.site);
 ---
 
 <!--
-  ESTRUCTURA HTML
+  HTML STRUCTURE
   ===============
 
-  Este layout genera la estructura HTML completa de cada página.
-  Se usa en index.astro, en/index.astro y futuras páginas.
+  This layout generates the complete HTML structure of each page.
+  It is used in index.astro, en/index.astro and future pages.
 
-  SECCIONES:
-  - <head>: Meta tags, estilos, fuentes, scripts
-  - <body>: Componentes globales + contenido de la página
+  SECTIONS:
+  - <head>: Meta tags, styles, fonts, scripts
+  - <body>: Global components + page content
 -->
 <!doctype html>
 <html>
   <head>
     <!--
-      META TAGS BÁSICOS
+      BASIC META TAGS
       -----------------
-      charset: UTF-8 para soportar todos los caracteres
-      viewport: Responsive design para móviles
-      generator: Indica que el sitio fue generado con Astro
+      charset: UTF-8 to support all characters
+      viewport: Responsive design for mobiles
+      generator: Indicates that the site was generated with Astro
     -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,10 +102,10 @@ const ogImage = new URL(image, Astro.site);
     <!--
       PRIMARY META TAGS (SEO)
       -----------------------
-      Los más importantes para Google y otros motores de búsqueda.
+      The most important for Google and other search engines.
 
-      title: Aparece en la pestaña del navegador y resultados de búsqueda
-      description: Resumen que aparece en resultados de Google
+      title: Appears in the browser tab and search results
+      description: Summary that appears in Google results
     -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -114,65 +114,65 @@ const ogImage = new URL(image, Astro.site);
     <!--
       CANONICAL URL
       -------------
-      Indica a Google cuál es la URL "oficial" de esta página.
-      Previene problemas de contenido duplicado.
+      Tells Google which is the "official" URL of this page.
+      Prevents duplicate content problems.
 
-      BENEFICIO:
-      Si tienes example.com/ y example.com/index.html, canonical dice
-      cuál es la versión que debe indexar Google.
+      BENEFIT:
+      If you have example.com/ and example.com/index.html, canonical says
+      which is the version that Google should index.
     -->
     <link rel="canonical" href={canonicalURL} />
 
     <!--
       OPEN GRAPH (FACEBOOK)
       ---------------------
-      Meta tags para preview cuando compartes en Facebook, LinkedIn, WhatsApp.
+      Meta tags for preview when you share on Facebook, LinkedIn, WhatsApp.
 
-      PERSONALIZAR:
-      - og:site_name: Nombre de tu portfolio (línea 132)
-      - og:image: Crear imagen en public/og-image.jpg (1200x630px)
+      CUSTOMIZE:
+      - og:site_name: Name of your portfolio (line 132)
+      - og:image: Create image in public/og-image.jpg (1200x630px)
 
-      BENEFICIO:
-      Preview atractivo al compartir en redes sociales.
+      BENEFIT:
+      Attractive preview when sharing on social media.
     -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="Your Portfolio" />  <!-- CAMBIAR -->
+    <meta property="og:site_name" content="Your Portfolio" />  <!-- CHANGE -->
     <meta property="og:locale" content='en_US' />
 
     <!--
       TWITTER CARD
       ------------
-      Meta tags para preview cuando compartes en Twitter/X.
+      Meta tags for preview when you share on Twitter/X.
 
-      twitter:card: Tipo de card (summary_large_image = imagen grande)
-      twitter:creator: Tu usuario de Twitter
+      twitter:card: Type of card (summary_large_image = large image)
+      twitter:creator: Your Twitter username
 
-      PERSONALIZAR:
-      - twitter:creator: @tu_usuario (línea 142)
+      CUSTOMIZE:
+      - twitter:creator: @your_username (line 142)
 
-      BENEFICIO:
-      Preview atractivo al compartir en Twitter.
+      BENEFIT:
+      Attractive preview when sharing on Twitter.
     -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:creator" content="@yourusername" />  <!-- CAMBIAR -->
+    <meta name="twitter:creator" content="@yourusername" />  <!-- CHANGE -->
 
     <!--
       FAVICONS
       --------
-      Iconos que aparecen en la pestaña del navegador.
+      Icons that appear in the browser tab.
 
-      PERSONALIZAR:
-      Crear favicon.ico en public/
-      Tamaño recomendado: 32x32px o 16x16px
-      Herramienta: https://favicon.io/
+      CUSTOMIZE:
+      Create favicon.ico in public/
+      Recommended size: 32x32px or 16x16px
+      Tool: https://favicon.io/
     -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -180,17 +180,17 @@ const ogImage = new URL(image, Astro.site);
     <!--
       FONTS (GOOGLE FONTS)
       --------------------
-      Carga la fuente JetBrains Mono (monoespaciada).
+      Loads the JetBrains Mono font (monospace).
 
-      preconnect: Optimización para cargar más rápido
-      display=swap: Muestra texto inmediatamente con fuente del sistema
-                    hasta que cargue JetBrains Mono
+      preconnect: Optimization to load faster
+      display=swap: Shows text immediately with system font
+                    until JetBrains Mono loads
 
-      CAMBIAR FUENTE:
-      1. Ve a https://fonts.google.com/
-      2. Selecciona tu fuente
-      3. Copia el <link> y reemplaza abajo
-      4. Actualiza --mono en global.css
+      CHANGE FONT:
+      1. Go to https://fonts.google.com/
+      2. Select your font
+      3. Copy the <link> and replace below
+      4. Update --mono in global.css
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -199,127 +199,127 @@ const ogImage = new URL(image, Astro.site);
     <!--
       JSON-LD STRUCTURED DATA
       -----------------------
-      Datos estructurados que Google usa para Rich Snippets.
-      Aparece en resultados de búsqueda con información destacada.
+      Structured data that Google uses for Rich Snippets.
+      Appears in search results with highlighted information.
 
-      PERSONALIZAR:
-      - name: Tu nombre completo
-      - sameAs: Tus perfiles sociales
-      - jobTitle: Tu título profesional
-      - knowsAbout: Tus skills principales
+      CUSTOMIZE:
+      - name: Your full name
+      - sameAs: Your social profiles
+      - jobTitle: Your professional title
+      - knowsAbout: Your main skills
 
-      BENEFICIO:
-      Google puede mostrar tu perfil con foto, skills, etc.
-      en los resultados de búsqueda.
+      BENEFIT:
+      Google can show your profile with photo, skills, etc.
+      in search results.
     -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Your Name",  // CAMBIAR
+      "name": "Muhammad Haekal Muhyidin Al-Araby",  // CHANGE
       "url": Astro.site?.toString(),
       "image": ogImage.toString(),
-      "sameAs": [  // CAMBIAR: Tus redes sociales
-        "https://github.com/yourusername",
+      "sameAs": [  // CHANGE: Your social networks
+        "https://github.com/muhhae",
         "https://twitter.com/yourusername"
       ],
-      "jobTitle": "Full Stack Developer",  // CAMBIAR
+      "jobTitle": "Undergraduate Researcher - Systems",  // CHANGE
       "description": description,
-      "knowsAbout": [  // CAMBIAR: Tus skills
-        "React",
-        "Node.js",
-        "Astro",
-        "TypeScript",
+      "knowsAbout": [  // CHANGE: Your skills
+        "C/C++",
         "Python",
-        "Full Stack Development"
+        "Linux",
+        "Bash",
+        "libCacheSim",
+        "CloudLab",
       ]
     })} />
 
     <!--
       GOOGLE ANALYTICS
       ----------------
-      Tracking de visitas, páginas vistas, eventos, etc.
+      Tracking of visits, page views, events, etc.
 
-      ACTIVAR:
-      1. Crea cuenta en https://analytics.google.com/
-      2. Obtén tu Measurement ID (formato: G-XXXXXXXXXX)
-      3. Reemplaza G-XXXXXXXXXX en las 2 líneas abajo
-      4. Descomenta el bloque completo
+      ACTIVATE:
+      1. Create an account at https://analytics.google.com/
+      2. Get your Measurement ID (format: G-XXXXXXXXXX)
+      3. Replace G-XXXXXXXXXX in the 2 lines below
+      4. Uncomment the entire block
 
-      EVENTOS TRACKEADOS:
-      - Cambios de tema (ThemeToggle)
-      - Cambios de idioma (LanguageSwitcher)
-      - Clicks en proyectos (Projects)
-      - Revelación de email (Footer)
+      TRACKED EVENTS:
+      - Theme changes (ThemeToggle)
+      - Language changes (LanguageSwitcher)
+      - Clicks on projects (Projects)
+      - Email revelation (Footer)
     -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');  // CAMBIAR por tu ID
+      gtag('config', 'G-XXXXXXXXXX');  // CHANGE to your ID
     </script> -->
   </head>
 
   <!--
-    BODY: Contenido de la Página
+    BODY: Page Content
     =============================
 
-    COMPONENTES GLOBALES:
-    - ThemeToggle: Botón flotante para cambiar tema (superior derecha)
-    - LanguageSwitcher: Botón flotante para cambiar idioma (superior derecha)
+    GLOBAL COMPONENTS:
+    - ThemeToggle: Floating button to change theme (top right)
+    - LanguageSwitcher: Floating button to change language (top right)
 
     SLOT:
-    El contenido de cada página se inserta aquí.
-    Ejemplo: En index.astro, <Layout> envuelve Hero, Projects, Footer.
-    Esos componentes se renderizan en el <slot />.
+    The content of each page is inserted here.
+    Example: In index.astro, <Layout> wraps Hero, Projects, Footer.
+    Those components are rendered in the <slot />.
   -->
   <body>
-    <!-- Botón de cambio de tema (light/dark) -->
+    <!-- Theme toggle button (light/dark) -->
     <ThemeToggle />
 
-    <!-- Contenido de la página actual -->
+    <!-- Current page content -->
     <slot />
   </body>
 </html>
 
 <!--
-  ESTILOS GLOBALES
+  GLOBAL STYLES
   ================
 
-  Importa los estilos CSS globales del archivo global.css.
-  is:global indica que son estilos globales (no scoped a este componente).
+  Imports the global CSS styles from the global.css file.
+  is:global indicates that they are global styles (not scoped to this component).
 
-  CONTENIDO DE GLOBAL.CSS:
-  - Reset CSS
-  - Variables CSS (colores, fuentes)
-  - Estilos base (body, h1-h6, p, a, etc.)
-  - Utilidades (container, mono, border-top, fade-in)
+  CONTENT OF GLOBAL.CSS:
+  - CSS Reset
+  - CSS Variables (colors, fonts)
+  - Base styles (body, h1-h6, p, a, etc.)
+  - Utilities (container, mono, border-top, fade-in)
   - Smooth scroll
-  - Tema light/dark
+  - Light/dark theme
 -->
 <style is:global>
   @import '../styles/global.css';
 </style>
 
 <!--
-  CÓMO USAR ESTE LAYOUT
+  HOW TO USE THIS LAYOUT
   =====================
 
-  En cualquier página .astro:
+  On any .astro page:
 
   ---
   import Layout from '../layouts/Layout.astro';
   ---
 
   <Layout
-    title="Mi Página - Portfolio"
-    description="Descripción de mi página"
+    title="My Page - Portfolio"
+    description="Description of my page"
   >
     <YourContent />
   </Layout>
 
-  PROPS DISPONIBLES:
-  - title (obligatorio): Título de la página
-  - description (opcional): Meta description
-  - image (opcional): Ruta a imagen OG (default: '/og-image.jpg')
+  AVAILABLE PROPS:
+  - title (required): Page title
+  - description (optional): Meta description
+  - image (optional): Path to OG image (default: '/og-image.jpg')
 -->

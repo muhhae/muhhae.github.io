@@ -137,124 +137,24 @@ export interface Project {
  * REPLACE THESE EXAMPLES WITH YOUR REAL PROJECTS
  */
 export const projectsData: Project[] = [
-  /**
-   * TYPE 1: COMPLETE PROJECT
-   * --------------------------
-   * This example shows ALL available options.
-   * It has: featured, demo, code, web, images, explanation, csv
-   *
-   * USE THIS AS A TEMPLATE for projects with many features.
-   *
-   * BUTTONS IT SHOWS:
-   * [demo] [code] [web] [images] [explanation] [csv] + PINNED badge
-   */
   {
     title: {
-      en: "Complete Example Project"
+      en: "Lazy Promotions"
     },
     description: {
-      // SUPPORTS HTML: <strong>, <br>, <span>, etc.
       en: "<strong>Project featured title.</strong><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Here you briefly describe your project. <strong>Feature 1</strong>, <strong>Feature 2</strong>, <strong>Feature 3</strong>."
     },
     explanation: {
-      // OPTIONAL: Detailed description that appears in a modal
-      // Useful for explaining context, architecture, results, metrics
       en: "Here goes the EXTENDED explanation of the project (optional).<br><br><strong>Section 1:</strong><br>• Point 1<br>• Point 2<br>• Point 3<br><br><strong>Section 2:</strong><br>• Additional detail<br>• More information<br><br>Use this field to give detailed context of the project."
     },
     tech: ["Skill 1", "Skill 2", "Skill 3", "Skill 4"], // CHANGE: Replace with real technologies (React, Node, etc.)
-    link: "https://github.com/yourusername/repo-name", // CHANGE: URL of your GitHub repository
-    demo: "https://demo.yourproject.com", // CHANGE: URL of your live demo (Vercel, Netlify, etc.)
-    web: "https://www.yourproject.com", // CHANGE: URL of the official website
-    csv: "/assets/example-data/sample-data.csv", // CHANGE: Path to your CSV file in public/assets/
-    featured: true, // true = appears as "PINNED" at the top
-    images: [ // CHANGE: Paths to your screenshots (without .png, .jpg extension)
-      "/screenshots/example-project/screenshot-01",
-      "/screenshots/example-project/screenshot-02",
-      "/screenshots/example-project/screenshot-03"
-    ]
+    link: null, // CHANGE: URL of your GitHub repository
+    demo: null, // CHANGE: URL of your live demo (Vercel, Netlify, etc.)
+    web: null, // CHANGE: URL of the official website
+    csv: null, // CHANGE: Path to your CSV file in public/assets/
+    featured: false, // true = appears as "PINNED" at the top
+    images: []
   },
-
-  /**
-   * TYPE 2: FEATURED PROJECT
-   * ---------------------------
-   * Important project but with fewer options than the complete one.
-   * It has: featured, code, web (without demo, csv, images, explanation)
-   *
-   * USE THIS AS A TEMPLATE for simple featured projects.
-   *
-   * BUTTONS IT SHOWS:
-   * [code] [web] + PINNED badge
-   */
-  {
-    title: {
-      en: "Featured Project"
-    },
-    description: {
-      en: "<strong>Another important project.</strong><br><br>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <strong>Functionality A</strong>, <strong>Functionality B</strong>, <strong>Functionality C</strong>."
-    },
-    // No explanation = no [explanation] button appears
-    tech: ["Skill 1", "Skill 2", "Skill 3"],
-    link: "https://github.com/yourusername/another-repo",
-    demo: null, // null = do not show [demo] button
-    web: "https://www.anotherproject.com",
-    csv: null, // null = do not show [csv] button
-    featured: true, // PINNED
-    images: null // null = do not show [images] button
-  },
-
-  /**
-   * TYPE 3: REGULAR PROJECT
-   * -------------------------
-   * Standard project without being featured.
-   * It has: code, demo (without featured, web, images, explanation, csv)
-   *
-   * USE THIS AS A TEMPLATE for normal projects.
-   *
-   * BUTTONS IT SHOWS:
-   * [demo] [code]
-   */
-  {
-    title: {
-      en: "Regular Project"
-    },
-    description: {
-      en: "<strong>Brief description.</strong><br><br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. This is a standard project."
-    },
-    tech: ["Skill A", "Skill B"],
-    link: "https://github.com/yourusername/project-repo",
-    demo: "https://project-demo.com",
-    web: null,
-    csv: null,
-    featured: false, // false = does NOT appear as featured
-    images: null
-  },
-
-  /**
-   * TYPE 4: SIMPLE PROJECT
-   * ------------------------
-   * Minimum configuration: only code and technologies.
-   * It has: code (everything else null/false)
-   *
-   * USE THIS AS A TEMPLATE for basic or in-development projects.
-   *
-   * BUTTONS IT SHOWS:
-   * [code] only
-   */
-  {
-    title: {
-      en: "Simple Project"
-    },
-    description: {
-      en: "<strong>Basic project.</strong><br><br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
-    },
-    tech: ["Skill X", "Skill Y", "Skill Z"],
-    link: "https://github.com/yourusername/simple-project",
-    demo: null, // All null = only shows [code]
-    web: null,
-    csv: null,
-    featured: false,
-    images: null
-  }
 ];
 
 /**

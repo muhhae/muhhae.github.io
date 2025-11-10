@@ -1,94 +1,94 @@
 /**
- * ESTILOS GLOBALES
+ * GLOBAL STYLES
  * ================
  *
- * Este archivo contiene todos los estilos CSS globales del portfolio.
- * Se importa en Layout.astro con is:global para aplicarse en todo el sitio.
+ * This file contains all the global CSS styles for the portfolio.
+ * It is imported in Layout.astro with is:global to apply to the entire site.
  *
- * ESTRUCTURA:
- * 1. Reset CSS: Normaliza estilos entre navegadores
- * 2. Variables CSS: Colores y fuentes adaptables a tema
- * 3. Temas: Light y dark mode
- * 4. Base: Estilos para html y body
- * 5. Tipografía: Estilos para h1-h6, p, a
- * 6. Layout: Contenedores y secciones
- * 7. Utilidades: Clases helper (.mono, .grid, etc.)
- * 8. Animaciones: Keyframes y clases de animación
- * 9. Accesibilidad: Focus states y reduced motion
+ * STRUCTURE:
+ * 1. CSS Reset: Normalizes styles across browsers
+ * 2. CSS Variables: Theme-adaptive colors and fonts
+ * 3. Themes: Light and dark mode
+ * 4. Base: Styles for html and body
+ * 5. Typography: Styles for h1-h6, p, a
+ * 6. Layout: Containers and sections
+ * 7. Utilities: Helper classes (.mono, .grid, etc.)
+ * 8. Animations: Keyframes and animation classes
+ * 9. Accessibility: Focus states and reduced motion
  *
- * PERSONALIZACIÓN:
- * - Colores: Edita variables en :root (líneas 35-40)
- * - Fuentes: Edita --mono y --sans (líneas 39-40)
- * - Tema dark: Edita colores en [data-theme="dark"] (líneas 56-61)
- * - Tema light: Edita colores en [data-theme="light"] (líneas 63-68)
+ * CUSTOMIZATION:
+ * - Colors: Edit variables in :root (lines 35-40)
+ * - Fonts: Edit --mono and --sans (lines 39-40)
+ * - Dark theme: Edit colors in [data-theme="dark"] (lines 56-61)
+ * - Light theme: Edit colors in [data-theme="light"] (lines 63-68)
  */
 
 /* ============================================
-   RESET CSS
+   CSS RESET
    ============================================
-   Elimina márgenes, paddings y normaliza box-sizing.
-   Garantiza comportamiento consistente entre navegadores.
+   Removes margins, paddings, and normalizes box-sizing.
+   Ensures consistent behavior across browsers.
 */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;  /* Incluye border y padding en width/height */
+  box-sizing: border-box;  /* Includes border and padding in width/height */
 }
 
 /* ============================================
-   VARIABLES CSS (TEMA POR DEFECTO: LIGHT)
+   CSS VARIABLES (DEFAULT THEME: LIGHT)
    ============================================
-   Variables que se adaptan automáticamente al tema activo.
-   Usadas en todos los componentes con var(--variable).
+   Variables that automatically adapt to the active theme.
+   Used in all components with var(--variable).
 
-   PERSONALIZAR:
-   - --bg: Color de fondo principal
-   - --text: Color del texto principal
-   - --accent: Color de acento (actualmente igual que text)
-   - --border: Color de bordes y separadores
-   - --mono: Familia de fuentes monoespaciadas
-   - --sans: Familia de fuentes sans-serif
+   CUSTOMIZE:
+   - --bg: Main background color
+   - --text: Main text color
+   - --accent: Accent color (currently same as text)
+   - --border: Border and separator color
+   - --mono: Monospace font family
+   - --sans: Sans-serif font family
 */
 :root {
-  --bg: #ffffff;        /* Fondo blanco */
-  --text: #000000;      /* Texto negro */
-  --accent: #111111;    /* Acento gris muy oscuro */
-  --border: #e5e5e5;    /* Borde gris claro */
+  --bg: #ffffff;        /* White background */
+  --text: #000000;      /* Black text */
+  --accent: #111111;    /* Very dark gray accent */
+  --border: #e5e5e5;    /* Light gray border */
   --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* ============================================
-   TEMA DARK (VÍA PREFERENCIA DEL SISTEMA)
+   DARK THEME (VIA SYSTEM PREFERENCE)
    ============================================
-   Activa automáticamente el tema oscuro si el usuario
-   tiene dark mode activado en su sistema operativo.
+   Automatically activates the dark theme if the user
+   has dark mode enabled in their operating system.
 
-   CONDICIÓN:
-   - Sistema en dark mode: Se aplican estos colores
-   - Usuario eligió manualmente light: :root:not([data-theme="light"]) lo previene
+   CONDITION:
+   - System in dark mode: These colors are applied
+   - User manually chose light: :root:not([data-theme="light"]) prevents it
 
-   PERSONALIZAR:
-   Cambia los colores para ajustar tu tema oscuro.
+   CUSTOMIZE:
+   Change the colors to adjust your dark theme.
 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #000000;        /* Fondo negro */
-    --text: #ffffff;      /* Texto blanco */
-    --accent: #eeeeee;    /* Acento gris muy claro */
-    --border: #1a1a1a;    /* Borde gris muy oscuro */
+    --bg: #000000;        /* Black background */
+    --text: #ffffff;      /* White text */
+    --accent: #eeeeee;    /* Very light gray accent */
+    --border: #1a1a1a;    /* Very dark gray border */
   }
 }
 
 /* ============================================
-   TEMA DARK (MANUAL - PRIORIDAD MÁXIMA)
+   DARK THEME (MANUAL - HIGHEST PRIORITY)
    ============================================
-   Cuando el usuario hace clic en el ThemeToggle y elige dark.
-   Se añade data-theme="dark" al <html> y estos estilos se aplican.
+   When the user clicks the ThemeToggle and chooses dark.
+   data-theme="dark" is added to <html> and these styles are applied.
 
-   PRIORIDAD:
-   Este selector tiene mayor especificidad que @media,
-   por lo que sobrescribe la preferencia del sistema.
+   PRIORITY:
+   This selector has higher specificity than @media,
+   so it overrides the system preference.
 */
 [data-theme="dark"] {
   --bg: #000000;
@@ -98,10 +98,10 @@
 }
 
 /* ============================================
-   TEMA LIGHT (MANUAL - PRIORIDAD MÁXIMA)
+   LIGHT THEME (MANUAL - HIGHEST PRIORITY)
    ============================================
-   Cuando el usuario hace clic en el ThemeToggle y elige light.
-   Se añade data-theme="light" al <html> y estos estilos se aplican.
+   When the user clicks the ThemeToggle and chooses light.
+   data-theme="light" is added to <html> and these styles are applied.
 */
 [data-theme="light"] {
   --bg: #ffffff;
@@ -111,52 +111,52 @@
 }
 
 /* ============================================
-   ESTILOS BASE
+   BASE STYLES
    ============================================
-   Configuración fundamental de html y body.
-   Establece el comportamiento de scroll y estilos base del documento.
+   Fundamental configuration of html and body.
+   Establishes the scroll behavior and base styles of the document.
 */
 
 /**
- * HTML: Scroll Suave
+ * HTML: Smooth Scroll
  * ------------------
- * scroll-behavior: smooth permite animaciones suaves al hacer clic
- * en enlaces ancla (#section) o al usar scrollIntoView().
+ * scroll-behavior: smooth allows smooth animations when clicking
+ * on anchor links (#section) or using scrollIntoView().
  *
- * EJEMPLO:
- * <a href="#projects">Ver proyectos</a>
- * → El scroll hacia #projects será animado en lugar de instantáneo.
+ * EXAMPLE:
+ * <a href="#projects">View projects</a>
+ * → The scroll to #projects will be animated instead of instant.
  *
- * NOTA ACCESIBILIDAD:
- * Se respeta prefers-reduced-motion (ver línea 223).
- * Usuarios con mareos o problemas vestibulares tendrán scroll instantáneo.
+ * ACCESSIBILITY NOTE:
+ * Respects prefers-reduced-motion (see line 223).
+ * Users with dizziness or vestibular issues will have instant scroll.
  */
 html {
   scroll-behavior: smooth;
 }
 
 /**
- * BODY: Estilos Base del Documento
+ * BODY: Base Document Styles
  * ---------------------------------
- * Establece la fuente, colores y espaciado base para todo el sitio.
+ * Sets the base font, colors, and spacing for the entire site.
  *
  * font-family: var(--sans)
- *   → Usa la fuente sans-serif definida en :root (línea 58)
- *   → Por defecto: -apple-system, BlinkMacSystemFont, Segoe UI
+ *   → Uses the sans-serif font defined in :root (line 58)
+ *   → Default: -apple-system, BlinkMacSystemFont, Segoe UI
  *
  * background: var(--bg)
- *   → Color de fondo que se adapta al tema (blanco/negro)
+ *   → Background color that adapts to the theme (white/black)
  *
  * color: var(--text)
- *   → Color del texto que se adapta al tema (negro/blanco)
+ *   → Text color that adapts to the theme (black/white)
  *
  * line-height: 1.6
- *   → Espaciado entre líneas de texto (160% del tamaño de fuente)
- *   → Mejora la legibilidad, especialmente en párrafos largos
+ *   → Spacing between lines of text (160% of font size)
+ *   → Improves readability, especially in long paragraphs
  *
  * font-size: 16px
- *   → Tamaño base de fuente
- *   → Los tamaños relativos (rem, em) se calculan a partir de este valor
+ *   → Base font size
+ *   → Relative sizes (rem, em) are calculated from this value
  */
 body {
   font-family: var(--sans);
@@ -167,27 +167,27 @@ body {
 }
 
 /* ============================================
-   TIPOGRAFÍA
+   TYPOGRAPHY
    ============================================
-   Estilos para encabezados, párrafos y enlaces.
-   Establece jerarquía visual y legibilidad del contenido.
+   Styles for headings, paragraphs, and links.
+   Establishes visual hierarchy and content readability.
 */
 
 /**
- * ENCABEZADOS: h1, h2, h3
+ * HEADINGS: h1, h2, h3
  * -----------------------
- * Estilos compartidos para los títulos principales.
+ * Shared styles for the main titles.
  *
  * font-family: var(--mono)
- *   → Usa fuente monoespaciada para estética técnica/minimalista
- *   → Por defecto: JetBrains Mono, Fira Code, Courier New
+ *   → Uses monospace font for a technical/minimalist aesthetic
+ *   → Default: JetBrains Mono, Fira Code, Courier New
  *
  * font-weight: 700
- *   → Negrita para jerarquía visual clara
+ *   → Bold for clear visual hierarchy
  *
  * line-height: 1.2
- *   → Líneas más compactas que el body (1.6)
- *   → Mejora la legibilidad en textos cortos como títulos
+ *   → More compact lines than the body (1.6)
+ *   → Improves readability in short texts like titles
  */
 h1, h2, h3 {
   font-family: var(--mono);
@@ -196,19 +196,19 @@ h1, h2, h3 {
 }
 
 /**
- * H1: Título Principal
+ * H1: Main Title
  * --------------------
- * Usado en Hero.astro para el nombre del desarrollador.
+ * Used in Hero.astro for the developer's name.
  *
  * clamp(2rem, 5vw, 4rem):
- *   → Tamaño fluido que se adapta al viewport
- *   → Mínimo: 2rem (32px) en móviles pequeños
- *   → Preferido: 5vw (5% del ancho de viewport)
- *   → Máximo: 4rem (64px) en pantallas grandes
+ *   → Fluid size that adapts to the viewport
+ *   → Minimum: 2rem (32px) on small mobiles
+ *   → Preferred: 5vw (5% of viewport width)
+ *   → Maximum: 4rem (64px) on large screens
  *
  * letter-spacing: -0.02em
- *   → Acerca ligeramente las letras (tracking negativo)
- *   → Mejora la cohesión visual en títulos grandes
+ *   → Slightly brings letters closer (negative tracking)
+ *   → Improves visual cohesion in large titles
  */
 h1 {
   font-size: clamp(2rem, 5vw, 4rem);
@@ -216,17 +216,17 @@ h1 {
 }
 
 /**
- * H2: Títulos de Sección
+ * H2: Section Titles
  * ----------------------
- * Usado en Projects.astro, Footer.astro para encabezados de sección.
+ * Used in Projects.astro, Footer.astro for section headings.
  *
  * clamp(1.5rem, 3vw, 2.5rem):
- *   → Mínimo: 1.5rem (24px)
- *   → Preferido: 3vw
- *   → Máximo: 2.5rem (40px)
+ *   → Minimum: 1.5rem (24px)
+ *   → Preferred: 3vw
+ *   → Maximum: 2.5rem (40px)
  *
  * margin-bottom: 1.5rem
- *   → Espacio entre título y contenido de la sección
+ *   → Space between title and section content
  */
 h2 {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -234,15 +234,15 @@ h2 {
 }
 
 /**
- * H3: Subtítulos
+ * H3: Subtitles
  * --------------
- * Usado en Projects.astro para títulos de proyectos.
+ * Used in Projects.astro for project titles.
  *
  * font-size: 1.25rem (20px)
- *   → Tamaño fijo, suficientemente distintivo del texto normal
+ *   → Fixed size, sufficiently distinct from normal text
  *
  * margin-bottom: 0.75rem
- *   → Espacio moderado antes del contenido relacionado
+ *   → Moderate space before related content
  */
 h3 {
   font-size: 1.25rem;
@@ -250,20 +250,20 @@ h3 {
 }
 
 /**
- * PÁRRAFOS: p
+ * PARAGRAPHS: p
  * -----------
- * Estilos para bloques de texto.
+ * Styles for text blocks.
  *
  * margin-bottom: 1rem
- *   → Espacio entre párrafos consecutivos
+ *   → Space between consecutive paragraphs
  *
  * max-width: 65ch
- *   → Limita el ancho a 65 caracteres
- *   → BENEFICIO: Mejora la legibilidad
- *   → RAZÓN: Líneas muy largas dificultan el seguimiento del texto
- *   → ESTÁNDAR: 45-75 caracteres es el rango óptimo según tipografía
+ *   → Limits the width to 65 characters
+ *   → BENEFIT: Improves readability
+ *   → REASON: Very long lines make it difficult to follow the text
+ *   → STANDARD: 45-75 characters is the optimal range according to typography
  *
- * NOTA: "ch" es una unidad CSS que representa el ancho del carácter "0"
+ * NOTE: "ch" is a CSS unit that represents the width of the "0" character
  */
 p {
   margin-bottom: 1rem;
@@ -271,23 +271,23 @@ p {
 }
 
 /**
- * ENLACES: a
+ * LINKS: a
  * ----------
- * Estilos para todos los enlaces del sitio.
+ * Styles for all links on the site.
  *
  * color: var(--text)
- *   → Mismo color que el texto normal (negro/blanco según tema)
- *   → Estética minimalista sin colores azules tradicionales
+ *   → Same color as normal text (black/white depending on theme)
+ *   → Minimalist aesthetic without traditional blue colors
  *
  * text-decoration: none
- *   → Elimina el subrayado por defecto del navegador
+ *   → Removes the default browser underline
  *
  * border-bottom: 1px solid var(--text)
- *   → Subrayado personalizado más elegante que text-decoration
- *   → Se adapta al tema (negro/blanco)
+ *   → More elegant custom underline than text-decoration
+ *   → Adapts to the theme (black/white)
  *
  * transition: opacity 0.2s
- *   → Animación suave del efecto hover (200ms)
+ *   → Smooth animation of the hover effect (200ms)
  */
 a {
   color: var(--text);
@@ -297,14 +297,14 @@ a {
 }
 
 /**
- * ENLACES: Hover State
+ * LINKS: Hover State
  * --------------------
- * Efecto visual al pasar el cursor sobre un enlace.
+ * Visual effect when hovering over a link.
  *
  * opacity: 0.6
- *   → Reduce la opacidad al 60%
- *   → Feedback visual sutil y elegante
- *   → Mantiene la legibilidad mientras indica interactividad
+ *   → Reduces opacity to 60%
+ *   → Subtle and elegant visual feedback
+ *   → Maintains readability while indicating interactivity
  */
 a:hover {
   opacity: 0.6;
@@ -313,29 +313,29 @@ a:hover {
 /* ============================================
    LAYOUT
    ============================================
-   Clases de utilidad para contenedores y secciones.
-   Establece el ancho máximo, espaciado y comportamiento responsive.
+   Utility classes for containers and sections.
+   Establishes maximum width, spacing, and responsive behavior.
 */
 
 /**
- * CONTENEDOR: .container
+ * CONTAINER: .container
  * ----------------------
- * Clase wrapper para centrar y limitar el ancho del contenido.
- * Usado en Hero.astro, Projects.astro, Footer.astro.
+ * Wrapper class to center and limit the width of the content.
+ * Used in Hero.astro, Projects.astro, Footer.astro.
  *
  * max-width: 1200px
- *   → Ancho máximo del contenido en pantallas grandes
- *   → Evita que las líneas de texto sean demasiado largas
- *   → 1200px es un estándar común para contenido legible
+ *   → Maximum content width on large screens
+ *   → Prevents text lines from being too long
+ *   → 1200px is a common standard for readable content
  *
  * margin: 0 auto
- *   → margin-left y margin-right automáticos
- *   → EFECTO: Centra horizontalmente el contenedor
+ *   → Automatic margin-left and margin-right
+ *   → EFFECT: Horizontally centers the container
  *
  * padding: 0 2rem
- *   → Padding horizontal de 2rem (32px)
- *   → Previene que el contenido toque los bordes de la pantalla
- *   → Se reduce a 1.5rem en móviles (ver media query abajo)
+ *   → Horizontal padding of 2rem (32px)
+ *   → Prevents content from touching the screen edges
+ *   → Reduced to 1.5rem on mobiles (see media query below)
  */
 .container {
   max-width: 1200px;
@@ -344,20 +344,20 @@ a:hover {
 }
 
 /**
- * SECCIONES: section
+ * SECTIONS: section
  * ------------------
- * Estilos para las secciones principales de la página.
- * Hero, Projects y Footer son elementos <section>.
+ * Styles for the main sections of the page.
+ * Hero, Projects, and Footer are <section> elements.
  *
  * padding: 4rem 0
- *   → Padding vertical de 4rem (64px) arriba y abajo
- *   → Sin padding horizontal (lo maneja .container)
- *   → Crea espacio respiratorio entre secciones
+ *   → Vertical padding of 4rem (64px) top and bottom
+ *   → No horizontal padding (handled by .container)
+ *   → Creates breathing space between sections
  *
  * min-height: 50vh
- *   → Altura mínima del 50% del viewport (altura de pantalla)
- *   → BENEFICIO: Secciones con poco contenido no se ven comprimidas
- *   → RESPONSIVE: Se ajusta automáticamente al tamaño de pantalla
+ *   → Minimum height of 50% of the viewport (screen height)
+ *   → BENEFIT: Sections with little content do not look compressed
+ *   → RESPONSIVE: Automatically adjusts to screen size
  */
 section {
   padding: 4rem 0;
@@ -365,31 +365,31 @@ section {
 }
 
 /**
- * RESPONSIVE: Móviles y Tablets
+ * RESPONSIVE: Mobiles and Tablets
  * ------------------------------
- * Ajustes para pantallas menores a 768px (típicamente móviles).
+ * Adjustments for screens smaller than 768px (typically mobiles).
  *
  * BREAKPOINT: 768px
- *   → Punto de corte común entre móvil y desktop
+ *   → Common breakpoint between mobile and desktop
  *   → iPhone: ~375-428px
  *   → iPad portrait: 768px
  *   → Desktop: >768px
  */
 @media (max-width: 768px) {
   /**
-   * Secciones en móvil:
-   * - Padding reducido de 4rem a 3rem
-   * - Optimiza el uso del espacio vertical limitado
+   * Sections on mobile:
+   * - Padding reduced from 4rem to 3rem
+   * - Optimizes the use of limited vertical space
    */
   section {
     padding: 3rem 0;
   }
 
   /**
-   * Contenedor en móvil:
-   * - Padding reducido de 2rem a 1.5rem
-   * - Maximiza el ancho disponible para contenido
-   * - Previene que el texto toque los bordes
+   * Container on mobile:
+   * - Padding reduced from 2rem to 1.5rem
+   * - Maximizes the available width for content
+   * - Prevents text from touching the edges
    */
   .container {
     padding: 0 1.5rem;
@@ -397,51 +397,51 @@ section {
 }
 
 /* ============================================
-   UTILIDADES
+   UTILITIES
    ============================================
-   Clases helper reutilizables para aplicar estilos comunes.
-   Usadas en múltiples componentes para mantener consistencia.
+   Reusable helper classes to apply common styles.
+   Used in multiple components to maintain consistency.
 */
 
 /**
- * .mono: Fuente Monoespaciada
+ * .mono: Monospace Font
  * ---------------------------
- * Aplica la fuente monoespaciada definida en --mono.
- * Usado para dar estética técnica a elementos específicos.
+ * Applies the monospace font defined in --mono.
+ * Used to give a technical aesthetic to specific elements.
  *
- * USO:
+ * USAGE:
  * <span class="mono">$ ls -la</span>
  *
- * DÓNDE SE USA:
- * - Projects.astro: Terminal de filtrado de tecnologías
- * - Cualquier texto que deba parecer código o terminal
+ * WHERE IT'S USED:
+ * - Projects.astro: Technology filtering terminal
+ * - Any text that should look like code or terminal
  */
 .mono {
   font-family: var(--mono);
 }
 
 /**
- * .grid: Layout Grid
+ * .grid: Grid Layout
  * ------------------
- * Aplica CSS Grid con espaciado de 2rem entre elementos.
+ * Applies CSS Grid with 2rem spacing between elements.
  *
  * display: grid
- *   → Activa el sistema de layout CSS Grid
- *   → Los hijos se organizan automáticamente en filas/columnas
+ *   → Activates the CSS Grid layout system
+ *   → Children are automatically organized into rows/columns
  *
  * gap: 2rem
- *   → Espacio de 2rem (32px) entre elementos del grid
- *   → Reemplaza la necesidad de margins en hijos
+ *   → 2rem (32px) space between grid elements
+ *   → Replaces the need for margins on children
  *
- * USO:
+ * USAGE:
  * <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
  *   <div>Item 1</div>
  *   <div>Item 2</div>
  * </div>
  *
- * DÓNDE SE USA:
- * - Projects.astro: Grid de tarjetas de proyectos
- * - Footer.astro: Grid de enlaces sociales
+ * WHERE IT'S USED:
+ * - Projects.astro: Grid of project cards
+ * - Footer.astro: Grid of social links
  */
 .grid {
   display: grid;
@@ -449,58 +449,58 @@ section {
 }
 
 /**
- * .border-top: Borde Superior
+ * .border-top: Top Border
  * ---------------------------
- * Añade un borde de 1px en la parte superior del elemento.
- * Color adaptable al tema (claro/oscuro).
+ * Adds a 1px border to the top of the element.
+ * Color adapts to the theme (light/dark).
  *
- * DÓNDE SE USA:
- * - Footer.astro: Separador visual entre proyectos y contacto
- * - Cualquier elemento que necesite separación visual superior
+ * WHERE IT'S USED:
+ * - Footer.astro: Visual separator between projects and contact
+ * - Any element that needs top visual separation
  */
 .border-top {
   border-top: 1px solid var(--border);
 }
 
 /**
- * .border-bottom: Borde Inferior
+ * .border-bottom: Bottom Border
  * ------------------------------
- * Añade un borde de 1px en la parte inferior del elemento.
- * Color adaptable al tema (claro/oscuro).
+ * Adds a 1px border to the bottom of the element.
+ * Color adapts to the theme (light/dark).
  *
- * DÓNDE SE USA:
- * - Separadores entre secciones
- * - Elementos que necesiten división visual inferior
+ * WHERE IT'S USED:
+ * - Separators between sections
+ * - Elements that need bottom visual division
  */
 .border-bottom {
   border-bottom: 1px solid var(--border);
 }
 
 /* ============================================
-   ANIMACIONES
+   ANIMATIONS
    ============================================
-   Keyframes y clases de animación para efectos visuales.
-   Mejoran la experiencia de usuario con transiciones suaves.
+   Keyframes and animation classes for visual effects.
+   Improve user experience with smooth transitions.
 */
 
 /**
  * KEYFRAME: fadeIn
  * ----------------
- * Animación de aparición con desvanecimiento y movimiento vertical.
- * Efecto común en sitios modernos para revelar contenido gradualmente.
+ * Appearance animation with fade and vertical movement.
+ * Common effect on modern sites to gradually reveal content.
  *
  * FRAMES:
  * - from (0%):
- *   opacity: 0        → Elemento invisible
- *   translateY(20px)  → Elemento 20px más abajo de su posición final
+ *   opacity: 0        → Element invisible
+ *   translateY(20px)  → Element 20px below its final position
  *
  * - to (100%):
- *   opacity: 1        → Elemento completamente visible
- *   translateY(0)     → Elemento en su posición final
+ *   opacity: 1        → Element fully visible
+ *   translateY(0)     → Element in its final position
  *
- * EFECTO VISUAL:
- * El elemento aparece gradualmente desde abajo mientras se hace visible.
- * Crea sensación de "entrada suave" en lugar de aparición brusca.
+ * VISUAL EFFECT:
+ * The element gradually appears from below while becoming visible.
+ * Creates a feeling of "smooth entry" instead of abrupt appearance.
  */
 @keyframes fadeIn {
   from {
@@ -514,66 +514,66 @@ section {
 }
 
 /**
- * CLASE: .fade-in
+ * CLASS: .fade-in
  * ---------------
- * Aplica la animación fadeIn a un elemento.
+ * Applies the fadeIn animation to an element.
  *
  * animation: fadeIn 0.6s ease-out forwards
- *   → fadeIn: Usa el keyframe definido arriba
- *   → 0.6s: Duración de 600 milisegundos (medio segundo aprox)
- *   → ease-out: Comienza rápido y termina lento (suave y natural)
- *   → forwards: Mantiene el estado final (opacity: 1, translateY: 0)
+ *   → fadeIn: Uses the keyframe defined above
+ *   → 0.6s: Duration of 600 milliseconds (about half a second)
+ *   → ease-out: Starts fast and ends slow (smooth and natural)
+ *   → forwards: Maintains the final state (opacity: 1, translateY: 0)
  *
- * USO:
- * <div class="fade-in">Este contenido aparecerá con efecto</div>
+ * USAGE:
+ * <div class="fade-in">This content will appear with an effect</div>
  *
- * DÓNDE SE USA:
- * - Puede aplicarse a cualquier elemento que deba aparecer gradualmente
- * - Típico en Hero.astro, tarjetas de proyecto, secciones al hacer scroll
+ * WHERE IT'S USED:
+ * - Can be applied to any element that should appear gradually
+ * - Typical in Hero.astro, project cards, sections on scroll
  *
- * NOTA ACCESIBILIDAD:
- * Esta animación se desactiva si el usuario tiene prefers-reduced-motion
- * (ver sección de accesibilidad más abajo, línea 480+).
+ * ACCESSIBILITY NOTE:
+ * This animation is disabled if the user has prefers-reduced-motion
+ * (see accessibility section below, line 480+).
  */
 .fade-in {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
 /* ============================================
-   ACCESIBILIDAD
+   ACCESSIBILITY
    ============================================
-   Estilos para mejorar la experiencia de usuarios con necesidades especiales.
-   Cumple con WCAG 2.1 (Web Content Accessibility Guidelines).
+   Styles to improve the experience for users with special needs.
+   Complies with WCAG 2.1 (Web Content Accessibility Guidelines).
 */
 
 /**
- * REDUCED MOTION: Respeto a Preferencias de Movimiento
+ * REDUCED MOTION: Respect for Motion Preferences
  * -----------------------------------------------------
- * Desactiva o reduce drásticamente animaciones si el usuario lo prefiere.
+ * Disables or drastically reduces animations if the user prefers it.
  *
- * CONTEXTO:
- * Algunas personas experimentan mareos, náuseas o convulsiones con animaciones.
- * Los sistemas operativos permiten desactivar animaciones (Reduce Motion).
+ * CONTEXT:
+ * Some people experience dizziness, nausea, or seizures with animations.
+ * Operating systems allow disabling animations (Reduce Motion).
  *
- * CÓMO ACTIVAR (USUARIO):
+ * HOW TO ACTIVATE (USER):
  * - macOS: System Preferences > Accessibility > Display > Reduce motion
  * - Windows: Settings > Ease of Access > Display > Show animations
  * - iOS: Settings > Accessibility > Motion > Reduce Motion
  * - Android: Settings > Accessibility > Remove animations
  *
- * EFECTO:
- * Cuando está activado, este media query:
- * - Reduce duración de animaciones a 0.01ms (prácticamente instantáneo)
- * - Ejecuta animaciones solo 1 vez (no loops infinitos)
- * - Reduce transiciones CSS a 0.01ms
- * - Elimina smooth scroll (scroll instantáneo)
+ * EFFECT:
+ * When activated, this media query:
+ * - Reduces animation duration to 0.01ms (practically instant)
+ * - Runs animations only once (no infinite loops)
+ * - Reduces CSS transitions to 0.01ms
+ * - Removes smooth scroll (instant scroll)
  *
  * !important:
- * Necesario para sobrescribir cualquier otra regla CSS.
- * Es uno de los pocos casos donde !important está justificado.
+ * Necessary to override any other CSS rule.
+ * It is one of the few cases where !important is justified.
  *
- * BENEFICIO:
- * Hace el sitio accesible para usuarios con trastornos vestibulares.
+ * BENEFIT:
+ * Makes the site accessible for users with vestibular disorders.
  */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -587,58 +587,58 @@ section {
 }
 
 /**
- * FOCUS STATES: Indicadores de Foco
+ * FOCUS STATES: Focus Indicators
  * ----------------------------------
- * Mejora la navegación por teclado con indicadores visuales claros.
+ * Improves keyboard navigation with clear visual indicators.
  *
- * CONTEXTO:
- * Usuarios que navegan con teclado (Tab, Shift+Tab) necesitan saber
- * qué elemento está seleccionado. Esto incluye:
- * - Usuarios con discapacidades motoras
- * - Usuarios de lectores de pantalla
- * - Power users que prefieren teclado sobre mouse
+ * CONTEXT:
+ * Users who navigate with a keyboard (Tab, Shift+Tab) need to know
+ * which element is selected. This includes:
+ * - Users with motor disabilities
+ * - Screen reader users
+ * - Power users who prefer keyboard over mouse
  */
 
 /**
- * :focus - Eliminar outline por defecto
+ * :focus - Remove default outline
  * --------------------------------------
- * Elimina el outline azul/naranja nativo del navegador.
- * Se reemplaza con un estilo personalizado en :focus-visible.
+ * Removes the native browser's blue/orange outline.
+ * It is replaced with a custom style in :focus-visible.
  *
- * IMPORTANTE:
- * NO es buena práctica eliminar focus sin reemplazarlo.
- * Siempre debe haber un indicador visual de foco.
+ * IMPORTANT:
+ * It is NOT good practice to remove focus without replacing it.
+ * There should always be a visual focus indicator.
  */
 *:focus {
   outline: none;
 }
 
 /**
- * :focus-visible - Outline personalizado
+ * :focus-visible - Custom outline
  * ---------------------------------------
- * Muestra un outline personalizado SOLO cuando es relevante.
+ * Shows a custom outline ONLY when relevant.
  *
- * DIFERENCIA focus vs focus-visible:
- * - :focus → Se activa con mouse y teclado
- * - :focus-visible → Se activa SOLO con teclado
+ * DIFFERENCE focus vs focus-visible:
+ * - :focus → Activates with mouse and keyboard
+ * - :focus-visible → Activates ONLY with keyboard
  *
- * BENEFICIO:
- * Evita outline molesto al hacer clic con mouse,
- * pero mantiene indicador visible al navegar con teclado.
+ * BENEFIT:
+ * Avoids annoying outline on mouse click,
+ * but maintains a visible indicator when navigating with the keyboard.
  *
  * outline: 2px solid var(--text)
- *   → Borde de 2px del color del texto (negro/blanco según tema)
- *   → Suficientemente visible para cumplir WCAG 2.1
+ *   → 2px border of the text color (black/white depending on theme)
+ *   → Sufficiently visible to comply with WCAG 2.1
  *
  * outline-offset: 2px
- *   → Separa el outline 2px del elemento
- *   → Mejora la visibilidad y evita que se confunda con bordes
+ *   → Separates the outline 2px from the element
+ *   → Improves visibility and prevents it from being confused with borders
  *
- * NAVEGACIÓN POR TECLADO:
- * - Tab: Siguiente elemento
- * - Shift + Tab: Elemento anterior
- * - Enter/Space: Activar elemento enfocado
- * - Escape: Cerrar modales (implementado en Projects.astro, ImageGallery.astro)
+ * KEYBOARD NAVIGATION:
+ * - Tab: Next element
+ * - Shift + Tab: Previous element
+ * - Enter/Space: Activate focused element
+ * - Escape: Close modals (implemented in Projects.astro, ImageGallery.astro)
  */
 *:focus-visible {
   outline: 2px solid var(--text);
@@ -646,16 +646,16 @@ section {
 }
 
 /* ============================================
-   FIN DE ESTILOS GLOBALES
+   END OF GLOBAL STYLES
    ============================================
 
-   Este archivo proporciona la base visual completa del portfolio.
-   Para estilos específicos de componentes, ver archivos .astro individuales.
+   This file provides the complete visual base of the portfolio.
+   For specific component styles, see individual .astro files.
 
-   PERSONALIZACIÓN RÁPIDA:
-   1. Colores: Edita variables en :root (línea 52-59)
-   2. Fuentes: Cambia --mono y --sans (línea 57-58)
-   3. Temas: Ajusta colores en [data-theme] (líneas 93-111)
-   4. Espaciado: Modifica padding/margin en secciones
-   5. Breakpoints: Ajusta @media queries para responsive
+   QUICK CUSTOMIZATION:
+   1. Colors: Edit variables in :root (lines 52-59)
+   2. Fonts: Change --mono and --sans (lines 57-58)
+   3. Themes: Adjust colors in [data-theme] (lines 93-111)
+   4. Spacing: Modify padding/margin in sections
+   5. Breakpoints: Adjust @media queries for responsive
 */

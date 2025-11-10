@@ -1,16 +1,16 @@
 /**
- * MÓDULO DE INTERNACIONALIZACIÓN (i18n)
+ * INTERNATIONALIZATION MODULE (i18n)
  * =====================================
  *
- * Este módulo proporciona utilidades para la gestión de traducciones
- * en el template bilingüe (Español/Inglés).
+ * This module provides utilities for managing translations
+ * in the bilingual template (Spanish/English).
  *
- * FUNCIONALIDAD:
- * - Obtiene las traducciones según el idioma actual
- * - Proporciona helpers para detectar el idioma activo
- * - Simplifica el uso de traducciones en componentes Astro
+ * FUNCTIONALITY:
+ * - Gets translations according to the current language
+ * - Provides helpers to detect the active language
+ * - Simplifies the use of translations in Astro components
  *
- * USO EN COMPONENTES:
+ * USAGE IN COMPONENTS:
  * ```astro
  * ---
  * import { useI18n } from '../lib/i18n';

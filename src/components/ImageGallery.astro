@@ -1,64 +1,64 @@
 ---
 /**
- * COMPONENTE: ImageGallery
+ * COMPONENT: ImageGallery
  * =========================
  *
- * Modal lightbox para mostrar galerías de screenshots de proyectos.
- * Se genera una instancia por cada proyecto que tiene imágenes.
+ * Lightbox modal to display project screenshot galleries.
+ * An instance is generated for each project that has images.
  *
- * PROPÓSITO:
- * - Mostrar screenshots de proyectos en modal overlay
- * - Navegación entre imágenes (flechas, teclado, thumbnails)
- * - Experiencia de visualización optimizada
- * - Soporte para WebP y lazy loading de thumbnails
+ * PURPOSE:
+ * - Display project screenshots in a modal overlay
+ * - Navigation between images (arrows, keyboard, thumbnails)
+ * - Optimized viewing experience
+ * - Support for WebP and lazy loading of thumbnails
  *
- * CARACTERÍSTICAS:
- * - Modal fullscreen con overlay oscuro
- * - Navegación con botones prev/next
- * - Navegación por teclado (flechas, Escape)
- * - Strip de thumbnails para selección rápida
- * - Conversión automática a WebP para performance
- * - Lazy loading de thumbnails
- * - Manejo de errores de carga de imágenes
- * - Función global para apertura desde Projects
+ * FEATURES:
+ * - Fullscreen modal with dark overlay
+ * - Navigation with prev/next buttons
+ * - Keyboard navigation (arrows, Escape)
+ * - Thumbnail strip for quick selection
+ * - Automatic conversion to WebP for performance
+ * - Lazy loading of thumbnails
+ * - Image loading error handling
+ * - Global function for opening from Projects
  *
- * ARQUITECTURA:
- * - HTML: Modal overlay + imagen principal + thumbnails
- * - CSS: Fullscreen modal + responsive + transiciones
- * - JavaScript: Navegación + teclado + función global
- * - Optimización: WebP conversion + lazy thumbnails
+ * ARCHITECTURE:
+ * - HTML: Modal overlay + main image + thumbnails
+ * - CSS: Fullscreen modal + responsive + transitions
+ * - JavaScript: Navigation + keyboard + global function
+ * - Optimization: WebP conversion + lazy thumbnails
  *
- * INTEGRACIÓN:
- * - Llamado desde Projects.astro para cada proyecto con imágenes
- * - Los botones [images] llaman a window[`open_${galleryId}`](0)
- * - Cada galería tiene un ID único basado en el título del proyecto
+ * INTEGRATION:
+ * - Called from Projects.astro for each project with images
+ * - The [images] buttons call window[`open_${galleryId}`](0)
+ * - Each gallery has a unique ID based on the project title
  *
  * PERFORMANCE:
- * - WebP: Imágenes convertidas a WebP automáticamente
- * - Thumbnails: Versiones pequeñas para carga rápida
- * - Lazy loading: Thumbnails se cargan bajo demanda
- * - Transiciones: Fade suave entre imágenes
+ * - WebP: Images automatically converted to WebP
+ * - Thumbnails: Small versions for fast loading
+ * - Lazy loading: Thumbnails are loaded on demand
+ * - Transitions: Smooth fade between images
  *
- * ACCESIBILIDAD:
- * - role="dialog": Modal semántico
- * - aria-modal="true": Indica modalidad
- * - aria-label: Etiquetas descriptivas
- * - Keyboard navigation: Flechas + Escape
+ * ACCESSIBILITY:
+ * - role="dialog": Semantic modal
+ * - aria-modal="true": Indicates modality
+ * - aria-label: Descriptive labels
+ * - Keyboard navigation: Arrows + Escape
  */
 
 // PROPS
 // -----
 interface Props {
-  images: string[];      // Array de rutas a imágenes (sin extensión)
-  projectTitle: string;  // Título del proyecto (usado para IDs)
+  images: string[];      // Array of image paths (without extension)
+  projectTitle: string;  // Project title (used for IDs)
 }
 
 const { images, projectTitle } = Astro.props;
 
-// VALIDACIÓN DE PROPS
+// PROPS VALIDATION
 // --------------------
-// Verifica que las props sean válidas antes de generar el componente
-// Lanza errores en build time si hay problemas
+// Verifies that the props are valid before generating the component
+// Throws errors at build time if there are problems
 
 if (!images || !Array.isArray(images) || images.length === 0) {
   throw new Error(`ImageGallery: 'images' prop must be a non-empty array. Received: ${images}`);
@@ -68,91 +68,91 @@ if (!projectTitle || typeof projectTitle !== 'string') {
   throw new Error(`ImageGallery: 'projectTitle' prop must be a non-empty string. Received: ${projectTitle}`);
 }
 
-// ID ÚNICO DE GALERÍA
+// UNIQUE GALLERY ID
 // --------------------
-// Genera un ID único basado en el título del proyecto
-// Ejemplo: "Mi Proyecto" → "gallery-mi-proyecto"
+// Generates a unique ID based on the project title
+// Example: "My Project" → "gallery-my-project"
 const galleryId = `gallery-${projectTitle.toLowerCase().replace(/\s+/g, '-')}`;
 
 /**
- * CONVERSIÓN A WEBP
+ * WEBP CONVERSION
  * -----------------
- * Convierte rutas de imágenes a formato WebP para mejor performance.
+ * Converts image paths to WebP format for better performance.
  *
- * LÓGICA:
- * - Si termina en .gif: Mantiene como está (GIFs animados)
- * - Si termina en .webp: Ya está optimizado, mantiene
- * - Otros: Añade .webp al final
+ * LOGIC:
+ * - If it ends with .gif: Keeps as is (animated GIFs)
+ * - If it ends with .webp: Already optimized, keeps
+ * - Others: Adds .webp at the end
  *
- * EJEMPLOS:
- * "/screenshots/proyecto/img-01" → "/screenshots/proyecto/img-01.webp"
- * "/screenshots/proyecto/img-01.png" → "/screenshots/proyecto/img-01.png.webp"
- * "/screenshots/proyecto/animation.gif" → "/screenshots/proyecto/animation.gif"
+ * EXAMPLES:
+ * "/screenshots/project/img-01" → "/screenshots/project/img-01.webp"
+ * "/screenshots/project/img-01.png" → "/screenshots/project/img-01.png.webp"
+ * "/screenshots/project/animation.gif" → "/screenshots/project/animation.gif"
  *
- * NOTA:
- * Necesitas tener las versiones WebP de tus imágenes generadas.
- * Herramienta recomendada: cwebp (CLI de Google)
+ * NOTE:
+ * You need to have the WebP versions of your images generated.
+ * Recommended tool: cwebp (Google's CLI)
  */
 const webpImages = images.map(img => {
-  if (img.endsWith('.gif')) return img;  // Mantener GIFs animados
-  if (img.endsWith('.webp')) return img; // Ya es WebP
-  return img + '.webp';                  // Añadir .webp
+  if (img.endsWith('.gif')) return img;  // Keep animated GIFs
+  if (img.endsWith('.webp')) return img; // Already WebP
+  return img + '.webp';                  // Add .webp
 });
 
 /**
- * RUTAS DE THUMBNAILS
+ * THUMBNAIL PATHS
  * --------------------
- * Genera rutas a versiones thumbnail (pequeñas) de las imágenes.
+ * Generates paths to thumbnail (small) versions of the images.
  *
- * CONVENCIÓN DE CARPETAS:
- * Imagen original: /screenshots/proyecto/img-01.webp
- * Thumbnail:       /thumbnails/screenshots/proyecto/img-01_thumb.webp
+ * FOLDER CONVENTION:
+ * Original image: /screenshots/project/img-01.webp
+ * Thumbnail:       /thumbnails/screenshots/project/img-01_thumb.webp
  *
- * LÓGICA:
- * 1. Reemplaza /screenshots/ con /thumbnails/screenshots/
- * 2. Añade _thumb antes de la extensión
+ * LOGIC:
+ * 1. Replaces /screenshots/ with /thumbnails/screenshots/
+ * 2. Adds _thumb before the extension
  *
- * EJEMPLOS:
- * "/screenshots/proyecto/img-01" → "/thumbnails/screenshots/proyecto/img-01_thumb.webp"
- * "/screenshots/proyecto/img-01.webp" → "/thumbnails/screenshots/proyecto/img-01_thumb.webp"
+ * EXAMPLES:
+ * "/screenshots/project/img-01" → "/thumbnails/screenshots/project/img-01_thumb.webp"
+ * "/screenshots/project/img-01.webp" → "/thumbnails/screenshots/project/img-01_thumb.webp"
  *
- * GENERACIÓN DE THUMBNAILS:
- * Necesitas generar thumbnails (ej: 200x200px) para carga rápida.
- * Herramienta: ImageMagick, Sharp, o cwebp con resize
+ * THUMBNAIL GENERATION:
+ * You need to generate thumbnails (e.g., 200x200px) for fast loading.
+ * Tool: ImageMagick, Sharp, or cwebp with resize
  */
 const thumbnailImages = images.map(img => {
-  if (img.endsWith('.gif')) return img;  // Mantener GIFs como están
+  if (img.endsWith('.gif')) return img;  // Keep GIFs as they are
   if (img.endsWith('.webp')) {
-    // Para WebP: reemplaza ruta y extensión
+    // For WebP: replace path and extension
     return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/').replace(/\.webp$/, '_thumb.webp');
   }
-  // Para otros: reemplaza ruta y añade _thumb.webp
+  // For others: replace path and add _thumb.webp
   return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/') + '_thumb.webp';
 });
 ---
 
 <!--
-  MODAL DE GALERÍA
+  GALLERY MODAL
   ================
 
-  ESTRUCTURA:
-  - Modal fullscreen con overlay oscuro
-  - Botón X para cerrar (esquina superior derecha)
-  - Imagen principal centrada
-  - Botones prev/next para navegación
-  - Strip de thumbnails en la parte inferior
+  STRUCTURE:
+  - Fullscreen modal with dark overlay
+  - X button to close (top right corner)
+  - Centered main image
+  - Prev/next buttons for navigation
+  - Thumbnail strip at the bottom
 
-  ACCESIBILIDAD:
-  - role="dialog": Indica que es un diálogo modal
-  - aria-modal="true": Modalidad (bloquea interacción con fondo)
-  - aria-label: Descripción de la galería
-  - aria-hidden: Overlay decorativo oculto para lectores de pantalla
+  ACCESSIBILITY:
+  - role="dialog": Indicates it's a modal dialog
+  - aria-modal="true": Modality (blocks interaction with background)
+  - aria-label: Description of the gallery
+  - aria-hidden: Decorative overlay hidden from screen readers
 
-  FUNCIONAMIENTO:
-  - Inicialmente oculto (display: none)
-  - JavaScript añade clase "active" para mostrarlo
-  - Botón X, overlay, y Escape cierran la galería
-  - Flechas y thumbnails navegan entre imágenes
+  OPERATION:
+  - Initially hidden (display: none)
+  - JavaScript adds "active" class to show it
+  - X button, overlay, and Escape close the gallery
+  - Arrows and thumbnails navigate between images
 -->
 <div
   class="gallery-modal"
@@ -161,32 +161,32 @@ const thumbnailImages = images.map(img => {
   aria-modal="true"
   aria-label={`${projectTitle} image gallery`}
 >
-  <!-- Overlay oscuro de fondo -->
+  <!-- Dark background overlay -->
   <div class="modal-overlay" aria-hidden="true"></div>
 
-  <!-- Contenido del modal -->
+  <!-- Modal content -->
   <div class="modal-content">
-    <!-- Botón cerrar (X) -->
+    <!-- Close button (X) -->
     <button class="modal-close" aria-label="Close gallery">×</button>
 
-    <!-- Cuerpo: imagen + botones navegación -->
+    <!-- Body: image + navigation buttons -->
     <div class="modal-body">
-      <!-- Botón Previous (‹) -->
+      <!-- Previous button (‹) -->
       <button class="nav-btn prev" aria-label="Previous image">‹</button>
 
-      <!-- Contenedor de la imagen principal -->
+      <!-- Main image container -->
       <div class="image-container">
-        <img src="" alt={`Imagen de ejemplo del proyecto ${projectTitle}`} />
+        <img src="" alt={`Example image of the ${projectTitle} project`} />
       </div>
 
-      <!-- Botón Next (›) -->
+      <!-- Next button (›) -->
       <button class="nav-btn next" aria-label="Next image">›</button>
     </div>
 
     <!--
-      STRIP DE THUMBNAILS:
-      Botones con miniaturas de todas las imágenes
-      Permite selección directa de imagen
+      THUMBNAIL STRIP:
+      Buttons with thumbnails of all images
+      Allows direct image selection
     -->
     <div class="thumbnail-strip" role="tablist" aria-label="Image thumbnails">
       {images.map((img, index) => (
@@ -198,7 +198,7 @@ const thumbnailImages = images.map(img => {
         >
           <img
             src={thumbnailImages[index]}
-            alt={`Imagen de ejemplo del proyecto ${projectTitle}`}
+            alt={`Example image of the ${projectTitle} project`}
             loading="lazy"
             decoding="async"
           />
@@ -210,22 +210,22 @@ const thumbnailImages = images.map(img => {
 
 <style>
   /**
-   * ESTILOS: ImageGallery
+   * STYLES: ImageGallery
    * ----------------------
    *
-   * Lightbox fullscreen para visualización de imágenes.
+   * Fullscreen lightbox for image viewing.
    *
-   * DISEÑO:
-   * - Fullscreen modal con overlay negro al 95%
-   * - Imagen principal centrada con max-height
-   * - Botones de navegación a los lados
-   * - Strip de thumbnails en la parte inferior
-   * - Transiciones fade suaves
+   * DESIGN:
+   * - Fullscreen modal with 95% black overlay
+   * - Centered main image with max-height
+   * - Navigation buttons on the sides
+   * - Thumbnail strip at the bottom
+   * - Smooth fade transitions
    *
    * RESPONSIVE:
-   * - Desktop: Botones grandes (3rem), thumbnails 80px
-   * - Mobile: Botones pequeños (2.5rem), thumbnails 60px
-   * - Gap reducido en mobile para aprovechar espacio
+   * - Desktop: Large buttons (3rem), thumbnails 80px
+   * - Mobile: Small buttons (2.5rem), thumbnails 60px
+   * - Reduced gap on mobile to save space
    */
 
   .gallery-modal {
@@ -407,54 +407,54 @@ const thumbnailImages = images.map(img => {
    * SCRIPT: ImageGallery Navigation System
    * =======================================
    *
-   * JavaScript para la funcionalidad completa de la galería de imágenes.
-   * Usa define:vars de Astro para pasar variables del servidor al cliente.
+   * JavaScript for the full functionality of the image gallery.
+   * Uses define:vars from Astro to pass variables from the server to the client.
    *
-   * FUNCIONALIDADES:
-   * 1. Navegación entre imágenes (prev/next/thumbnails)
-   * 2. Navegación por teclado (flechas, Escape)
-   * 3. Apertura/cierre de galería
-   * 4. Actualización de imagen activa y thumbnail
-   * 5. Manejo de errores de carga
-   * 6. Función global para apertura desde Projects
+   * FUNCTIONALITIES:
+   * 1. Navigation between images (prev/next/thumbnails)
+   * 2. Keyboard navigation (arrows, Escape)
+   * 3. Opening/closing of gallery
+   * 4. Updating of active image and thumbnail
+   * 5. Load error handling
+   * 6. Global function for opening from Projects
    *
-   * VARIABLES INYECTADAS (define:vars):
-   * - galleryId: ID único de esta galería
-   * - images: Array de rutas originales
-   * - webpImages: Array de rutas convertidas a WebP
+   * INJECTED VARIABLES (define:vars):
+   * - galleryId: Unique ID of this gallery
+   * - images: Array of original paths
+   * - webpImages: Array of paths converted to WebP
    *
-   * NAVEGACIÓN:
-   * - Prev/Next: Botones ‹ y ›
-   * - Thumbnails: Click en miniatura
-   * - Teclado: ArrowLeft, ArrowRight, Escape
-   * - Circular: Después de la última imagen vuelve a la primera
+   * NAVIGATION:
+   * - Prev/Next: ‹ and › buttons
+   * - Thumbnails: Click on thumbnail
+   * - Keyboard: ArrowLeft, ArrowRight, Escape
+   * - Circular: After the last image it goes back to the first
    *
-   * FUNCIÓN GLOBAL:
+   * GLOBAL FUNCTION:
    * window[`open_${galleryId}`] = openGallery
-   * Permite a Projects.astro abrir esta galería específica
-   * Ejemplo: window['open_gallery-mi-proyecto'](0)
+   * Allows Projects.astro to open this specific gallery
+   * Example: window['open_gallery-my-project'](0)
    */
 
-  // REFERENCIAS AL DOM
+  // DOM REFERENCES
   // ------------------
-  // Encuentra los elementos de esta galería específica
+  // Find the elements of this specific gallery
   const modal = document.getElementById(galleryId);
-  if (!modal) return;  // Si no existe el modal, salir
+  if (!modal) return;  // If the modal doesn't exist, exit
 
-  const overlay = modal.querySelector('.modal-overlay');        // Overlay oscuro
-  const closeBtn = modal.querySelector('.modal-close');         // Botón X
-  const prevBtn = modal.querySelector('.prev');                 // Botón ‹
-  const nextBtn = modal.querySelector('.next');                 // Botón ›
-  const img = modal.querySelector('.image-container img');      // Imagen principal
-  const thumbnails = modal.querySelectorAll('.thumbnail');      // Todos los thumbnails
+  const overlay = modal.querySelector('.modal-overlay');        // Dark overlay
+  const closeBtn = modal.querySelector('.modal-close');         // X button
+  const prevBtn = modal.querySelector('.prev');                 // ‹ button
+  const nextBtn = modal.querySelector('.next');                 // › button
+  const img = modal.querySelector('.image-container img');      // Main image
+  const thumbnails = modal.querySelectorAll('.thumbnail');      // All thumbnails
 
-  // ESTADO
+  // STATE
   // ------
-  let currentIndex = 0;  // Índice de la imagen actual (0-based)
+  let currentIndex = 0;  // Index of the current image (0-based)
 
-  // MANEJO DE ERRORES
+  // ERROR HANDLING
   // -----------------
-  // Si una imagen falla al cargar, actualiza el alt text
+  // If an image fails to load, update the alt text
   img.addEventListener('error', () => {
     img.alt = 'Image failed to load';
   });
@@ -512,82 +512,82 @@ const thumbnailImages = images.map(img => {
     if (e.key === 'ArrowLeft') prevImage();
   });
 
-  // ===== FUNCIÓN GLOBAL =====
-  // Expone openGallery globalmente para esta galería específica
-  // Projects.astro llama a esta función para abrir la galería
-  // Ejemplo: window['open_gallery-mi-proyecto'](0)
+  // ===== GLOBAL FUNCTION =====
+  // Exposes openGallery globally for this specific gallery
+  // Projects.astro calls this function to open the gallery
+  // Example: window['open_gallery-my-project'](0)
   window[`open_${galleryId}`] = openGallery;
 
   /**
-   * FLUJO DE NAVEGACIÓN:
+   * NAVIGATION FLOW:
    * ====================
    *
-   * 1. APERTURA:
-   *    - Projects.astro llama window[`open_${galleryId}`](0)
-   *    - Se añade clase 'active' al modal
-   *    - Se bloquea scroll del body
-   *    - Se muestra la imagen en el índice especificado
+   * 1. OPENING:
+   *    - Projects.astro calls window[`open_${galleryId}`](0)
+   *    - 'active' class is added to the modal
+   *    - Body scroll is blocked
+   *    - The image at the specified index is shown
    *
-   * 2. VISUALIZACIÓN:
-   *    - Imagen principal se carga de webpImages[currentIndex]
-   *    - Thumbnail activo se marca visualmente
-   *    - Botones prev/next están siempre disponibles (navegación circular)
+   * 2. VIEWING:
+   *    - Main image is loaded from webpImages[currentIndex]
+   *    - Active thumbnail is visually marked
+   *    - Prev/next buttons are always available (circular navigation)
    *
-   * 3. NAVEGACIÓN:
+   * 3. NAVIGATION:
    *    - Prev: (currentIndex - 1 + images.length) % images.length
    *    - Next: (currentIndex + 1) % images.length
-   *    - Thumbnail: Click directo en miniatura
-   *    - Teclado: ArrowLeft/Right cambian imagen
+   *    - Thumbnail: Direct click on thumbnail
+   *    - Keyboard: ArrowLeft/Right change image
    *
-   * 4. CIERRE:
-   *    - Click en X, overlay, o tecla Escape
-   *    - Se quita clase 'active' del modal
-   *    - Se restaura scroll del body
-   *    - Imagen actual se mantiene para próxima apertura
+   * 4. CLOSING:
+   *    - Click on X, overlay, or Escape key
+   *    - 'active' class is removed from the modal
+   *    - Body scroll is restored
+   *    - Current image is kept for next opening
    *
-   * OPTIMIZACIONES:
-   * - WebP: Formato optimizado para web
-   * - Lazy loading: Thumbnails se cargan bajo demanda
-   * - Fade transitions: Cambios suaves entre imágenes
-   * - Circular navigation: Sin límites, siempre puedes navegar
+   * OPTIMIZATIONS:
+   * - WebP: Optimized format for web
+   * - Lazy loading: Thumbnails are loaded on demand
+   * - Fade transitions: Smooth changes between images
+   * - Circular navigation: No limits, you can always navigate
    */
 </script>
 
 <!--
-  CÓMO USAR ESTE COMPONENTE
+  HOW TO USE THIS COMPONENT
   =========================
 
-  1. EN PROJECTS-DATA.TS:
-     Añade el campo images a tu proyecto:
+  1. IN PROJECTS-DATA.TS:
+     Add the images field to your project:
      images: [
-       "/screenshots/mi-proyecto/img-01",
-       "/screenshots/mi-proyecto/img-02",
-       "/screenshots/mi-proyecto/img-03"
+       "/screenshots/my-project/img-01",
+       "/screenshots/my-project/img-02",
+       "/screenshots/my-project/img-03"
      ]
 
-  2. ESTRUCTURA DE CARPETAS:
+  2. FOLDER STRUCTURE:
      public/
        screenshots/
-         mi-proyecto/
-           img-01.webp  ← Imagen original
+         my-project/
+           img-01.webp  ← Original image
            img-02.webp
            img-03.webp
        thumbnails/
          screenshots/
-           mi-proyecto/
-             img-01_thumb.webp  ← Miniatura
+           my-project/
+             img-01_thumb.webp  ← Thumbnail
              img-02_thumb.webp
              img-03_thumb.webp
 
-  3. GENERAR WEBP:
-     Usar cwebp (herramienta de Google):
+  3. GENERATE WEBP:
+     Use cwebp (Google's tool):
      cwebp img-01.png -o img-01.webp
 
-  4. GENERAR THUMBNAILS:
-     Usar cwebp con resize:
+  4. GENERATE THUMBNAILS:
+     Use cwebp with resize:
      cwebp img-01.png -resize 200 0 -o img-01_thumb.webp
 
-  5. APERTURA AUTOMÁTICA:
-     Projects.astro ya maneja la apertura automáticamente
-     cuando el usuario hace clic en el botón [images]
+  5. AUTOMATIC OPENING:
+     Projects.astro already handles the opening automatically
+     when the user clicks the [images] button
 -->

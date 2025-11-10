@@ -1,107 +1,107 @@
 /**
- * ARCHIVO DE TRADUCCIONES (i18n)
+ * TRANSLATIONS FILE (i18n)
  * ===============================
  *
- * Este archivo contiene todas las traducciones del template en formato bilingüe
- * (Español/Inglés). Es la fuente central de todo el texto que aparece en la interfaz.
+ * This file contains all the translations of the template in bilingual format
+ * (Spanish/English). It is the central source of all the text that appears in the interface.
  *
- * ARQUITECTURA:
- * - Usa TypeScript para type-safety y autocompletado
- * - Define una interfaz que garantiza consistencia entre idiomas
- * - Soporta HTML en los valores de traducción (con <br>, <span>, etc.)
- * - Incluye detección automática del idioma del navegador
+ * ARCHITECTURE:
+ * - Uses TypeScript for type-safety and autocompletion
+ * - Defines an interface that ensures consistency between languages
+ * - Supports HTML in translation values (with <br>, <span>, etc.)
+ * - Includes automatic detection of the browser's language
  *
- * CÓMO PERSONALIZAR:
- * 1. Busca el texto que quieres cambiar en la sección 'es' (línea 62)
- * 2. Modifica el valor según tus necesidades
- * 3. IMPORTANTE: Repite el cambio en la sección 'en' (línea 90) en inglés
- * 4. Guarda el archivo - Astro recargará automáticamente
+ * HOW TO CUSTOMIZE:
+ * 1. Look for the text you want to change in the 'es' section (line 62)
+ * 2. Modify the value according to your needs
+ * 3. IMPORTANT: Repeat the change in the 'en' section (line 90) in English
+ * 4. Save the file - Astro will automatically reload
  *
- * REGLAS DE EDICIÓN:
- * - SIEMPRE modifica ambos idiomas (es y en) para mantener paridad
- * - Puedes usar HTML básico: <br>, <strong>, <span class="...">
- * - El texto {year} se reemplaza automáticamente por el año actual
- * - Mantén el formato de comandos terminal ($ whoami, cd, etc.) para coherencia visual
+ * EDITING RULES:
+ * - ALWAYS modify both languages (es and en) to maintain parity
+ * - You can use basic HTML: <br>, <strong>, <span class="...">
+ * - The text {year} is automatically replaced by the current year
+ * - Maintain the format of terminal commands ($ whoami, cd, etc.) for visual consistency
  */
 
 /**
- * INTERFAZ: Translations
+ * INTERFACE: Translations
  * ----------------------
- * Define la estructura de todas las traducciones disponibles.
- * Garantiza que ambos idiomas tengan exactamente las mismas propiedades.
+ * Defines the structure of all available translations.
+ * Ensures that both languages have exactly the same properties.
  *
- * SECCIONES:
- * - Navigation & Meta: Títulos, descripciones SEO
- * - Hero Section: Sección principal de presentación
- * - Projects Section: Textos relacionados con proyectos
- * - Contact Section: Información de contacto en footer
- * - Footer: Copyright y estado del sitio
+ * SECTIONS:
+ * - Navigation & Meta: Titles, SEO descriptions
+ * - Hero Section: Main presentation section
+ * - Projects Section: Texts related to projects
+ * - Contact Section: Contact information in footer
+ * - Footer: Copyright and site status
  */
 export interface Translations {
   // Navigation & Meta
-  siteTitle: string;          // Título que aparece en pestaña del navegador
-  siteDescription: string;    // Descripción para motores de búsqueda (SEO)
+  siteTitle: string;          // Title that appears in the browser tab
+  siteDescription: string;    // Description for search engines (SEO)
 
-  // Hero Section (Sección principal)
-  heroGreeting: string;       // Comando inicial "$ whoami"
-  heroTitle: string;          // Tu nombre o marca personal
-  heroSubtitle: string;       // Tu título profesional
-  heroDescription: string;    // Descripción profesional (soporta HTML)
-  heroCta: string;            // Texto del botón de navegación "cd ~/projects"
-  heroTemplateButton: string; // Texto del botón "git clone template"
+  // Hero Section (Main)
+  heroGreeting: string;       // Initial command "$ whoami"
+  heroTitle: string;          // Your name or personal brand
+  heroSubtitle: string;       // Your professional title
+  heroDescription: string;    // Professional description (supports HTML)
+  heroCta: string;            // Text of the navigation button "cd ~/projects"
+  heroTemplateButton: string; // Text of the "git clone template" button
 
-  // Projects Section (Sección de proyectos)
-  projectsTitle: string;      // Título de sección "$ ls ~/projects"
-  projectsFeatured: string;   // Badge "PINNED" para proyectos destacados
-  projectsDemo: string;       // Botón "[demo]"
-  projectsCode: string;       // Botón "[code]" (enlace a GitHub)
-  projectsWeb: string;        // Botón "[web]" (enlace a sitio web)
-  projectsImages: string;     // Botón "[images]" (abre galería)
-  projectsExplanation: string;// Botón "[explicación]" (abre modal)
-  projectsCsv: string;        // Botón "[csv]" (descarga datos)
+  // Projects Section
+  projectsTitle: string;      // Section title "$ ls ~/projects"
+  projectsFeatured: string;   // "PINNED" badge for featured projects
+  projectsDemo: string;       // "[demo]" button
+  projectsCode: string;       // "[code]" button (link to GitHub)
+  projectsWeb: string;        // "[web]" button (link to website)
+  projectsImages: string;     // "[images]" button (opens gallery)
+  projectsExplanation: string;// "[explanation]" button (opens modal)
+  projectsCsv: string;        // "[csv]" button (downloads data)
 
-  // Contact Section (Sección de contacto en footer)
-  contactTitle: string;       // Título "$ contact --me"
-  contactEmailButton: string; // Texto del botón "cat email.txt"
-  contactLinks: string;       // Título de enlaces sociales "Links"
+  // Contact Section (Footer)
+  contactTitle: string;       // Title "$ contact --me"
+  contactEmailButton: string; // Text of the "cat email.txt" button
+  contactLinks: string;       // Title of social links "Links"
 
   // Footer
-  footerCopyright: string;    // Copyright (usa {year} como placeholder)
-  footerStatus: string;       // Estado del sitio "● All systems operational"
+  footerCopyright: string;    // Copyright (uses {year} as a placeholder)
+  footerStatus: string;       // Site status "● All systems operational"
 }
 
 /**
- * OBJETO: translations
+ * OBJECT: translations
  * --------------------
- * Contiene las traducciones para cada idioma soportado.
+ * Contains the translations for each supported language.
  *
- * ESTRUCTURA:
- * - Clave: Código de idioma ('es', 'en')
- * - Valor: Objeto con todas las traducciones para ese idioma
+ * STRUCTURE:
+ * - Key: Language code ('es', 'en')
+ * - Value: Object with all the translations for that language
  *
- * IDIOMAS SOPORTADOS:
- * - 'es': Español (idioma por defecto)
- * - 'en': Inglés (English)
+ * SUPPORTED LANGUAGES:
+ * - 'es': Spanish (default language)
+ * - 'en': English
  */
 export const translations: Record<string, Translations> = {
   /**
-   * TRADUCCIONES EN INGLÉS
+   * ENGLISH TRANSLATIONS
    * -----------------------
    * English translations. Maintain consistency with Spanish version.
    * Change these values to match your Spanish content.
    */
   en: {
     // Meta tags for SEO
-    siteTitle: "Your Name - Tech Portfolio",
-    siteDescription: "Full stack web development portfolio. Specialized in modern technologies and innovative solutions.",
+    siteTitle: "Muhammad Haekal M. A. - Student Portfolio",
+    siteDescription: "Student portfolio. Interested in System research.",
 
     // Hero Section (Main)
     heroGreeting: "$ whoami",
-    heroTitle: "Your Name", // Change this to your real name
-    heroSubtitle: "Your Professional Title", // E.g: "Full Stack Developer", "Frontend Engineer", "Data Scientist"
-    heroDescription: "Here goes your professional description. Tell who you are and what you do.<br><span class=\"terminal-info\">This is an additional line of smaller text</span>",
+    heroTitle: "Muhammad Haekal Muhyidin Al-Araby", // Change this to your real name
+    heroSubtitle: "Undergraduate Researcher", // E.g: "Full Stack Developer", "Frontend Engineer", "Data Scientist"
+    heroDescription: "Senior undergraduate student at Sepuluh Nopember Institute of Technology. Interested in <strong>SYSTEM</strong> research. Have experience in Cache. <br><br><strong>WARNING: WEBSITE IS UNDER CONSTRUCTION!</strong>",
     heroCta: "cd ~/projects",
-    heroTemplateButton: "git clone template",
+    heroTemplateButton: "CV",
 
     // Projects Section
     projectsTitle: "$ ls ~/projects",
@@ -119,31 +119,31 @@ export const translations: Record<string, Translations> = {
     contactLinks: "Links",
 
     // Footer
-    footerCopyright: "© {year} Your Name", // {year} is automatically replaced
+    footerCopyright: "© {year} Muhammad Haekal M. A.", // {year} is automatically replaced
     footerStatus: "● All systems operational"
   }
 };
 
 /**
- * FUNCIÓN: getTranslations
+ * FUNCTION: getTranslations
  * -------------------------
- * Obtiene el objeto de traducciones para un idioma específico.
- * Si el idioma no existe, devuelve español por defecto.
+ * Gets the translation object for a specific language.
+ * If the language does not exist, it returns Spanish by default.
  *
- * PARÁMETROS:
- * @param lang - Código del idioma ('es' o 'en'), por defecto 'es'
+ * PARAMETERS:
+ * @param lang - Language code ('es' or 'en'), default 'es'
  *
- * RETORNA:
- * @returns {Translations} Objeto completo de traducciones
+ * RETURNS:
+ * @returns {Translations} Complete translation object
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const t = getTranslations('en');
  * console.log(t.siteTitle); // "Your Name - Tech Portfolio"
  * ```
  *
  * FALLBACK:
- * Si se pasa un idioma no soportado (ej: 'fr'), devuelve español.
+ * If an unsupported language is passed (e.g., 'fr'), it returns Spanish.
  */
 export function getTranslations(): Translations {
   return translations['en'];

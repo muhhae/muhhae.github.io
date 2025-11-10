@@ -1,19 +1,19 @@
 /**
- * MÓDULO DE GESTIÓN DE PROYECTOS
+ * PROJECT MANAGEMENT MODULE
  * ===============================
  *
- * Este módulo proporciona funciones de utilidad para trabajar con
- * los proyectos del portfolio. Actúa como capa de abstracción sobre
- * los datos crudos definidos en projects-data.ts
+ * This module provides utility functions for working with
+ * the portfolio projects. It acts as an abstraction layer over
+ * the raw data defined in projects-data.ts
  *
- * FUNCIONALIDAD:
- * - Obtener todos los proyectos
- * - Filtrar proyectos destacados (PINNED)
- * - Filtrar por tecnología/skill
- * - Buscar proyectos específicos
- * - Obtener proyectos con características especiales (imágenes, explicación)
+ * FUNCTIONALITY:
+ * - Get all projects
+ * - Filter featured projects (PINNED)
+ * - Filter by technology/skill
+ * - Search for specific projects
+ * - Get projects with special features (images, explanation)
  *
- * USO EN COMPONENTES:
+ * USAGE IN COMPONENTS:
  * ```astro
  * ---
  * import { getAllProjects, getFeaturedProjects } from '../lib/projects';
@@ -26,17 +26,17 @@
 import { projectsData, type Project } from '../data/projects-data.js';
 
 /**
- * FUNCIÓN: getAllProjects
+ * FUNCTION: getAllProjects
  * -----------------------
- * Obtiene todos los proyectos del portfolio sin filtros
+ * Gets all portfolio projects without filters
  *
- * RETORNA:
- * @returns {Project[]} Array completo de proyectos
+ * RETURNS:
+ * @returns {Project[]} Complete array of projects
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const projects = getAllProjects();
- * console.log(projects.length); // 4 (proyectos de ejemplo)
+ * console.log(projects.length); // 4 (example projects)
  * ```
  */
 export function getAllProjects(): Project[] {
@@ -44,18 +44,18 @@ export function getAllProjects(): Project[] {
 }
 
 /**
- * FUNCIÓN: getFeaturedProjects
+ * FUNCTION: getFeaturedProjects
  * ----------------------------
- * Obtiene solo los proyectos marcados como destacados (featured: true)
- * Estos proyectos aparecen con el badge "PINNED" en la interfaz
+ * Gets only the projects marked as featured (featured: true)
+ * These projects appear with the "PINNED" badge in the interface
  *
- * RETORNA:
- * @returns {Project[]} Array de proyectos destacados
+ * RETURNS:
+ * @returns {Project[]} Array of featured projects
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const featured = getFeaturedProjects();
- * // Retorna solo proyectos con featured: true
+ * // Returns only projects with featured: true
  * ```
  */
 export function getFeaturedProjects(): Project[] {
@@ -63,24 +63,24 @@ export function getFeaturedProjects(): Project[] {
 }
 
 /**
- * FUNCIÓN: getProjectsByCategory
+ * FUNCTION: getProjectsByCategory
  * -------------------------------
- * Filtra proyectos por tecnología/skill
- * Búsqueda case-insensitive y parcial (permite coincidencias parciales)
+ * Filters projects by technology/skill
+ * Case-insensitive and partial search (allows partial matches)
  *
- * PARÁMETROS:
- * @param category - Nombre de la tecnología a buscar (ej: "React", "Node")
+ * PARAMETERS:
+ * @param category - Name of the technology to search for (e.g., "React", "Node")
  *
- * RETORNA:
- * @returns {Project[]} Array de proyectos que usan esa tecnología
+ * RETURNS:
+ * @returns {Project[]} Array of projects that use that technology
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const reactProjects = getProjectsByCategory('React');
  * const nodeProjects = getProjectsByCategory('node'); // Case-insensitive
  * ```
  *
- * NOTA: Busca en el array 'tech' de cada proyecto
+ * NOTE: Searches in the 'tech' array of each project
  */
 export function getProjectsByCategory(category: string): Project[] {
   return projectsData.filter(project =>
@@ -89,20 +89,20 @@ export function getProjectsByCategory(category: string): Project[] {
 }
 
 /**
- * FUNCIÓN: getProjectByTitle
+ * FUNCTION: getProjectByTitle
  * ---------------------------
- * Busca un proyecto específico por su título
- * Búsqueda exacta (no case-insensitive)
+ * Searches for a specific project by its title
+ * Exact search (not case-insensitive)
  *
- * PARÁMETROS:
- * @param title - Título exacto del proyecto a buscar
+ * PARAMETERS:
+ * @param title - Exact title of the project to search for
  *
- * RETORNA:
- * @returns {Project | undefined} Proyecto encontrado o undefined
+ * RETURNS:
+ * @returns {Project | undefined} Found project or undefined
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
- * const project = getProjectByTitle('Mi Proyecto');
+ * const project = getProjectByTitle('My Project');
  * if (project) {
  *   console.log(project.description);
  * }
@@ -113,42 +113,42 @@ export function getProjectByTitle(title: string): Project | undefined {
 }
 
 /**
- * FUNCIÓN: getProjectsWithImages
+ * FUNCTION: getProjectsWithImages
  * -------------------------------
- * Obtiene solo proyectos que tienen galería de imágenes
- * Útil para mostrar proyectos con screenshots disponibles
+ * Gets only projects that have an image gallery
+ * Useful for displaying projects with available screenshots
  *
- * RETORNA:
- * @returns {Project[]} Array de proyectos con imágenes
+ * RETURNS:
+ * @returns {Project[]} Array of projects with images
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const projectsWithGallery = getProjectsWithImages();
- * // Retorna proyectos donde images !== null y images.length > 0
+ * // Returns projects where images !== null and images.length > 0
  * ```
  *
- * NOTA: Filtra proyectos con propiedad 'images' no vacía
+ * NOTE: Filters projects with a non-empty 'images' property
  */
 export function getProjectsWithImages(): Project[] {
   return projectsData.filter(project => project.images && project.images.length > 0);
 }
 
 /**
- * FUNCIÓN: getProjectsWithExplanation
+ * FUNCTION: getProjectsWithExplanation
  * ------------------------------------
- * Obtiene proyectos que tienen explicación extendida
- * Estos proyectos muestran un botón [explicación] que abre un modal
+ * Gets projects that have an extended explanation
+ * These projects show an [explanation] button that opens a modal
  *
- * RETORNA:
- * @returns {Project[]} Array de proyectos con explicación
+ * RETURNS:
+ * @returns {Project[]} Array of projects with explanation
  *
- * EJEMPLO:
+ * EXAMPLE:
  * ```typescript
  * const detailedProjects = getProjectsWithExplanation();
- * // Retorna proyectos con propiedad 'explanation' definida
+ * // Returns projects with a defined 'explanation' property
  * ```
  *
- * NOTA: Útil para identificar proyectos con documentación adicional
+ * NOTE: Useful for identifying projects with additional documentation
  */
 export function getProjectsWithExplanation(): Project[] {
   return projectsData.filter(project => project.explanation);

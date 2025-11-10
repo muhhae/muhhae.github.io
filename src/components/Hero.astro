@@ -1,132 +1,133 @@
 ---
 /**
- * COMPONENTE: Hero
+ * COMPONENT: Hero
  * ================
  *
- * Sección principal de presentación del portfolio.
- * Primera sección que ven los visitantes al llegar al sitio.
+ * Main presentation section of the portfolio.
+ * First section visitors see when they arrive at the site.
  *
- * PROPÓSITO:
- * - Presentación personal con nombre, título y descripción
- * - Call-to-action (CTA) para ver proyectos
- * - Botón para acceder al template en GitHub
- * - Crear una primera impresión profesional
+ * PURPOSE:
+ * - Personal presentation with name, title, and description
+ * - Call-to-action (CTA) to view projects
+ * - Button to access the template on GitHub
+ * - Create a professional first impression
  *
- * CONTENIDO MOSTRADO:
- * - Saludo (ej: "Hola, soy")
- * - Nombre/Título principal con cursor parpadeante
- * - Subtítulo (ej: "Desarrollador Full Stack")
- * - Descripción breve de skills y experiencia
- * - Botones CTA (Ver proyectos + Ver template)
+ * CONTENT DISPLAYED:
+ * - Greeting (e.g., "Hello, I'm")
+ * - Name/Main title with blinking cursor
+ * - Subtitle (e.g., "Full Stack Developer")
+ * - Brief description of skills and experience
+ * - CTA buttons (View projects + View template)
  *
- * ARQUITECTURA:
- * - HTML: Contenido semántico con <section>, <h1>, etc.
- * - CSS: Diseño minimalista con animaciones sutiles
- * - Internacionalización: Todo el contenido viene de translations.ts
- * - Responsive: Se adapta perfectamente a móvil
+ * ARCHITECTURE:
+ * - HTML: Semantic content with <section>, <h1>, etc.
+ * - CSS: Minimalist design with subtle animations
+ * - Internationalization: All content comes from translations.ts
+ * - Responsive: Adapts perfectly to mobile
  *
- * ANIMACIONES:
- * - Cursor parpadeante (_) al final del título
- * - Animación fade-in al cargar (definida en global.css)
- * - Efecto hover en botones con movimiento
+ * ANIMATIONS:
+ * - Blinking cursor (_) at the end of the title
+ * - Fade-in animation on load (defined in global.css)
+ * - Hover effect on buttons with movement
  *
- * PERSONALIZACIÓN:
- * - NO modificar este archivo
- * - Todo el contenido se edita en: src/i18n/translations.ts
- * - Busca las claves: heroGreeting, heroTitle, heroSubtitle, etc.
+ * CUSTOMIZATION:
+ * - DO NOT modify this file
+ * - All content is edited in: src/i18n/translations.ts
+ * - Look for the keys: heroGreeting, heroTitle, heroSubtitle, etc.
  */
 
-// IMPORTACIONES
+// IMPORTS
 // -------------
-// Utilidad de internacionalización para obtener traducciones
+// Internationalization utility to get translations
 import { useI18n } from '../lib/i18n.js';
 
 const { t } = useI18n();
 ---
 
 <!--
-  SECCIÓN HERO
+  HERO SECTION
   ============
 
-  ESTRUCTURA HTML:
-  - <section>: Contenedor principal semántico
-  - .container: Clase para centrar contenido (definida en global.css)
-  - .hero-content: Contenedor del contenido con max-width
-  - .fade-in: Animación de aparición al cargar (global.css)
+  HTML STRUCTURE:
+  - <section>: Main semantic container
+  - .container: Class to center content (defined in global.css)
+  - .hero-content: Content container with max-width
+  - .fade-in: Appearance animation on load (global.css)
 
-  ELEMENTOS:
-  1. Saludo: Texto pequeño introductorio
-  2. Título (h1): Nombre con cursor parpadeante
-  3. Subtítulo: Tu rol o especialidad
-  4. Descripción: Breve resumen de skills/experiencia (soporta HTML)
-  5. CTAs: Botones de acción (proyectos + template)
+  ELEMENTS:
+  1. Greeting: Small introductory text
+  2. Title (h1): Name with blinking cursor
+  3. Subtitle: Your role or specialty
+  4. Description: Brief summary of skills/experience (supports HTML)
+  5. CTAs: Action buttons (projects + template)
 
-  CLASES MONO:
-  - .mono: Aplica fuente monoespaciada (definida en global.css)
-  - Usada en casi todos los textos para estilo de terminal/código
+  MONO CLASSES:
+  - .mono: Applies monospace font (defined in global.css)
+  - Used in almost all texts for terminal/code style
 
   SEO:
-  - <h1> es el título principal de la página (crítico para SEO)
-  - Solo debe haber un <h1> por página
-  - El contenido es el más importante para Google
+  - <h1> is the main title of the page (critical for SEO)
+  - There should only be one <h1> per page
+  - The content is the most important for Google
 -->
 <section class="hero">
-  <!-- Contenedor centrado (global.css) -->
+  <!-- Centered container (global.css) -->
   <div class="container">
-    <!-- Contenido con animación de aparición -->
+    <!-- Content with appearance animation -->
     <div class="hero-content fade-in">
-      <!-- SALUDO: Texto pequeño introductorio -->
+      <!-- GREETING: Small introductory text -->
       <p class="mono greeting">{t.heroGreeting}</p>
 
       <!--
-        TÍTULO PRINCIPAL (h1):
-        - Nombre o marca personal
-        - Incluye cursor parpadeante (_) con animación
-        - Es el elemento SEO más importante de la página
+        MAIN TITLE (h1):
+        - Name or personal brand
+        - Includes blinking cursor (_) with animation
+        - It is the most important SEO element of the page
       -->
       <h1>{t.heroTitle}<span class="blink">_</span></h1>
 
       <!--
-        SUBTÍTULO:
-        - Tu rol, especialidad o título profesional
-        - Ej: "Desarrollador Full Stack", "UI/UX Designer"
+        SUBTITLE:
+        - Your role, specialty, or professional title
+        - E.g: "Full Stack Developer", "UI/UX Designer"
       -->
       <p class="subtitle mono">
         {t.heroSubtitle}
       </p>
 
       <!--
-        DESCRIPCIÓN:
-        - Breve resumen de skills, experiencia o propuesta de valor
-        - set:html permite HTML en el texto (ej: <br>, <strong>)
-        - Cuidado: Solo usar con contenido confiable (no input de usuario)
+        DESCRIPTION:
+        - Brief summary of skills, experience, or value proposition
+        - set:html allows HTML in the text (e.g., <br>, <strong>)
+        - Caution: Only use with trusted content (not user input)
       -->
       <p class="description mono" set:html={t.heroDescription}></p>
 
       <!--
         CALL TO ACTIONS (CTAs):
-        - Botón primario: Scroll a sección de proyectos (#projects)
-        - Botón secundario: Link al repo del template en GitHub
+        - Primary button: Scroll to projects section (#projects)
+        - Secondary button: Link to the template repo on GitHub
       -->
       <div class="cta">
         <!--
-          BOTÓN PRIMARIO: Ver proyectos
-          - href="#projects": Scroll suave a sección (global.css)
-          - Estilo destacado (fondo sólido)
+          PRIMARY BUTTON: View projects
+          - href="#projects": Smooth scroll to section (global.css)
+          - Highlighted style (solid background)
         -->
         <a href="#projects" class="btn-primary mono">{t.heroCta}</a>
 
         <!--
-          BOTÓN SECUNDARIO: Ver template
-          - Link externo a GitHub con tu template
-          - target="_blank": Abre en nueva pestaña
-          - rel="noopener": Seguridad (previene tabnabbing)
-          - Estilo secundario (fondo transparente)
+          SECONDARY BUTTON: View template
+          - External link to GitHub with your template
+          - target="_blank": Opens in a new tab
+          - rel="noopener": Security (prevents tabnabbing)
+          - Secondary style (transparent background)
 
-          PERSONALIZAR:
-          Cambia "yourusername/your-template-repo" por tu repo real
+          CUSTOMIZE:
+          Change "yourusername/your-template-repo" to your real repo
         -->
-        <a href="https://github.com/yourusername/your-template-repo" target="_blank" rel="noopener" class="btn-secondary mono">{t.heroTemplateButton}</a>
+        <!-- <a href="https://github.com/yourusername/your-template-repo" target="_blank" rel="noopener" class="btn-secondary mono">{t.heroTemplateButton}</a> -->
+        <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-secondary mono">cat ~/cv.pdf</a>
       </div>
     </div>
   </div>
@@ -134,278 +135,278 @@ const { t } = useI18n();
 
 <style>
   /**
-   * ESTILOS: Sección Hero
+   * STYLES: Hero Section
    * ----------------------
    *
-   * DISEÑO:
-   * - Layout centrado verticalmente (flexbox)
-   * - Texto alineado a la izquierda con max-width para legibilidad
-   * - Jerarquía visual clara: saludo → título → subtítulo → descripción → CTA
-   * - Opacidades diferentes para crear profundidad
-   * - Animaciones sutiles que no distraen
+   * DESIGN:
+   * - Vertically centered layout (flexbox)
+   * - Left-aligned text with max-width for readability
+   * - Clear visual hierarchy: greeting → title → subtitle → description → CTA
+   * - Different opacities to create depth
+   * - Subtle animations that do not distract
    *
-   * VARIABLES CSS USADAS:
-   * - var(--text): Color del texto (adaptable a tema)
-   * - var(--bg): Color de fondo (adaptable a tema)
-   * - var(--mono): Fuente monoespaciada
+   * CSS VARIABLES USED:
+   * - var(--text): Text color (adapts to theme)
+   * - var(--bg): Background color (adapts to theme)
+   * - var(--mono): Monospace font
    *
-   * RESPONSIVO:
-   * - Desktop: Botones en fila horizontal
-   * - Mobile: Botones en columna vertical
+   * RESPONSIVE:
+   * - Desktop: Buttons in a horizontal row
+   * - Mobile: Buttons in a vertical column
    *
-   * PERSONALIZACIÓN:
-   * - min-height: Altura mínima de la sección
-   * - max-width: Ancho máximo del contenido
-   * - font-size: Tamaños de texto relativos
+   * CUSTOMIZATION:
+   * - min-height: Minimum height of the section
+   * - max-width: Maximum width of the content
+   * - font-size: Relative text sizes
    */
 
   /**
-   * CONTENEDOR: .hero
+   * CONTAINER: .hero
    * -----------------
-   * Sección principal que ocupa casi toda la altura de la ventana
+   * Main section that occupies almost the entire height of the window
    */
   .hero {
-    min-height: 90vh;     /* 90% de altura de ventana */
-    display: flex;        /* Flexbox para centrar verticalmente */
-    align-items: center;  /* Centra contenido verticalmente */
-    padding: 6rem 0;      /* 96px arriba y abajo */
+    min-height: 90vh;     /* 90% of window height */
+    display: flex;        /* Flexbox for vertical centering */
+    align-items: center;  /* Centers content vertically */
+    padding: 6rem 0;      /* 96px top and bottom */
   }
 
   /**
-   * CONTENIDO: .hero-content
+   * CONTENT: .hero-content
    * -------------------------
-   * Limita el ancho del texto para mejor legibilidad
-   * Texto muy ancho (>800px) es difícil de leer
+   * Limits the width of the text for better readability
+   * Very wide text (>800px) is difficult to read
    */
   .hero-content {
-    max-width: 800px;  /* Ancho máximo para legibilidad óptima */
+    max-width: 800px;  /* Maximum width for optimal readability */
   }
 
   /**
-   * SALUDO: .greeting
+   * GREETING: .greeting
    * -----------------
-   * Texto pequeño introductorio (ej: "Hola, soy")
-   * Opacidad reducida para menor jerarquía visual
+   * Small introductory text (e.g., "Hello, I'm")
+   * Reduced opacity for lower visual hierarchy
    */
   .greeting {
-    font-size: 0.9rem;      /* 14.4px - Ligeramente pequeño */
-    opacity: 0.7;           /* 70% visible - Menos prominente */
-    margin-bottom: 0.5rem;  /* 8px de espacio debajo */
+    font-size: 0.9rem;      /* 14.4px - Slightly small */
+    opacity: 0.7;           /* 70% visible - Less prominent */
+    margin-bottom: 0.5rem;  /* 8px space below */
   }
 
   /**
-   * TÍTULO PRINCIPAL: h1
+   * MAIN TITLE: h1
    * --------------------
-   * El nombre o marca personal
-   * Hereda estilos globales de h1 (global.css)
+   * The name or personal brand
+   * Inherits global h1 styles (global.css)
    */
   h1 {
-    margin-bottom: 1rem;  /* 16px de espacio debajo */
+    margin-bottom: 1rem;  /* 16px space below */
   }
 
   /**
    * CURSOR: .blink
    * --------------
-   * Cursor parpadeante (_) al final del título
-   * Simula cursor de terminal escribiendo
+   * Blinking cursor (_) at the end of the title
+   * Simulates a terminal cursor typing
    */
   .blink {
-    animation: blink 1s infinite;  /* Parpadea cada 1 segundo, infinitamente */
+    animation: blink 1s infinite;  /* Blinks every 1 second, infinitely */
   }
 
   /**
-   * ANIMACIÓN: blink
+   * ANIMATION: blink
    * ----------------
-   * Hace que el cursor aparezca y desaparezca
+   * Makes the cursor appear and disappear
    * 0-50%: Visible (opacity: 1)
    * 51-100%: Invisible (opacity: 0)
    */
   @keyframes blink {
-    0%, 50% { opacity: 1; }    /* Primera mitad: visible */
-    51%, 100% { opacity: 0; }  /* Segunda mitad: invisible */
+    0%, 50% { opacity: 1; }    /* First half: visible */
+    51%, 100% { opacity: 0; }  /* Second half: invisible */
   }
 
   /**
-   * SUBTÍTULO: .subtitle
+   * SUBTITLE: .subtitle
    * --------------------
-   * Tu rol o especialidad (ej: "Desarrollador Full Stack")
-   * Ligeramente más grande que texto normal
+   * Your role or specialty (e.g., "Full Stack Developer")
+   * Slightly larger than normal text
    */
   .subtitle {
-    font-size: 1.25rem;     /* 20px - Prominente pero no tanto como h1 */
-    margin-bottom: 1.5rem;  /* 24px de espacio debajo */
-    opacity: 0.8;           /* 80% visible - Jerarquía intermedia */
+    font-size: 1.25rem;     /* 20px - Prominent but not as much as h1 */
+    margin-bottom: 1.5rem;  /* 24px space below */
+    opacity: 0.8;           /* 80% visible - Intermediate hierarchy */
   }
 
   /**
-   * DESCRIPCIÓN: .description
+   * DESCRIPTION: .description
    * -------------------------
-   * Resumen breve de skills y experiencia
-   * Opacidad más baja que subtítulo para menor énfasis
+   * Brief summary of skills and experience
+   * Lower opacity than subtitle for less emphasis
    */
   .description {
-    font-size: 1.1rem;    /* 17.6px - Legible pero secundario */
-    margin-bottom: 2rem;  /* 32px de espacio debajo */
-    opacity: 0.7;         /* 70% visible - Menor jerarquía */
+    font-size: 1.1rem;    /* 17.6px - Legible but secondary */
+    margin-bottom: 2rem;  /* 32px space below */
+    opacity: 0.7;         /* 70% visible - Lower hierarchy */
   }
 
   /**
-   * INFO TERMINAL: .terminal-info
+   * TERMINAL INFO: .terminal-info
    * -----------------------------
-   * Clase para información adicional estilo terminal
-   * (Actualmente no usada en HTML pero disponible)
+   * Class for additional terminal-style information
+   * (Currently not used in HTML but available)
    */
   .terminal-info {
     display: block;
-    font-size: 0.9rem;    /* 14.4px - Pequeño */
-    opacity: 0.6;         /* 60% visible - Muy secundario */
-    margin-top: 0.5rem;   /* 8px arriba */
-    font-style: italic;   /* Cursiva para diferenciar */
+    font-size: 0.9rem;    /* 14.4px - Small */
+    opacity: 0.6;         /* 60% visible - Very secondary */
+    margin-top: 0.5rem;   /* 8px above */
+    font-style: italic;   /* Italic to differentiate */
   }
 
   /**
-   * CONTENEDOR CTA: .cta
+   * CTA CONTAINER: .cta
    * --------------------
-   * Contenedor de botones de acción
-   * Flexbox para alinear botones horizontalmente
+   * Container for action buttons
+   * Flexbox to align buttons horizontally
    */
   .cta {
-    display: flex;        /* Flexbox para layout horizontal */
-    gap: 1rem;            /* 16px de espacio entre botones */
-    flex-wrap: wrap;      /* Permite wrap en pantallas pequeñas */
+    display: flex;        /* Flexbox for horizontal layout */
+    gap: 1rem;            /* 16px space between buttons */
+    flex-wrap: wrap;      /* Allows wrapping on small screens */
   }
 
   /**
-   * BOTONES: .btn-primary y .btn-secondary
+   * BUTTONS: .btn-primary and .btn-secondary
    * ---------------------------------------
-   * Estilos base compartidos por ambos botones
-   * Diferencias se definen en reglas específicas abajo
+   * Base styles shared by both buttons
+   * Differences are defined in specific rules below
    */
   .btn-primary,
   .btn-secondary {
     padding: 0.75rem 2rem;          /* 12px vertical, 32px horizontal */
-    border: 2px solid var(--text);  /* Borde adaptable al tema */
-    transition: all 0.3s;           /* Animación suave 300ms */
+    border: 2px solid var(--text);  /* Theme-adaptive border */
+    transition: all 0.3s;           /* Smooth 300ms animation */
     display: inline-block;
-    font-family: var(--mono);       /* Fuente monoespaciada */
+    font-family: var(--mono);       /* Monospace font */
     font-size: 0.9rem;              /* 14.4px */
   }
 
   /**
-   * BOTÓN PRIMARIO: .btn-primary
+   * PRIMARY BUTTON: .btn-primary
    * ----------------------------
-   * Botón destacado con fondo sólido
-   * Mayor jerarquía visual (acción principal)
+   * Highlighted button with solid background
+   * Higher visual hierarchy (main action)
    */
   .btn-primary {
-    background: var(--text);  /* Fondo del color del texto (invertido) */
-    color: var(--bg);         /* Texto del color del fondo (invertido) */
-    border-bottom: none;      /* Sin borde inferior */
+    background: var(--text);  /* Background of text color (inverted) */
+    color: var(--bg);         /* Text of background color (inverted) */
+    border-bottom: none;      /* No bottom border */
   }
 
   /**
-   * HOVER: Botón primario
+   * HOVER: Primary button
    * ---------------------
-   * Efecto al pasar el mouse
+   * Effect on mouse hover
    */
   .btn-primary:hover {
-    opacity: 1;                   /* Opacidad total */
-    transform: translateY(-2px);  /* Levanta 2px hacia arriba */
+    opacity: 1;                   /* Full opacity */
+    transform: translateY(-2px);  /* Lifts 2px up */
   }
 
   /**
-   * BOTÓN SECUNDARIO: .btn-secondary
+   * SECONDARY BUTTON: .btn-secondary
    * --------------------------------
-   * Botón con fondo transparente
-   * Menor jerarquía visual (acción secundaria)
+   * Button with transparent background
+   * Lower visual hierarchy (secondary action)
    */
   .btn-secondary {
-    background: transparent;  /* Fondo transparente, solo borde */
+    background: transparent;  /* Transparent background, only border */
   }
 
   /**
-   * HOVER: Botón secundario
+   * HOVER: Secondary button
    * -----------------------
-   * Efecto al pasar el mouse: se rellena con color
+   * Effect on mouse hover: fills with color
    */
   .btn-secondary:hover {
-    background: var(--text);  /* Se rellena con color del texto */
-    color: var(--bg);         /* Texto cambia a color de fondo */
-    opacity: 1;               /* Opacidad total */
+    background: var(--text);  /* Fills with text color */
+    color: var(--bg);         /* Text changes to background color */
+    opacity: 1;               /* Full opacity */
   }
 
   /**
    * RESPONSIVE: Mobile
    * ------------------
-   * Ajustes para pantallas pequeñas (max-width: 768px)
+   * Adjustments for small screens (max-width: 768px)
    */
   @media (max-width: 768px) {
     /**
-     * Hero más corto en móvil
-     * Aprovecha mejor el espacio vertical limitado
+     * Shorter hero on mobile
+     * Makes better use of limited vertical space
      */
     .hero {
-      min-height: 80vh;  /* 80% de altura (antes 90%) */
+      min-height: 80vh;  /* 80% height (was 90%) */
     }
 
     /**
-     * Botones en columna vertical
-     * Mejor para pantallas estrechas
+     * Buttons in a vertical column
+     * Better for narrow screens
      */
     .cta {
-      flex-direction: column;  /* Cambia de fila a columna */
+      flex-direction: column;  /* Changes from row to column */
     }
 
     /**
-     * Botones con texto centrado
-     * Se ve mejor en layout vertical
+     * Centered button text
+     * Looks better in vertical layout
      */
     .btn-primary,
     .btn-secondary {
-      text-align: center;  /* Centra el texto del botón */
+      text-align: center;  /* Centers the button text */
     }
   }
 </style>
 
 <!--
-  CÓMO PERSONALIZAR EL HERO
+  HOW TO CUSTOMIZE THE HERO
   =========================
 
-  1. CAMBIAR TEXTOS:
-     Edita src/i18n/translations.ts
-     Busca las claves:
-     - heroGreeting: "Hola, soy"
-     - heroTitle: "Tu Nombre"
-     - heroSubtitle: "Tu Rol"
-     - heroDescription: "Tu descripción"
-     - heroCta: "Ver Proyectos"
-     - heroTemplateButton: "Ver Template"
+  1. CHANGE TEXTS:
+     Edit src/i18n/translations.ts
+     Look for the keys:
+     - heroGreeting: "Hello, I'm"
+     - heroTitle: "Your Name"
+     - heroSubtitle: "Your Role"
+     - heroDescription: "Your description"
+     - heroCta: "View Projects"
+     - heroTemplateButton: "View Template"
 
-  2. CAMBIAR LINK DEL BOTÓN TEMPLATE:
-     Línea 142 de este archivo
-     Reemplaza "yourusername/your-template-repo"
-     Por tu repositorio real en GitHub
+  2. CHANGE TEMPLATE BUTTON LINK:
+     Line 142 of this file
+     Replace "yourusername/your-template-repo"
+     With your real repository on GitHub
 
-  3. AJUSTAR DISEÑO VISUAL:
-     Edita los estilos en <style> arriba:
-     - min-height: Altura de la sección
-     - max-width: Ancho del contenido
-     - font-size: Tamaños de texto
-     - padding: Espaciados
+  3. ADJUST VISUAL DESIGN:
+     Edit the styles in <style> above:
+     - min-height: Height of the section
+     - max-width: Width of the content
+     - font-size: Text sizes
+     - padding: Spacings
 
-  4. CAMBIAR COLORES:
-     Los colores se definen en src/styles/global.css
-     Busca las variables CSS:
-     - --text: Color del texto
-     - --bg: Color de fondo
-     - --border: Color de bordes
-     Y tienen versiones para [data-theme="light"] y [data-theme="dark"]
+  4. CHANGE COLORS:
+     Colors are defined in src/styles/global.css
+     Look for the CSS variables:
+     - --text: Text color
+     - --bg: Background color
+     - --border: Border color
+     And they have versions for [data-theme="light"] and [data-theme="dark"]
 
-  5. ELIMINAR CURSOR PARPADEANTE:
-     Elimina: <span class="blink">_</span>
-     En la línea 100 de este archivo
+  5. REMOVE BLINKING CURSOR:
+     Delete: <span class="blink">_</span>
+     On line 100 of this file
 
-  6. QUITAR ANIMACIÓN FADE-IN:
-     Elimina la clase "fade-in"
-     De la línea 90 de este archivo
+  6. REMOVE FADE-IN ANIMATION:
+     Remove the "fade-in" class
+     From line 90 of this file
 -->

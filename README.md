@@ -1,27 +1,26 @@
 # ASTRO 686F6C61 TEMPLATE
 
-Template minimalista para portfolio con diseño inspirado en terminal, modo oscuro/claro automático y soporte bilingüe (Español/Inglés).
+Minimalist portfolio template with terminal-inspired design, automatic dark/light mode, and bilingual support (Spanish/English).
 
 ---
 
-## INFORMACIÓN DEL TEMPLATE
+## TEMPLATE INFORMATION
 
-> **Información requerida para publicar en Astro.build**
+> **Information required to publish on Astro.build**
 
-**Nombre del theme:** Astro 686F6C61 Portfolio Template
+**Theme name:** Astro 686F6C61 Portfolio Template
 
-**Repositorio GitHub:** https://github.com/686f6c61/astro-686f6c61-template
+**GitHub Repository:** https://github.com/686f6c61/astro-686f6c61-template
 
-**Demo online:** https://astro-686f6c61-template.onrender.com
+**Online Demo:** https://astro-686f6c61-template.onrender.com
 
-
-**Descripción:**
+**Description:**
 Minimalist tech portfolio template with terminal-inspired design, automatic dark/light mode, and bilingual support (Spanish/English). Features project showcase with filtering, image galleries, and SEO optimization.
 
-**Etiquetas (Tags):**
+**Tags:**
 `portfolio` `dark-mode` `bilingual` `minimal` `terminal` `seo` `typescript` `responsive` `i18n` `tech-portfolio`
 
-**Screenshots del template:**
+**Template Screenshots:**
 
 ![Portfolio Preview - Hero Section](theme-assets/og-image-01.png)
 *Hero section with terminal-inspired design*
@@ -37,49 +36,49 @@ Minimalist tech portfolio template with terminal-inspired design, automatic dark
 
 ---
 
-## TABLA DE CONTENIDOS
+## TABLE OF CONTENTS
 
-- [CARACTERÍSTICAS](#características)
-- [REQUISITOS PREVIOS](#requisitos-previos)
-- [INSTALACIÓN](#instalación)
-- [CONFIGURACIÓN INICIAL](#configuración-inicial)
-- [SISTEMA DE TRADUCCIONES](#sistema-de-traducciones)
-- [PERSONALIZACIÓN DE CONTENIDO](#personalización-de-contenido)
-- [PROYECTOS](#proyectos)
-- [IMÁGENES Y THUMBNAILS](#imágenes-y-thumbnails)
-- [SISTEMA DE SKILLS](#sistema-de-skills)
-- [COMPONENTES](#componentes)
-- [PERSONALIZACIÓN DE ESTILOS](#personalización-de-estilos)
-- [DESPLIEGUE](#despliegue)
-
----
-
-## CARACTERÍSTICAS
-
-- Diseño terminal-inspired con estética monospace
-- Modo oscuro/claro automático según preferencias del sistema
-- Sistema bilingüe completo (Español/Inglés)
-- Showcase de proyectos con múltiples opciones de visualización
-- Protección anti-spam de email con codificación Base64
-- Optimizado para SEO con meta tags completos
-- Generación estática con Astro (rendimiento excepcional)
-- Diseño responsive mobile-first
-- Galería de imágenes para proyectos
-- Sistema de filtrado por tecnologías
-- Modales para explicaciones extendidas
+- [FEATURES](#features)
+- [PREREQUISITES](#prerequisites)
+- [INSTALLATION](#installation)
+- [INITIAL CONFIGURATION](#initial-configuration)
+- [TRANSLATION SYSTEM](#translation-system)
+- [CONTENT CUSTOMIZATION](#content-customization)
+- [PROJECTS](#projects)
+- [IMAGES AND THUMBNAILS](#images-and-thumbnails)
+- [SKILLS SYSTEM](#skills-system)
+- [COMPONENTS](#components)
+- [STYLES CUSTOMIZATION](#styles-customization)
+- [DEPLOYMENT](#deployment)
 
 ---
 
-## REQUISITOS PREVIOS
+## FEATURES
 
-Antes de comenzar, asegurate de tener instalado:
+- Terminal-inspired design with monospace aesthetics
+- Automatic dark/light mode based on system preferences
+- Complete bilingual system (Spanish/English)
+- Project showcase with multiple viewing options
+- Anti-spam email protection with Base64 encoding
+- SEO optimized with complete meta tags
+- Static generation with Astro (exceptional performance)
+- Mobile-first responsive design
+- Image gallery for projects
+- Technology filtering system
+- Modals for extended explanations
 
-- **Node.js** versión 18 o superior
-- **npm**, **yarn** o **pnpm** (gestor de paquetes)
-- Editor de código (recomendado: VS Code)
-- Terminal o línea de comandos
+---
 
-Para verificar tu versión de Node.js:
+## PREREQUISITES
+
+Before you begin, make sure you have installed:
+
+- **Node.js** version 18 or higher
+- **npm**, **yarn** or **pnpm** (package manager)
+- Code editor (recommended: VS Code)
+- Terminal or command line
+
+To check your Node.js version:
 
 ```bash
 node --version
@@ -87,132 +86,132 @@ node --version
 
 ---
 
-## INSTALACIÓN
+## INSTALLATION
 
-### PASO 1: CLONAR EL REPOSITORIO
+### STEP 1: CLONE THE REPOSITORY
 
 ```bash
 git clone https://github.com/686f6c61/astro-686f6c61-template.git
 cd astro-686f6c61-template
 ```
 
-### PASO 2: INSTALAR DEPENDENCIAS
+### STEP 2: INSTALL DEPENDENCIES
 
 ```bash
 npm install
 ```
 
-Este comando instalará:
+This command will install:
 - Astro 5.15.3
-- Serve (para preview)
-- Terser (para minificación)
+- Serve (for preview)
+- Terser (for minification)
 
-### PASO 3: INICIAR SERVIDOR DE DESARROLLO
+### STEP 3: START DEVELOPMENT SERVER
 
 ```bash
 npm run dev
 ```
 
-El sitio estará disponible en `http://localhost:4321`
+The site will be available at `http://localhost:4321`
 
-### COMANDOS DISPONIBLES
+### AVAILABLE COMMANDS
 
-| Comando | Descripción |
+| Command | Description |
 |---------|-------------|
-| `npm install` | Instala todas las dependencias |
-| `npm run dev` | Inicia servidor de desarrollo en puerto 4321 |
-| `npm run build` | Genera el sitio estático en carpeta `dist/` |
-| `npm run preview` | Previsualiza el build de producción |
-| `npm run astro` | Ejecuta comandos CLI de Astro |
+| `npm install` | Installs all dependencies |
+| `npm run dev` | Starts development server on port 4321 |
+| `npm run build` | Generates static site in `dist/` folder |
+| `npm run preview` | Previews production build |
+| `npm run astro` | Runs Astro CLI commands |
 
 ---
 
-## CONFIGURACIÓN INICIAL
+## INITIAL CONFIGURATION
 
-### CONFIGURACIÓN DE ASTRO
+### ASTRO CONFIGURATION
 
-**Archivo:** `astro.config.mjs`
+**File:** `astro.config.mjs`
 
 ```javascript
 export default defineConfig({
-  site: 'https://your-domain.com', // CAMBIAR: Tu dominio
+  site: 'https://your-domain.com', // CHANGE: Your domain
   devToolbar: {
-    enabled: false  // Barra de herramientas de desarrollo desactivada
+    enabled: false  // Development toolbar disabled
   },
   build: {
-    inlineStylesheets: 'auto',  // Optimización de CSS
+    inlineStylesheets: 'auto',  // CSS optimization
   },
   vite: {
     build: {
-      cssMinify: true,    // Minificación de CSS
-      minify: 'terser',   // Minificación con Terser
+      cssMinify: true,    // CSS minification
+      minify: 'terser',   // Minification with Terser
     },
   },
 });
 ```
 
-**QUÉ CAMBIAR:**
+**WHAT TO CHANGE:**
 
-**Archivo: `astro.config.mjs` - Línea 6**
+**File: `astro.config.mjs` - Line 6**
 
-Reemplaza `'https://your-domain.com'` con tu dominio real.
+Replace `'https://your-domain.com'` with your actual domain.
 
-Ejemplo:
+Example:
 ```javascript
-site: 'https://miportfolio.com',
+site: 'https://myportfolio.com',
 ```
 
-### CONFIGURACIÓN DEL SITEMAP
+### SITEMAP CONFIGURATION
 
-**Archivo:** `public/robots.txt` - **Línea 5**
+**File:** `public/robots.txt` - **Line 5**
 
 ```
 Sitemap: https://your-domain.com/sitemap.xml
 ```
 
-CAMBIAR `your-domain.com` por tu dominio.
+CHANGE `your-domain.com` to your domain.
 
 ### PACKAGE.JSON
 
-**Archivo:** `package.json`
+**File:** `package.json`
 
 ```json
 {
-  "name": "astro-686f6c61-template",  // Línea 2: Nombre de tu proyecto
-  "version": "1.0.0",                 // Línea 4: Versión
-  "description": "...",               // Línea 5: Descripción
-  "author": "Your Name",              // Línea 6: Tu nombre
+  "name": "astro-686f6c61-template",  // Line 2: Your project name
+  "version": "1.0.0",                 // Line 4: Version
+  "description": "...",               // Line 5: Description
+  "author": "Your Name",              // Line 6: Your name
 }
 ```
 
-**Líneas a personalizar:**
-- **Línea 2:** Nombre de tu proyecto
-- **Línea 4:** Versión
-- **Línea 5:** Descripción
-- **Línea 6:** Tu nombre
+**Lines to customize:**
+- **Line 2:** Your project name
+- **Line 4:** Version
+- **Line 5:** Description
+- **Line 6:** Your name
 
 ---
 
-## SISTEMA DE TRADUCCIONES
+## TRANSLATION SYSTEM
 
-El template usa un sistema bilingüe completo. **Cada texto que modifiques en español, debes modificarlo también en inglés.**
+The template uses a complete bilingual system. **Every text you modify in Spanish must also be modified in English.**
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
-### ESTRUCTURA DE TRADUCCIONES
+### TRANSLATION STRUCTURE
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
 ```typescript
 export const translations: Record<string, Translations> = {
   es: {
-    // Todas las traducciones en ESPAÑOL
-    siteTitle: "Tu Nombre - Portfolio Tech",
-    heroTitle: "Tu Nombre",
+    // All translations in SPANISH
+    siteTitle: "Your Name - Tech Portfolio",
+    heroTitle: "Your Name",
     // ...
   },
   en: {
-    // Las MISMAS traducciones en INGLÉS
+    // The SAME translations in ENGLISH
     siteTitle: "Your Name - Tech Portfolio",
     heroTitle: "Your Name",
     // ...
@@ -220,49 +219,49 @@ export const translations: Record<string, Translations> = {
 };
 ```
 
-### CAMPOS DE TRADUCCIÓN
+### TRANSLATION FIELDS
 
-| Campo | Ubicación | Descripción |
-|-------|-----------|-------------|
-| `siteTitle` | Meta tags | Título de la página (aparece en pestaña del navegador) |
-| `siteDescription` | Meta tags | Descripción para SEO |
-| `heroGreeting` | Hero section | Texto "$ whoami" |
-| `heroTitle` | Hero section | Tu nombre o marca personal |
-| `heroSubtitle` | Hero section | Tu título profesional |
-| `heroDescription` | Hero section | Descripción de quién eres |
-| `heroCta` | Hero section | Texto del botón "cd ~/projects" |
-| `heroTemplateButton` | Hero section | Texto del botón "git clone template" |
-| `projectsTitle` | Proyectos | Título de sección "$ ls ~/projects" |
-| `projectsFeatured` | Proyectos | Badge "PINNED" |
-| `projectsDemo` | Proyectos | Texto "[demo]" |
-| `projectsCode` | Proyectos | Texto "[code]" |
-| `projectsWeb` | Proyectos | Texto "[web]" |
-| `projectsImages` | Proyectos | Texto "[images]" |
-| `projectsExplanation` | Proyectos | Texto "[explicación]/[explanation]" |
-| `projectsCsv` | Proyectos | Texto "[csv]" |
-| `contactTitle` | Footer | Título "$ contact --me" |
-| `contactEmailButton` | Footer | Botón "cat email.txt" |
-| `contactLinks` | Footer | Título "Links" |
-| `footerCopyright` | Footer | Copyright con {year} como placeholder |
-| `footerStatus` | Footer | Estado "All systems operational" |
+| Field | Location | Description |
+|-------|----------|-------------|
+| `siteTitle` | Meta tags | Page title (appears in browser tab) |
+| `siteDescription` | Meta tags | Description for SEO |
+| `heroGreeting` | Hero section | Text "$ whoami" |
+| `heroTitle` | Hero section | Your name or personal brand |
+| `heroSubtitle` | Hero section | Your professional title |
+| `heroDescription` | Hero section | Description of who you are |
+| `heroCta` | Hero section | Button text "cd ~/projects" |
+| `heroTemplateButton` | Hero section | Button text "git clone template" |
+| `projectsTitle` | Projects | Section title "$ ls ~/projects" |
+| `projectsFeatured` | Projects | Badge "PINNED" |
+| `projectsDemo` | Projects | Text "[demo]" |
+| `projectsCode` | Projects | Text "[code]" |
+| `projectsWeb` | Projects | Text "[web]" |
+| `projectsImages` | Projects | Text "[images]" |
+| `projectsExplanation` | Projects | Text "[explanation]" |
+| `projectsCsv` | Projects | Text "[csv]" |
+| `contactTitle` | Footer | Title "$ contact --me" |
+| `contactEmailButton` | Footer | Button "cat email.txt" |
+| `contactLinks` | Footer | Title "Links" |
+| `footerCopyright` | Footer | Copyright with {year} as placeholder |
+| `footerStatus` | Footer | Status "All systems operational" |
 
-### EJEMPLO DE PERSONALIZACIÓN
+### CUSTOMIZATION EXAMPLE
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
-**Español (líneas 100-102):**
+**Spanish (lines 100-102):**
 
 ```typescript
 es: {
   siteTitle: "Juan Pérez - Portfolio Tech",
-  siteDescription: "Desarrollador Full Stack especializado en React y Node.js",
+  siteDescription: "Full Stack Developer specialized in React and Node.js",
 
   heroTitle: "Juan Pérez",
   heroSubtitle: "Full Stack Developer",
-  heroDescription: "Desarrollo aplicaciones web modernas y escalables con más de 5 años de experiencia.<br><span class=\"terminal-info\">Especializado en React, Node.js y cloud computing</span>",
+  heroDescription: "I develop modern and scalable web applications with over 5 years of experience.<br><span class=\"terminal-info\">Specialized in React, Node.js and cloud computing</span>",
 ```
 
-**Inglés (líneas 139-141):**
+**English (lines 139-141):**
 
 ```typescript
 en: {
@@ -274,69 +273,69 @@ en: {
   heroDescription: "I build modern and scalable web applications with over 5 years of experience.<br><span class=\"terminal-info\">Specialized in React, Node.js and cloud computing</span>",
 ```
 
-**IMPORTANTE:** Los comentarios con `//` en el archivo son guías, NO afectan el funcionamiento.
+**IMPORTANT:** Comments with `//` in the file are guides, they do NOT affect functionality.
 
 ---
 
-## PERSONALIZACIÓN DE CONTENIDO
+## CONTENT CUSTOMIZATION
 
-### HERO SECTION (SECCIÓN PRINCIPAL)
+### HERO SECTION (MAIN SECTION)
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
-#### NOMBRE Y TÍTULO
+#### NAME AND TITLE
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
-**Español - Líneas 100-101:**
+**Spanish - Lines 100-101:**
 
 ```typescript
-heroTitle: "Tu Nombre",              // TU NOMBRE AQUÍ
-heroSubtitle: "Tu Título Profesional",  // TU TÍTULO AQUÍ
+heroTitle: "Your Name",              // YOUR NAME HERE
+heroSubtitle: "Your Professional Title",  // YOUR TITLE HERE
 ```
 
-**Inglés - Líneas 139-140:**
+**English - Lines 139-140:**
 
 ```typescript
 heroTitle: "Your Name",                  // YOUR NAME HERE
 heroSubtitle: "Your Professional Title", // YOUR TITLE HERE
 ```
 
-#### DESCRIPCIÓN
+#### DESCRIPTION
 
-**Archivo:** `src/i18n/translations.ts` - **Línea 102 (Español):**
-
-```typescript
-heroDescription: "Aquí va tu descripción profesional. Cuenta quién eres y qué haces.<br><span class=\"terminal-info\">Esta es una línea adicional de texto más pequeña</span>",
-```
-
-**Estructura de la descripción:**
-- Texto principal: Va antes del `<br>`
-- Texto secundario: Va dentro del `<span class="terminal-info">`
-
-**Ejemplo real:**
+**File:** `src/i18n/translations.ts` - **Line 102 (Spanish):**
 
 ```typescript
-heroDescription: "Desarrollador Full Stack con pasión por crear experiencias web excepcionales.<br><span class=\"terminal-info\">Transformo ideas en productos digitales funcionales y elegantes</span>",
+heroDescription: "Here goes your professional description. Tell who you are and what you do.<br><span class=\"terminal-info\">This is an additional line of smaller text</span>",
 ```
 
-### BOTÓN DEL TEMPLATE
+**Description structure:**
+- Main text: Goes before the `<br>`
+- Secondary text: Goes inside the `<span class=\"terminal-info\">`
 
-**Archivo:** `src/components/Hero.astro` - **Línea 142:**
+**Real example:**
+
+```typescript
+heroDescription: "Full Stack Developer with a passion for creating exceptional web experiences.<br><span class=\"terminal-info\">I transform ideas into functional and elegant digital products</span>",
+```
+
+### TEMPLATE BUTTON
+
+**File:** `src/components/Hero.astro` - **Line 142:**
 
 ```astro
 <a href="https://github.com/yourusername/your-template-repo" ...>
 ```
 
-CAMBIAR la URL por:
-- Tu repositorio de GitHub donde publiques el template
-- O eliminar esta línea completa si no quieres compartir el template
+CHANGE the URL to:
+- Your GitHub repository where you publish the template
+- Or delete this entire line if you don't want to share the template
 
 ### FOOTER
 
-#### REDES SOCIALES
+#### SOCIAL NETWORKS
 
-**Archivo:** `src/components/Footer.astro` - **Línea 82:**
+**File:** `src/components/Footer.astro` - **Line 82:**
 
 ```typescript
 const socialLinks = [
@@ -346,129 +345,129 @@ const socialLinks = [
 ];
 ```
 
-**Puedes:**
-- Cambiar las URLs
-- Añadir más redes sociales
-- Eliminar las que no uses
+**You can:**
+- Change the URLs
+- Add more social networks
+- Remove those you don't use
 
-**Ejemplo con más redes:**
+**Example with more networks:**
 
 ```typescript
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/tuusuario" },
-  { name: "LinkedIn", url: "https://linkedin.com/in/tuusuario" },
-  { name: "Twitter", url: "https://twitter.com/tuusuario" },
-  { name: "Instagram", url: "https://instagram.com/tuusuario" },
-  { name: "YouTube", url: "https://youtube.com/@tuusuario" }
+  { name: "GitHub", url: "https://github.com/yourusername" },
+  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername" },
+  { name: "Twitter", url: "https://twitter.com/yourusername" },
+  { name: "Instagram", url: "https://instagram.com/yourusername" },
+  { name: "YouTube", url: "https://youtube.com/@yourusername" }
 ];
 ```
 
-#### EMAIL (PROTECCIÓN ANTI-SPAM)
+#### EMAIL (ANTI-SPAM PROTECTION)
 
-El email está codificado en Base64 para evitar bots de spam.
+The email is encoded in Base64 to avoid spam bots.
 
-**Archivo:** `src/components/Footer.astro` - **Líneas 517-518:**
+**File:** `src/components/Footer.astro` - **Lines 517-518:**
 
 ```javascript
-const user = atob('eW91cnVzZXJuYW1l');    // Base64 de "yourusername"
-const domain = atob('ZXhhbXBsZS5jb20=');  // Base64 de "example.com"
-const email = user + '@' + domain;        // Resultado: yourusername@example.com
+const user = atob('eW91cnVzZXJuYW1l');    // Base64 of "yourusername"
+const domain = atob('ZXhhbXBsZS5jb20=');  // Base64 of "example.com"
+const email = user + '@' + domain;        // Result: yourusername@example.com
 ```
 
-**CÓMO CODIFICAR TU EMAIL:**
+**HOW TO ENCODE YOUR EMAIL:**
 
-1. Separa tu email en dos partes: `usuario@dominio.com`
-2. Codifica cada parte en Base64:
+1. Separate your email into two parts: `user@domain.com`
+2. Encode each part in Base64:
 
 ```bash
-# En terminal (Linux/Mac):
-echo -n "tuemail" | base64
-echo -n "tudominio.com" | base64
+# In terminal (Linux/Mac):
+echo -n "youremail" | base64
+echo -n "yourdomain.com" | base64
 
-# En terminal (Windows PowerShell):
-[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("tuemail"))
-[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("tudominio.com"))
+# In terminal (Windows PowerShell):
+[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("youremail"))
+[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("yourdomain.com"))
 ```
 
-3. Reemplaza los valores:
+3. Replace the values:
 
 ```javascript
-const user = atob('dHVlbWFpbA==');           // Base64 de "tuemail"
-const domain = atob('dHVkb21pbmlvLmNvbQ=='); // Base64 de "tudominio.com"
+const user = atob('eW91cmVtYWls');           // Base64 of "youremail"
+const domain = atob('eW91cmRvbWFpbi5jb20='); // Base64 of "yourdomain.com"
 ```
 
-**Herramienta online:** https://www.base64encode.org/
+**Online tool:** https://www.base64encode.org/
 
 #### COPYRIGHT
 
-**Archivo:** `src/i18n/translations.ts`
+**File:** `src/i18n/translations.ts`
 
-**Español - Línea 122:**
-
-```typescript
-footerCopyright: "© {year} Tu Nombre",
-```
-
-**Inglés - Línea 161:**
+**Spanish - Line 122:**
 
 ```typescript
 footerCopyright: "© {year} Your Name",
 ```
 
-El `{year}` se reemplaza automáticamente por el año actual.
+**English - Line 161:**
 
-### META TAGS Y SEO
+```typescript
+footerCopyright: "© {year} Your Name",
+```
 
-**Archivo:** `src/layouts/Layout.astro`
+The `{year}` is automatically replaced with the current year.
 
-#### DESCRIPCIÓN DEFAULT
+### META TAGS AND SEO
 
-**Archivo:** `src/layouts/Layout.astro` - **Línea 57:**
+**File:** `src/layouts/Layout.astro`
+
+#### DEFAULT DESCRIPTION
+
+**File:** `src/layouts/Layout.astro` - **Line 57:**
 
 ```typescript
 description = "Tech portfolio - Full stack developer",
 ```
 
-Cambia esto por tu descripción por defecto.
+Change this to your default description.
 
 #### OPEN GRAPH
 
-**Archivo:** `src/layouts/Layout.astro` - **Línea 183:**
+**File:** `src/layouts/Layout.astro` - **Line 183:**
 
 ```html
 <meta property="og:site_name" content="Your Portfolio" />
 ```
 
-Cambia "Your Portfolio" por el nombre de tu sitio.
+Change "Your Portfolio" to your site name.
 
 #### TWITTER
 
-**Archivo:** `src/layouts/Layout.astro` - **Línea 206:**
+**File:** `src/layouts/Layout.astro` - **Line 206:**
 
 ```html
 <meta name="twitter:creator" content="@yourusername" />
 ```
 
-Cambia `@yourusername` por tu usuario de Twitter/X.
+Change `@yourusername` to your Twitter/X username.
 
 #### JSON-LD (STRUCTURED DATA)
 
-**Archivo:** `src/layouts/Layout.astro` - **Líneas 256-276:**
+**File:** `src/layouts/Layout.astro` - **Lines 256-276:**
 
 ```javascript
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Your Name",           // CAMBIAR: Tu nombre (línea 259)
+  "name": "Your Name",           // CHANGE: Your name (line 259)
   "url": Astro.site?.toString(),
   "image": ogImage.toString(),
-  "sameAs": [                    // CAMBIAR: Tus redes sociales
+  "sameAs": [                    // CHANGE: Your social networks
     "https://github.com/yourusername",
     "https://twitter.com/yourusername"
   ],
-  "jobTitle": "Full Stack Developer",  // CAMBIAR: Tu título (línea 266)
+  "jobTitle": "Full Stack Developer",  // CHANGE: Your title (line 266)
   "description": description,
-  "knowsAbout": [                // CAMBIAR: Tus tecnologías (línea 268)
+  "knowsAbout": [                // CHANGE: Your technologies (line 268)
     "React",
     "Node.js",
     "Astro",
@@ -479,71 +478,71 @@ Cambia `@yourusername` por tu usuario de Twitter/X.
 }
 ```
 
-#### GOOGLE ANALYTICS (OPCIONAL)
+#### GOOGLE ANALYTICS (OPTIONAL)
 
-**Archivo:** `src/layouts/Layout.astro` - **Líneas 295-301:**
+**File:** `src/layouts/Layout.astro` - **Lines 295-301:**
 
-El código está comentado. Para activarlo:
+The code is commented out. To activate it:
 
-1. Obtén tu tracking ID de Google Analytics (formato: G-XXXXXXXXXX)
-2. Descomenta el código
-3. Reemplaza `G-XXXXXXXXXX` con tu ID
+1. Get your tracking ID from Google Analytics (format: G-XXXXXXXXXX)
+2. Uncomment the code
+3. Replace `G-XXXXXXXXXX` with your ID
 
 ```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TU-ID-AQUI"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-ID-HERE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-TU-ID-AQUI');
+  gtag('config', 'G-YOUR-ID-HERE');
 </script>
 ```
 
 ### FAVICON
 
-El favicon es el pequeño icono que aparece en la pestaña del navegador junto al título de tu sitio.
+The favicon is the small icon that appears in the browser tab next to your site title.
 
-#### ARCHIVOS DE FAVICON
+#### FAVICON FILES
 
-El template incluye dos formatos de favicon:
+The template includes two favicon formats:
 
-**Archivo:** `public/favicon.ico` - Formato tradicional ICO (32x32px)
-**Archivo:** `public/favicon.svg` - Formato vectorial SVG (escalable)
+**File:** `public/favicon.ico` - Traditional ICO format (32x32px)
+**File:** `public/favicon.svg` - Vector SVG format (scalable)
 
-#### CAMBIAR FAVICON ICO
+#### CHANGE FAVICON ICO
 
-**Archivo:** `public/favicon.ico`
+**File:** `public/favicon.ico`
 
-1. Crea un archivo PNG de 32x32 píxeles con tu logo/inicial
-2. Convierte a formato ICO usando:
-   - **Online:** https://favicon.io/ o https://www.favicon-generator.org/
-   - **Photoshop/GIMP:** Exportar como ICO
+1. Create a 32x32 pixel PNG file with your logo/initial
+2. Convert to ICO format using:
+   - **Online:** https://favicon.io/ or https://www.favicon-generator.org/
+   - **Photoshop/GIMP:** Export as ICO
    - **ImageMagick:**
    ```bash
-   convert mi-logo.png -resize 32x32 favicon.ico
+   convert my-logo.png -resize 32x32 favicon.ico
    ```
 
-3. Reemplaza el archivo `public/favicon.ico` con tu nuevo favicon
+3. Replace the `public/favicon.ico` file with your new favicon
 
-#### CAMBIAR FAVICON SVG
+#### CHANGE FAVICON SVG
 
-**Archivo:** `public/favicon.svg`
+**File:** `public/favicon.svg`
 
-El SVG permite favicons escalables y adaptables al tema (claro/oscuro).
+SVG allows scalable favicons that adapt to theme (light/dark).
 
-**Opción 1: SVG simple con inicial**
+**Option 1: Simple SVG with initial**
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Rectángulo de fondo -->
+  <!-- Background rectangle -->
   <rect width="100" height="100" fill="#000000"/>
-  <!-- Tu inicial en blanco -->
+  <!-- Your initial in white -->
   <text x="50" y="70" font-family="monospace" font-size="60"
         fill="#ffffff" text-anchor="middle">J</text>
 </svg>
 ```
 
-**Opción 2: SVG adaptable a tema claro/oscuro**
+**Option 2: SVG adaptable to light/dark theme**
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -560,64 +559,64 @@ El SVG permite favicons escalables y adaptables al tema (claro/oscuro).
 </svg>
 ```
 
-**Opción 3: Usar tu logo existente**
+**Option 3: Use your existing logo**
 
-Si tienes un logo en SVG, simplemente cópialo a `public/favicon.svg`.
+If you have a logo in SVG, simply copy it to `public/favicon.svg`.
 
-#### HERRAMIENTAS PARA CREAR FAVICONS
+#### TOOLS FOR CREATING FAVICONS
 
-| Herramienta | URL | Descripción |
-|-------------|-----|-------------|
-| Favicon.io | https://favicon.io/ | Genera desde texto, imagen o emoji |
-| RealFaviconGenerator | https://realfavicongenerator.net/ | Genera múltiples formatos |
-| Figma | https://www.figma.com/ | Diseña y exporta SVG personalizado |
-| Inkscape | https://inkscape.org/ | Editor SVG gratuito |
+| Tool | URL | Description |
+|------|-----|-------------|
+| Favicon.io | https://favicon.io/ | Generate from text, image or emoji |
+| RealFaviconGenerator | https://realfavicongenerator.net/ | Generate multiple formats |
+| Figma | https://www.figma.com/ | Design and export custom SVG |
+| Inkscape | https://inkscape.org/ | Free SVG editor |
 
-#### TAMAÑOS RECOMENDADOS
+#### RECOMMENDED SIZES
 
-| Formato | Tamaño | Uso |
-|---------|--------|-----|
-| favicon.ico | 32x32px | Navegadores legacy, favoritos |
-| favicon.svg | Vectorial | Navegadores modernos, escalable |
-| apple-touch-icon | 180x180px | iOS home screen (opcional) |
-| android-chrome | 192x192px | Android home screen (opcional) |
+| Format | Size | Use |
+|--------|------|-----|
+| favicon.ico | 32x32px | Legacy browsers, bookmarks |
+| favicon.svg | Vector | Modern browsers, scalable |
+| apple-touch-icon | 180x180px | iOS home screen (optional) |
+| android-chrome | 192x192px | Android home screen (optional) |
 
-#### AÑADIR APPLE TOUCH ICON (OPCIONAL)
+#### ADD APPLE TOUCH ICON (OPTIONAL)
 
-Si quieres soporte para cuando los usuarios añadan tu sitio a la pantalla de inicio en iOS:
+If you want support for when users add your site to the home screen on iOS:
 
-1. Crea una imagen PNG de 180x180px
-2. Guárdala como `public/apple-touch-icon.png`
-3. Añade en `src/layouts/Layout.astro` después de la línea 218 (después de los favicons):
+1. Create a 180x180px PNG image
+2. Save it as `public/apple-touch-icon.png`
+3. Add to `src/layouts/Layout.astro` after line 218 (after favicons):
 
 ```html
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 ```
 
-#### VERIFICAR FAVICON
+#### VERIFY FAVICON
 
-Después de cambiar el favicon:
+After changing the favicon:
 
-1. **Limpia caché del navegador:** Ctrl+Shift+R (Cmd+Shift+R en Mac)
-2. **Prueba en modo incógnito** para ver el nuevo favicon
-3. **Verifica en múltiples navegadores** (Chrome, Firefox, Safari)
-4. **Usa esta herramienta:** https://realfavicongenerator.net/favicon_checker
+1. **Clear browser cache:** Ctrl+Shift+R (Cmd+Shift+R on Mac)
+2. **Test in incognito mode** to see the new favicon
+3. **Check in multiple browsers** (Chrome, Firefox, Safari)
+4. **Use this tool:** https://realfavicongenerator.net/favicon_checker
 
-#### EJEMPLO COMPLETO DE CONFIGURACIÓN
+#### COMPLETE CONFIGURATION EXAMPLE
 
-**Estructura recomendada en `public/`:**
+**Recommended structure in `public/`:**
 
 ```
 public/
-├── favicon.ico          # 32x32 ICO (obligatorio)
-├── favicon.svg          # SVG escalable (obligatorio)
-├── apple-touch-icon.png # 180x180 PNG (opcional)
-└── android-chrome-192x192.png # 192x192 PNG (opcional)
+├── favicon.ico          # 32x32 ICO (required)
+├── favicon.svg          # Scalable SVG (required)
+├── apple-touch-icon.png # 180x180 PNG (optional)
+└── android-chrome-192x192.png # 192x192 PNG (optional)
 ```
 
-**Referencias en Layout.astro:**
+**References in Layout.astro:**
 
-El template ya incluye las referencias correctas en `src/layouts/Layout.astro` líneas 218-219:
+The template already includes the correct references in `src/layouts/Layout.astro` lines 218-219:
 
 ```html
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -626,213 +625,213 @@ El template ya incluye las referencias correctas en `src/layouts/Layout.astro` l
 
 ---
 
-## PROYECTOS
+## PROJECTS
 
-Esta es la sección más importante del template. Aquí defines todos tus proyectos.
+This is the most important section of the template. Here you define all your projects.
 
-**Archivo:** `src/data/projects-data.ts`
+**File:** `src/data/projects-data.ts`
 
-### ESTRUCTURA DE UN PROYECTO
+### PROJECT STRUCTURE
 
-Cada proyecto es un objeto JavaScript con la siguiente estructura:
+Each project is a JavaScript object with the following structure:
 
 ```typescript
 {
   title: {
-    es: "Título en Español",
-    en: "Title in English"
+    es: "Spanish Title",
+    en: "English Title"
   },
   description: {
-    es: "Descripción en español con <strong>HTML</strong> permitido",
-    en: "Description in English with <strong>HTML</strong> allowed"
+    es: "Spanish description with <strong>HTML</strong> allowed",
+    en: "English description with <strong>HTML</strong> allowed"
   },
-  explanation: {  // OPCIONAL
-    es: "Explicación extendida en español",
+  explanation: {  // OPTIONAL
+    es: "Extended explanation in Spanish",
     en: "Extended explanation in English"
   },
-  tech: ["Tecnología 1", "Tecnología 2", "Tecnología 3"],
-  link: "URL" o null,
-  demo: "URL" o null,
-  web: "URL" o null,
-  csv: "ruta" o null,
-  featured: true o false,
-  images: ["ruta1", "ruta2"] o null
+  tech: ["Technology 1", "Technology 2", "Technology 3"],
+  link: "URL" or null,
+  demo: "URL" or null,
+  web: "URL" or null,
+  csv: "path" or null,
+  featured: true or false,
+  images: ["path1", "path2"] or null
 }
 ```
 
-### TABLA DE PROPIEDADES
+### PROPERTIES TABLE
 
-| Propiedad | Tipo | Obligatorio | Descripción | Ejemplo |
-|-----------|------|-------------|-------------|---------|
-| `title` | Object | SÍ | Título del proyecto en ambos idiomas | `{es: "Mi App", en: "My App"}` |
-| `description` | Object | SÍ | Descripción breve (HTML permitido) | `{es: "<strong>App web</strong>...", en: "..."}` |
-| `explanation` | Object | NO | Descripción extendida para modal | `{es: "Detalles...", en: "Details..."}` |
-| `tech` | Array | SÍ | Lista de tecnologías/skills | `["React", "Node", "MongoDB"]` |
-| `link` | String/null | NO | URL del código (GitHub) | `"https://github.com/user/repo"` |
-| `demo` | String/null | NO | URL de demo en vivo | `"https://demo.miapp.com"` |
-| `web` | String/null | NO | URL del sitio web | `"https://www.miapp.com"` |
-| `csv` | String/null | NO | Ruta a archivo descargable | `"/assets/data/archivo.csv"` |
-| `featured` | Boolean | SÍ | Aparece como PINNED | `true` o `false` |
-| `images` | Array/null | NO | Rutas de imágenes para galería | `["/screenshots/proyecto/img1"]` |
+| Property | Type | Required | Description | Example |
+|----------|------|----------|-------------|---------|
+| `title` | Object | YES | Project title in both languages | `{es: "My App", en: "My App"}` |
+| `description` | Object | YES | Brief description (HTML allowed) | `{es: "<strong>Web app</strong>...", en: "..."}` |
+| `explanation` | Object | NO | Extended description for modal | `{es: "Details...", en: "Details..."}` |
+| `tech` | Array | YES | List of technologies/skills | `["React", "Node", "MongoDB"]` |
+| `link` | String/null | NO | Code URL (GitHub) | `"https://github.com/user/repo"` |
+| `demo` | String/null | NO | Live demo URL | `"https://demo.myapp.com"` |
+| `web` | String/null | NO | Website URL | `"https://www.myapp.com"` |
+| `csv` | String/null | NO | Path to downloadable file | `"/assets/data/file.csv"` |
+| `featured` | Boolean | YES | Appears as PINNED | `true` or `false` |
+| `images` | Array/null | NO | Image paths for gallery | `["/screenshots/project/img1"]` |
 
-### DESCRIPCIÓN DETALLADA DE PROPIEDADES
+### DETAILED PROPERTY DESCRIPTION
 
-#### TITLE (Título)
+#### TITLE
 
-Aparece como encabezado del proyecto.
+Appears as project header.
 
 ```typescript
 title: {
-  es: "Gestión de Inventario",
+  es: "Inventory Management",
   en: "Inventory Management"
 }
 ```
 
-#### DESCRIPTION (Descripción)
+#### DESCRIPTION
 
-Texto que aparece en la tarjeta del proyecto. Soporta HTML.
+Text that appears in the project card. Supports HTML.
 
-**Recomendaciones:**
-- Usa `<strong>` para destacar palabras clave
-- Usa `<br><br>` para separar párrafos
-- Máximo recomendado: 150-200 palabras
+**Recommendations:**
+- Use `<strong>` to highlight keywords
+- Use `<br><br>` to separate paragraphs
+- Maximum recommended: 150-200 words
 
 ```typescript
 description: {
-  es: "<strong>Sistema completo de gestión.</strong><br><br>Aplicación web para administrar inventarios en tiempo real. Incluye reportes, alertas de stock bajo y sincronización multi-tienda. <strong>Dashboard</strong>, <strong>Reportes PDF</strong>, <strong>API REST</strong>.",
+  es: "<strong>Complete management system.</strong><br><br>Web application to manage inventories in real time. Includes reports, low stock alerts and multi-store synchronization. <strong>Dashboard</strong>, <strong>PDF Reports</strong>, <strong>REST API</strong>.",
   en: "<strong>Complete management system.</strong><br><br>Web application for real-time inventory management. Includes reports, low stock alerts and multi-store synchronization. <strong>Dashboard</strong>, <strong>PDF Reports</strong>, <strong>REST API</strong>."
 }
 ```
 
-#### EXPLANATION (Explicación Extendida)
+#### EXPLANATION (Extended Explanation)
 
-OPCIONAL. Descripción detallada que aparece en un modal al hacer clic en `[explicación]`.
+OPTIONAL. Detailed description that appears in a modal when clicking `[explanation]`.
 
-Úsalo para:
-- Proyectos complejos que necesitan más contexto
-- Detallar la arquitectura
-- Explicar el proceso de desarrollo
-- Mostrar métricas de rendimiento
+Use it for:
+- Complex projects that need more context
+- Detailing the architecture
+- Explaining the development process
+- Showing performance metrics
 
 ```typescript
 explanation: {
-  es: "Sistema desarrollado para una cadena de 15 tiendas.<br><br><strong>Problema:</strong><br>• Control manual de inventario<br>• Errores frecuentes en conteo<br>• Sin visibilidad en tiempo real<br><br><strong>Solución:</strong><br>• Sistema centralizado cloud<br>• Sincronización automática<br>• Alertas inteligentes<br><br><strong>Resultados:</strong><br>• 95% reducción de errores<br>• Tiempo de gestión -70%<br>• ROI en 4 meses",
+  es: "System developed for a 15-store chain.<br><br><strong>Problem:</strong><br>• Manual inventory control<br>• Frequent counting errors<br>• No real-time visibility<br><br><strong>Solution:</strong><br>• Centralized cloud system<br>• Automatic synchronization<br>• Smart alerts<br><br><strong>Results:</strong><br>• 95% error reduction<br>• -70% management time<br>• ROI in 4 months",
   en: "System developed for a 15-store chain.<br><br><strong>Problem:</strong><br>• Manual inventory control<br>• Frequent counting errors<br>• No real-time visibility<br><br><strong>Solution:</strong><br>• Centralized cloud system<br>• Automatic synchronization<br>• Smart alerts<br><br><strong>Results:</strong><br>• 95% error reduction<br>• -70% management time<br>• ROI in 4 months"
 }
 ```
 
-#### TECH (Tecnologías)
+#### TECH (Technologies)
 
-Array de strings con las tecnologías usadas. Se muestran como etiquetas y permiten filtrado.
+Array of strings with technologies used. Displayed as tags and allow filtering.
 
 ```typescript
 tech: ["React", "Node.js", "PostgreSQL", "AWS", "Docker", "Redis"]
 ```
 
-**Recomendaciones:**
-- Usa nombres oficiales de tecnologías
-- Ordena de más a menos importante
-- Máximo recomendado: 6-8 tecnologías
-- Para skills no técnicas: `["Project Management", "UX Design"]`
+**Recommendations:**
+- Use official technology names
+- Order from most to least important
+- Maximum recommended: 6-8 technologies
+- For non-technical skills: `["Project Management", "UX Design"]`
 
-#### LINK (Código fuente)
+#### LINK (Source code)
 
-URL al repositorio de GitHub (o similar). Si es `null`, no aparece el botón `[code]`.
-
-```typescript
-link: "https://github.com/usuario/mi-proyecto",
-// o
-link: null,  // No muestra botón [code]
-```
-
-#### DEMO (Demostración en vivo)
-
-URL a una demo funcional del proyecto. Si es `null`, no aparece el botón `[demo]`.
+URL to GitHub repository (or similar). If `null`, the `[code]` button won't appear.
 
 ```typescript
-demo: "https://mi-proyecto-demo.vercel.app",
-// o
-demo: null,  // No muestra botón [demo]
+link: "https://github.com/user/my-project",
+// or
+link: null,  // Doesn't show [code] button
 ```
 
-#### WEB (Sitio web)
+#### DEMO (Live demonstration)
 
-URL al sitio web oficial del proyecto. Si es `null`, no aparece el botón `[web]`.
+URL to a functional demo of the project. If `null`, the `[demo]` button won't appear.
 
 ```typescript
-web: "https://www.mi-proyecto.com",
-// o
-web: null,  // No muestra botón [web]
+demo: "https://my-project-demo.vercel.app",
+// or
+demo: null,  // Doesn't show [demo] button
 ```
 
-#### CSV (Archivo descargable)
+#### WEB (Website)
 
-Ruta a un archivo CSV (o cualquier archivo descargable). Si es `null`, no aparece el botón `[csv]`.
+URL to the project's official website. If `null`, the `[web]` button won't appear.
 
 ```typescript
-csv: "/assets/datos/metricas.csv",
-// o
-csv: null,  // No muestra botón [csv]
+web: "https://www.my-project.com",
+// or
+web: null,  // Doesn't show [web] button
 ```
 
-El archivo debe estar en `public/assets/` para ser accesible.
+#### CSV (Downloadable file)
 
-#### FEATURED (Destacado)
-
-Boolean que determina si el proyecto aparece con badge "PINNED" al inicio.
+Path to a CSV file (or any downloadable file). If `null`, the `[csv]` button won't appear.
 
 ```typescript
-featured: true,   // Aparece primero con badge PINNED
-// o
-featured: false,  // Aparece en orden normal
+csv: "/assets/data/metrics.csv",
+// or
+csv: null,  // Doesn't show [csv] button
 ```
 
-Los proyectos con `featured: true` se muestran antes que los demás.
+The file must be in `public/assets/` to be accessible.
 
-#### IMAGES (Galería de imágenes)
+#### FEATURED (Featured)
 
-Array de rutas a imágenes o `null`. Si tiene imágenes, aparece botón `[images]` que abre una galería.
+Boolean that determines if the project appears with "PINNED" badge at the beginning.
+
+```typescript
+featured: true,   // Appears first with PINNED badge
+// or
+featured: false,  // Appears in normal order
+```
+
+Projects with `featured: true` are shown before others.
+
+#### IMAGES (Image gallery)
+
+Array of image paths or `null`. If it has images, an `[images]` button appears that opens a gallery.
 
 ```typescript
 images: [
-  "/screenshots/mi-proyecto/captura-01",
-  "/screenshots/mi-proyecto/captura-02",
-  "/screenshots/mi-proyecto/captura-03"
+  "/screenshots/my-project/capture-01",
+  "/screenshots/my-project/capture-02",
+  "/screenshots/my-project/capture-03"
 ],
-// o
-images: null,  // No muestra botón [images]
+// or
+images: null,  // Doesn't show [images] button
 ```
 
-**Nota:** Las extensiones (.png, .jpg, etc.) se añaden automáticamente.
+**Note:** Extensions (.png, .jpg, etc.) are added automatically.
 
-### BOTONES DISPONIBLES
+### AVAILABLE BUTTONS
 
-Cada proyecto puede mostrar hasta 6 tipos de botones:
+Each project can show up to 6 types of buttons:
 
-| Botón | Propiedad requerida | Descripción |
-|-------|---------------------|-------------|
-| `[demo]` | `demo: "URL"` | Abre demo en vivo en nueva pestaña |
-| `[code]` | `link: "URL"` | Abre repositorio GitHub en nueva pestaña |
-| `[web]` | `web: "URL"` | Abre sitio web en nueva pestaña |
-| `[images]` | `images: [...]` | Abre galería modal de imágenes |
-| `[explicación]` | `explanation: {...}` | Abre modal con descripción extendida |
-| `[csv]` | `csv: "ruta"` | Descarga archivo CSV |
+| Button | Required property | Description |
+|--------|------------------|-------------|
+| `[demo]` | `demo: "URL"` | Opens live demo in new tab |
+| `[code]` | `link: "URL"` | Opens GitHub repository in new tab |
+| `[web]` | `web: "URL"` | Opens website in new tab |
+| `[images]` | `images: [...]` | Opens image gallery modal |
+| `[explanation]` | `explanation: {...}` | Opens modal with extended description |
+| `[csv]` | `csv: "path"` | Downloads CSV file |
 
-### TIPOS DE PROYECTOS (EJEMPLOS)
+### PROJECT TYPES (EXAMPLES)
 
-El archivo `src/data/projects-data.ts` incluye 4 tipos de proyecto de ejemplo:
+The `src/data/projects-data.ts` file includes 4 example project types:
 
-#### TIPO 1: PROYECTO COMPLETO
+#### TYPE 1: COMPLETE PROJECT
 
-**Archivo:** `src/data/projects-data.ts` - **Líneas 144-183**
+**File:** `src/data/projects-data.ts` - **Lines 144-183**
 
-Muestra TODAS las opciones disponibles:
+Shows ALL available options:
 
 ```typescript
 {
-  title: { es: "Proyecto Completo Ejemplo", en: "Complete Example Project" },
+  title: { es: "Complete Example Project", en: "Complete Example Project" },
   description: { es: "...", en: "..." },
-  explanation: { es: "...", en: "..." },  // ✓ Tiene explicación
+  explanation: { es: "...", en: "..." },  // ✓ Has explanation
   tech: ["Skill 1", "Skill 2", "Skill 3", "Skill 4"],
   link: "https://github.com/yourusername/repo-name",      // ✓ [code]
   demo: "https://demo.yourproject.com",                   // ✓ [demo]
@@ -843,146 +842,146 @@ Muestra TODAS las opciones disponibles:
 }
 ```
 
-Muestra: `[demo] [code] [web] [images] [explicación] [csv]` + badge PINNED
+Shows: `[demo] [code] [web] [images] [explanation] [csv]` + PINNED badge
 
-#### TIPO 2: PROYECTO DESTACADO
+#### TYPE 2: FEATURED PROJECT
 
-**Archivo:** `src/data/projects-data.ts` - **Líneas 184-213**
+**File:** `src/data/projects-data.ts` - **Lines 184-213**
 
-Solo algunas opciones:
+Only some options:
 
 ```typescript
 {
-  title: { es: "Proyecto Destacado", en: "Featured Project" },
+  title: { es: "Featured Project", en: "Featured Project" },
   description: { es: "...", en: "..." },
   tech: ["Skill 1", "Skill 2", "Skill 3"],
   link: "https://github.com/yourusername/another-repo",  // ✓ [code]
-  demo: null,                                             // ✗ Sin demo
+  demo: null,                                             // ✗ No demo
   web: "https://www.anotherproject.com",                 // ✓ [web]
-  csv: null,                                              // ✗ Sin CSV
+  csv: null,                                              // ✗ No CSV
   featured: true,                                         // ✓ PINNED
-  images: null                                            // ✗ Sin galería
+  images: null                                            // ✗ No gallery
 }
 ```
 
-Muestra: `[code] [web]` + badge PINNED
+Shows: `[code] [web]` + PINNED badge
 
-#### TIPO 3: PROYECTO REGULAR
+#### TYPE 3: REGULAR PROJECT
 
-**Archivo:** `src/data/projects-data.ts` - **Líneas 214-242**
+**File:** `src/data/projects-data.ts` - **Lines 214-242**
 
-Proyecto básico sin destacar:
+Basic project without featuring:
 
 ```typescript
 {
-  title: { es: "Proyecto Regular", en: "Regular Project" },
+  title: { es: "Regular Project", en: "Regular Project" },
   description: { es: "...", en: "..." },
   tech: ["Skill A", "Skill B"],
   link: "https://github.com/yourusername/project-repo",  // ✓ [code]
   demo: "https://project-demo.com",                      // ✓ [demo]
-  web: null,                                              // ✗ Sin web
-  csv: null,                                              // ✗ Sin CSV
-  featured: false,                                        // ✗ Sin PINNED
-  images: null                                            // ✗ Sin galería
+  web: null,                                              // ✗ No web
+  csv: null,                                              // ✗ No CSV
+  featured: false,                                        // ✗ No PINNED
+  images: null                                            // ✗ No gallery
 }
 ```
 
-Muestra: `[demo] [code]`
+Shows: `[demo] [code]`
 
-#### TIPO 4: PROYECTO SIMPLE
+#### TYPE 4: SIMPLE PROJECT
 
-**Archivo:** `src/data/projects-data.ts` - **Líneas 243-271**
+**File:** `src/data/projects-data.ts` - **Lines 243-271**
 
-Mínimo necesario:
+Minimum required:
 
 ```typescript
 {
-  title: { es: "Proyecto Simple", en: "Simple Project" },
+  title: { es: "Simple Project", en: "Simple Project" },
   description: { es: "...", en: "..." },
   tech: ["Skill X", "Skill Y", "Skill Z"],
   link: "https://github.com/yourusername/simple-project", // ✓ [code]
-  demo: null,                                              // ✗ Todo lo demás null
+  demo: null,                                              // ✗ Everything else null
   web: null,
   csv: null,
-  featured: false,                                         // ✗ Sin PINNED
+  featured: false,                                         // ✗ No PINNED
   images: null
 }
 ```
 
-Muestra: `[code]` solamente
+Shows: `[code]` only
 
-### AÑADIR UN NUEVO PROYECTO
+### ADD A NEW PROJECT
 
-**Archivo:** `src/data/projects-data.ts`
+**File:** `src/data/projects-data.ts`
 
-1. Abre el archivo `src/data/projects-data.ts`
-2. Localiza el array `projectsData` (línea 142)
-3. Añade tu proyecto al final, ANTES del cierre `];`
+1. Open the file `src/data/projects-data.ts`
+2. Locate the `projectsData` array (line 142)
+3. Add your project at the end, BEFORE the closing `];`
 
-**Ejemplo:**
+**Example:**
 
 ```typescript
 export const projectsData: Project[] = [
-  // ... proyectos existentes ...
+  // ... existing projects ...
 
-  // TU NUEVO PROYECTO AQUÍ
+  // YOUR NEW PROJECT HERE
   {
     title: {
-      es: "Mi Nueva App",
+      es: "My New App",
       en: "My New App"
     },
     description: {
-      es: "<strong>Aplicación móvil para fitness.</strong><br><br>App que ayuda a usuarios a crear rutinas personalizadas de ejercicio. <strong>Tracking</strong>, <strong>Estadísticas</strong>, <strong>Recordatorios</strong>.",
+      es: "<strong>Mobile fitness application.</strong><br><br>App that helps users create personalized exercise routines. <strong>Tracking</strong>, <strong>Statistics</strong>, <strong>Reminders</strong>.",
       en: "<strong>Mobile fitness application.</strong><br><br>App that helps users create personalized exercise routines. <strong>Tracking</strong>, <strong>Statistics</strong>, <strong>Reminders</strong>."
     },
     tech: ["React Native", "Firebase", "Redux"],
-    link: "https://github.com/miusuario/fitness-app",
+    link: "https://github.com/myuser/fitness-app",
     demo: "https://fitness-app-demo.com",
     web: null,
     csv: null,
     featured: true,
     images: null
   }
-]; // ← Cierre del array
+]; // ← Array closing
 ```
 
-### ELIMINAR UN PROYECTO
+### DELETE A PROJECT
 
-**Archivo:** `src/data/projects-data.ts`
+**File:** `src/data/projects-data.ts`
 
-1. Abre el archivo `src/data/projects-data.ts`
-2. Localiza el proyecto a eliminar
-3. Elimina TODO el objeto, desde `{` hasta `},`
+1. Open the file `src/data/projects-data.ts`
+2. Locate the project to delete
+3. Delete the ENTIRE object, from `{` to `},`
 
-**Antes:**
+**Before:**
 
 ```typescript
 export const projectsData: Project[] = [
   {
-    title: { es: "Proyecto 1", en: "Project 1" },
+    title: { es: "Project 1", en: "Project 1" },
     // ...
   },
-  { // ← ELIMINAR DESDE AQUÍ
-    title: { es: "Proyecto a Borrar", en: "Project to Delete" },
+  { // ← DELETE FROM HERE
+    title: { es: "Project to Delete", en: "Project to Delete" },
     // ...
-  }, // ← HASTA AQUÍ (incluye la coma)
+  }, // ← TO HERE (include comma)
   {
-    title: { es: "Proyecto 3", en: "Project 3" },
+    title: { es: "Project 3", en: "Project 3" },
     // ...
   }
 ];
 ```
 
-**Después:**
+**After:**
 
 ```typescript
 export const projectsData: Project[] = [
   {
-    title: { es: "Proyecto 1", en: "Project 1" },
+    title: { es: "Project 1", en: "Project 1" },
     // ...
   },
   {
-    title: { es: "Proyecto 3", en: "Project 3" },
+    title: { es: "Project 3", en: "Project 3" },
     // ...
   }
 ];
@@ -990,114 +989,114 @@ export const projectsData: Project[] = [
 
 ---
 
-## IMÁGENES Y THUMBNAILS
+## IMAGES AND THUMBNAILS
 
-### FORMATOS SOPORTADOS
+### SUPPORTED FORMATS
 
-El template soporta los siguientes formatos de imagen:
+The template supports the following image formats:
 
-| Formato | Extensión | Uso recomendado |
-|---------|-----------|-----------------|
-| PNG | `.png` | Screenshots con transparencia, logos |
-| JPG/JPEG | `.jpg`, `.jpeg` | Fotografías, capturas de pantalla |
-| WebP | `.webp` | Formato moderno, mejor compresión |
-| GIF | `.gif` | Animaciones (no recomendado para screenshots) |
-| SVG | `.svg` | Logos, iconos vectoriales |
+| Format | Extension | Recommended use |
+|--------|-----------|-----------------|
+| PNG | `.png` | Screenshots with transparency, logos |
+| JPG/JPEG | `.jpg`, `.jpeg` | Photographs, screenshots |
+| WebP | `.webp` | Modern format, better compression |
+| GIF | `.gif` | Animations (not recommended for screenshots) |
+| SVG | `.svg` | Vector logos, icons |
 
-**Recomendación:** Usa WebP para mejor rendimiento, PNG para calidad máxima.
+**Recommendation:** Use WebP for better performance, PNG for maximum quality.
 
-### ESTRUCTURA DE CARPETAS
+### FOLDER STRUCTURE
 
 ```
 public/
-├── screenshots/           # Imágenes full-size de proyectos
-│   ├── proyecto-1/
+├── screenshots/           # Full-size project images
+│   ├── project-1/
 │   │   ├── screenshot-01.png
 │   │   ├── screenshot-02.png
 │   │   └── screenshot-03.png
-│   └── proyecto-2/
+│   └── project-2/
 │       └── screenshot-01.png
-├── thumbnails/           # Miniaturas (generadas manualmente)
+├── thumbnails/           # Thumbnails (manually generated)
 │   └── screenshots/
-│       ├── proyecto-1/
+│       ├── project-1/
 │       │   ├── screenshot-01_thumb.webp
 │       │   ├── screenshot-02_thumb.webp
 │       │   └── screenshot-03_thumb.webp
-│       └── proyecto-2/
+│       └── project-2/
 │           └── screenshot-01_thumb.webp
-└── assets/              # Otros archivos
+└── assets/              # Other files
     └── example-data/
         └── sample-data.csv
 ```
 
-### AÑADIR SCREENSHOTS DE UN PROYECTO
+### ADD PROJECT SCREENSHOTS
 
-#### PASO 1: CREAR CARPETA
+#### STEP 1: CREATE FOLDER
 
-Dentro de `public/screenshots/`, crea una carpeta con el nombre de tu proyecto (usa minúsculas y guiones):
+Inside `public/screenshots/`, create a folder with your project name (use lowercase and hyphens):
 
 ```bash
-public/screenshots/mi-super-app/
+public/screenshots/my-super-app/
 ```
 
-#### PASO 2: AÑADIR IMÁGENES
+#### STEP 2: ADD IMAGES
 
-Copia tus screenshots a la carpeta, nombrándolas secuencialmente:
+Copy your screenshots to the folder, naming them sequentially:
 
 ```
-mi-super-app/
+my-super-app/
 ├── screenshot-01.png
 ├── screenshot-02.png
 ├── screenshot-03.png
 └── screenshot-04.png
 ```
 
-**Especificaciones recomendadas:**
-- Resolución: 1920x1080 o similar (16:9)
-- Peso máximo: 500KB por imagen
-- Formato: PNG o WebP
-- Nombres: `screenshot-01`, `screenshot-02`, etc. (sin extensión en el código)
+**Recommended specifications:**
+- Resolution: 1920x1080 or similar (16:9)
+- Maximum weight: 500KB per image
+- Format: PNG or WebP
+- Names: `screenshot-01`, `screenshot-02`, etc. (no extension in code)
 
-#### PASO 3: REFERENCIAR EN PROYECTO
+#### STEP 3: REFERENCE IN PROJECT
 
-**Archivo:** `src/data/projects-data.ts`
+**File:** `src/data/projects-data.ts`
 
-Añade las rutas a tu proyecto:
+Add the paths to your project:
 
 ```typescript
 {
-  title: { es: "Mi Super App", en: "My Super App" },
-  // ... otras propiedades ...
+  title: { es: "My Super App", en: "My Super App" },
+  // ... other properties ...
   images: [
-    "/screenshots/mi-super-app/screenshot-01",
-    "/screenshots/mi-super-app/screenshot-02",
-    "/screenshots/mi-super-app/screenshot-03",
-    "/screenshots/mi-super-app/screenshot-04"
+    "/screenshots/my-super-app/screenshot-01",
+    "/screenshots/my-super-app/screenshot-02",
+    "/screenshots/my-super-app/screenshot-03",
+    "/screenshots/my-super-app/screenshot-04"
   ]
 }
 ```
 
-**NOTA:** NO incluyas la extensión (.png, .jpg, etc.) en la ruta. El sistema la añade automáticamente.
+**NOTE:** DO NOT include the extension (.png, .jpg, etc.) in the path. The system adds it automatically.
 
-### CREAR THUMBNAILS (MINIATURAS)
+### CREATE THUMBNAILS
 
-Los thumbnails son versiones pequeñas de las imágenes que se muestran en la galería para carga más rápida.
+Thumbnails are small versions of images shown in the gallery for faster loading.
 
-#### OPCIÓN 1: HERRAMIENTAS ONLINE
+#### OPTION 1: ONLINE TOOLS
 
-Usa servicios como:
+Use services like:
 - TinyPNG: https://tinypng.com/
 - Squoosh: https://squoosh.app/
 - ImageOptim (Mac): https://imageoptim.com/
 
-**Configuración recomendada:**
-- Ancho: 300px
-- Calidad: 70-80%
-- Formato: WebP
+**Recommended configuration:**
+- Width: 300px
+- Quality: 70-80%
+- Format: WebP
 
-#### OPCIÓN 2: COMANDO (Linux/Mac)
+#### OPTION 2: COMMAND (Linux/Mac)
 
-Instala ImageMagick:
+Install ImageMagick:
 
 ```bash
 # Mac
@@ -1107,21 +1106,21 @@ brew install imagemagick
 sudo apt-get install imagemagick
 ```
 
-Crea thumbnails automáticamente:
+Create thumbnails automatically:
 
 ```bash
-# Navega a la carpeta del proyecto
-cd public/screenshots/mi-super-app/
+# Navigate to project folder
+cd public/screenshots/my-super-app/
 
-# Crea thumbnails
+# Create thumbnails
 for img in *.png; do
-  convert "$img" -resize 300x -quality 80 -format webp "../../../public/thumbnails/screenshots/mi-super-app/${img%.png}_thumb.webp"
+  convert "$img" -resize 300x -quality 80 -format webp "../../../public/thumbnails/screenshots/my-super-app/${img%.png}_thumb.webp"
 done
 ```
 
-#### OPCIÓN 3: SCRIPT NODE.JS
+#### OPTION 3: NODE.JS SCRIPT
 
-Crea un archivo `generate-thumbnails.js` en la raíz:
+Create a `generate-thumbnails.js` file in the root:
 
 ```javascript
 // generate-thumbnails.js
@@ -1129,16 +1128,16 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const projectName = 'mi-super-app'; // CAMBIAR
+const projectName = 'my-super-app'; // CHANGE
 const inputDir = `public/screenshots/${projectName}`;
 const outputDir = `public/thumbnails/screenshots/${projectName}`;
 
-// Crear directorio si no existe
+// Create directory if it doesn't exist
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Procesar imágenes
+// Process images
 fs.readdirSync(inputDir).forEach(file => {
   if (file.match(/\.(jpg|jpeg|png)$/i)) {
     const input = path.join(inputDir, file);
@@ -1154,98 +1153,98 @@ fs.readdirSync(inputDir).forEach(file => {
 });
 ```
 
-Instala dependencia y ejecuta:
+Install dependency and run:
 
 ```bash
 npm install sharp
 node generate-thumbnails.js
 ```
 
-### ESTRUCTURA FINAL
+### FINAL STRUCTURE
 
-Después de añadir screenshots y thumbnails, deberías tener:
+After adding screenshots and thumbnails, you should have:
 
 ```
 public/
 ├── screenshots/
-│   └── mi-super-app/
-│       ├── screenshot-01.png   (imagen original)
+│   └── my-super-app/
+│       ├── screenshot-01.png   (original image)
 │       ├── screenshot-02.png
 │       └── screenshot-03.png
 └── thumbnails/
     └── screenshots/
-        └── mi-super-app/
-            ├── screenshot-01_thumb.webp   (miniatura)
+        └── my-super-app/
+            ├── screenshot-01_thumb.webp   (thumbnail)
             ├── screenshot-02_thumb.webp
             └── screenshot-03_thumb.webp
 ```
 
-### OPTIMIZACIÓN DE IMÁGENES
+### IMAGE OPTIMIZATION
 
-**Antes de subir imágenes, optimízalas:**
+**Before uploading images, optimize them:**
 
-1. **Reducir resolución** si es mayor a 1920x1080
-2. **Comprimir** usando herramientas como TinyPNG
-3. **Convertir a WebP** para mejor rendimiento
-4. **Eliminar metadata** EXIF innecesaria
+1. **Reduce resolution** if greater than 1920x1080
+2. **Compress** using tools like TinyPNG
+3. **Convert to WebP** for better performance
+4. **Remove metadata** unnecessary EXIF
 
-**Tamaños recomendados:**
+**Recommended sizes:**
 
-| Tipo | Resolución | Peso máximo |
-|------|------------|-------------|
-| Screenshot full | 1920x1080 | 500 KB |
-| Thumbnail | 300px ancho | 50 KB |
+| Type | Resolution | Maximum weight |
+|------|------------|----------------|
+| Full screenshot | 1920x1080 | 500 KB |
+| Thumbnail | 300px width | 50 KB |
 | OG Image | 1200x630 | 300 KB |
 | Favicon | 32x32 | 10 KB |
 
 ---
 
-## SISTEMA DE SKILLS
+## SKILLS SYSTEM
 
-Las skills (tecnologías) se extraen automáticamente de los proyectos y permiten filtrado.
+Skills (technologies) are automatically extracted from projects and allow filtering.
 
-### CÓMO FUNCIONAN
+### HOW THEY WORK
 
-1. El sistema lee todos los arrays `tech` de tus proyectos
-2. Extrae skills únicas
-3. Las muestra como botones de filtro
-4. Al hacer clic, filtra proyectos que usan esa skill
+1. The system reads all `tech` arrays from your projects
+2. Extracts unique skills
+3. Shows them as filter buttons
+4. When clicked, filters projects that use that skill
 
-### AÑADIR SKILLS A UN PROYECTO
+### ADD SKILLS TO A PROJECT
 
-**Archivo:** `src/data/projects-data.ts`
+**File:** `src/data/projects-data.ts`
 
 ```typescript
 {
-  title: { es: "Mi Proyecto", en: "My Project" },
+  title: { es: "My Project", en: "My Project" },
   tech: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
-  // ... resto de propiedades
+  // ... other properties
 }
 ```
 
-### BUENAS PRÁCTICAS
+### BEST PRACTICES
 
-1. **Usa nombres estándar:**
+1. **Use standard names:**
    - ✓ "React"
-   - ✗ "react.js" o "React.js"
+   - ✗ "react.js" or "React.js"
 
-2. **Sé consistente:**
-   - Si usas "Node.js" en un proyecto, úsalo así en TODOS
+2. **Be consistent:**
+   - If you use "Node.js" in one project, use it the same way in ALL
 
-3. **Ordena por importancia:**
+3. **Order by importance:**
    ```typescript
    tech: ["React", "TypeScript", "Node.js", "PostgreSQL"]
-   // Tecnología principal primero
+   // Main technology first
    ```
 
-4. **No excedas 8 skills por proyecto:**
-   - Demasiadas skills diluyen el mensaje
+4. **Don't exceed 8 skills per project:**
+   - Too many skills dilute the message
 
-5. **Usa mayúsculas correctamente:**
+5. **Use correct capitalization:**
    - ✓ "JavaScript", "TypeScript", "MongoDB"
    - ✗ "javascript", "typescript", "mongodb"
 
-### SKILLS RECOMENDADAS POR CATEGORÍA
+### RECOMMENDED SKILLS BY CATEGORY
 
 **Frontend:**
 - React, Vue.js, Angular, Svelte
@@ -1260,7 +1259,7 @@ Las skills (tecnologías) se extraen automáticamente de los proyectos y permite
 - PHP, Laravel
 - Go, Rust
 
-**Bases de datos:**
+**Databases:**
 - PostgreSQL, MySQL, MongoDB
 - Redis, Supabase, Firebase
 - Prisma, TypeORM
@@ -1275,69 +1274,69 @@ Las skills (tecnologías) se extraen automáticamente de los proyectos y permite
 - Swift, Kotlin
 - Expo
 
-### PERSONALIZAR TEXTO DEL FILTRO
+### CUSTOMIZE FILTER TEXT
 
-**Archivo:** `src/components/Projects.astro`
+**File:** `src/components/Projects.astro`
 
-Busca la línea que contiene "ls -C technologies/":
+Find the line containing "ls -C technologies/":
 
 ```astro
 <span class="command" data-astro-cid-amng4zvp>ls -C technologies/</span>
 ```
 
-Puedes cambiar el texto del comando que aparece en el filtro.
+You can change the command text that appears in the filter.
 
 ---
 
-## COMPONENTES
+## COMPONENTS
 
-El template está dividido en componentes reutilizables.
+The template is divided into reusable components.
 
-### LISTA DE COMPONENTES
+### COMPONENT LIST
 
-| Componente | Archivo | Descripción |
-|------------|---------|-------------|
-| Layout | `src/layouts/Layout.astro` | Layout principal con meta tags |
-| Hero | `src/components/Hero.astro` | Sección principal con nombre y descripción |
-| Projects | `src/components/Projects.astro` | Galería de proyectos con filtros |
-| Footer | `src/components/Footer.astro` | Pie de página con contacto y redes |
-| ThemeToggle | `src/components/ThemeToggle.astro` | Botón cambio modo claro/oscuro |
-| LanguageSwitcher | `src/components/LanguageSwitcher.astro` | Selector de idioma ES/EN |
-| ImageGallery | `src/components/ImageGallery.astro` | Modal de galería de imágenes |
+| Component | File | Description |
+|-----------|------|-------------|
+| Layout | `src/layouts/Layout.astro` | Main layout with meta tags |
+| Hero | `src/components/Hero.astro` | Main section with name and description |
+| Projects | `src/components/Projects.astro` | Project gallery with filters |
+| Footer | `src/components/Footer.astro` | Footer with contact and social networks |
+| ThemeToggle | `src/components/ThemeToggle.astro` | Light/dark mode toggle button |
+| LanguageSwitcher | `src/components/LanguageSwitcher.astro` | ES/EN language selector |
+| ImageGallery | `src/components/ImageGallery.astro` | Image gallery modal |
 
 ### LAYOUT
 
-**Archivo:** `src/layouts/Layout.astro`
+**File:** `src/layouts/Layout.astro`
 
-Contiene:
+Contains:
 - Meta tags (SEO, Open Graph, Twitter)
-- Links de idiomas alternos
-- Estructura HTML base
-- Importación de estilos globales
-- Scripts de Google Analytics (opcional)
-- JSON-LD para datos estructurados
+- Alternate language links
+- Base HTML structure
+- Global styles import
+- Google Analytics scripts (optional)
+- JSON-LD for structured data
 
-**No necesitas modificar este archivo** a menos que quieras cambiar meta tags avanzados.
+**You don't need to modify this file** unless you want to change advanced meta tags.
 
 ### HERO COMPONENT
 
-**Archivo:** `src/components/Hero.astro`
+**File:** `src/components/Hero.astro`
 
-Estructura visual de la sección principal. Las traducciones se obtienen de `src/i18n/translations.ts`.
+Visual structure of the main section. Translations are obtained from `src/i18n/translations.ts`.
 
-**Líneas importantes:**
+**Important lines:**
 
-- **Archivo:** `src/components/Hero.astro` - **Línea 142:** URL del botón "git clone template"
+- **File:** `src/components/Hero.astro` - **Line 142:** URL of the "git clone template" button
 
-**Estilos modificables:**
+**Modifiable styles:**
 
 ```css
-/* Altura mínima del hero */
+/* Hero minimum height */
 .hero {
-  min-height: 90vh;  /* Cambiar si quieres más/menos altura */
+  min-height: 90vh;  /* Change if you want more/less height */
 }
 
-/* Velocidad del cursor parpadeante */
+/* Blinking cursor speed */
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -1346,156 +1345,156 @@ Estructura visual de la sección principal. Las traducciones se obtienen de `src
 
 ### PROJECTS COMPONENT
 
-**Archivo:** `src/components/Projects.astro`
+**File:** `src/components/Projects.astro`
 
-Componente más complejo. Gestiona:
-- Lectura de proyectos desde `projects-data.ts`
-- Filtrado por tecnologías
-- Renderizado de tarjetas
-- Modales de galería
-- Modales de explicación
+Most complex component. Manages:
+- Reading projects from `projects-data.ts`
+- Filtering by technologies
+- Card rendering
+- Gallery modals
+- Explanation modals
 
-**No necesitas modificarlo** salvo que quieras cambiar el diseño.
+**You don't need to modify it** unless you want to change the design.
 
 ### FOOTER COMPONENT
 
-**Archivo:** `src/components/Footer.astro`
+**File:** `src/components/Footer.astro`
 
-**Líneas importantes:**
+**Important lines:**
 
-- **Archivo:** `src/components/Footer.astro` - **Línea 82:** Array de redes sociales
-- **Archivo:** `src/components/Footer.astro` - **Líneas 517-518:** Email codificado en Base64
+- **File:** `src/components/Footer.astro` - **Line 82:** Social networks array
+- **File:** `src/components/Footer.astro` - **Lines 517-518:** Base64 encoded email
 
-**Añadir nueva red social:**
+**Add new social network:**
 
 ```typescript
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/tuusuario" },
-  { name: "Dribbble", url: "https://dribbble.com/tuusuario" }, // NUEVA
+  { name: "GitHub", url: "https://github.com/youruser" },
+  { name: "Dribbble", url: "https://dribbble.com/youruser" }, // NEW
 ];
 ```
 
 ### THEME TOGGLE
 
-**Archivo:** `src/components/ThemeToggle.astro`
+**File:** `src/components/ThemeToggle.astro`
 
-Botón que cambia entre modo claro y oscuro.
+Button that switches between light and dark mode.
 
-**Posición:**
+**Position:**
 
-**Archivo:** `src/components/ThemeToggle.astro` - **Línea 107:**
+**File:** `src/components/ThemeToggle.astro` - **Line 107:**
 
 ```css
 #theme-toggle {
   position: fixed;
-  top: 2rem;    /* Distancia desde arriba */
-  right: 7rem;  /* Distancia desde derecha */
+  top: 2rem;    /* Distance from top */
+  right: 7rem;  /* Distance from right */
 }
 ```
 
 ### LANGUAGE SWITCHER
 
-**Archivo:** `src/components/LanguageSwitcher.astro`
+**File:** `src/components/LanguageSwitcher.astro`
 
-Botón que cambia entre ES/EN.
+Button that switches between ES/EN.
 
-**Posición:**
+**Position:**
 
-**Archivo:** `src/components/LanguageSwitcher.astro` - **Línea 234:**
+**File:** `src/components/LanguageSwitcher.astro` - **Line 234:**
 
 ```css
 .language-switcher {
   position: fixed;
-  top: 2rem;   /* Distancia desde arriba */
-  right: 2rem; /* Distancia desde derecha */
+  top: 2rem;   /* Distance from top */
+  right: 2rem; /* Distance from right */
 }
 ```
 
 ### IMAGE GALLERY
 
-**Archivo:** `src/components/ImageGallery.astro`
+**File:** `src/components/ImageGallery.astro`
 
-Modal que muestra galería de imágenes con:
-- Navegación prev/next
-- Thumbnails clickeables
-- Cierre con X o clic fuera
+Modal that shows image gallery with:
+- Prev/next navigation
+- Clickable thumbnails
+- Close with X or click outside
 
-**No necesitas modificarlo.**
+**You don't need to modify it.**
 
 ---
 
-## PERSONALIZACIÓN DE ESTILOS
+## STYLES CUSTOMIZATION
 
-### ARCHIVO DE ESTILOS GLOBALES
+### GLOBAL STYLES FILE
 
-**Archivo:** `src/styles/global.css`
+**File:** `src/styles/global.css`
 
-### VARIABLES CSS
+### CSS VARIABLES
 
-**Archivo:** `src/styles/global.css`
+**File:** `src/styles/global.css`
 
-**Modo claro - Líneas 52-59:**
+**Light mode - Lines 52-59:**
 
 ```css
 :root {
-  --bg: #ffffff;      /* Color de fondo */
-  --text: #000000;    /* Color de texto */
-  --accent: #111111;  /* Color de acento */
-  --border: #e5e5e5;  /* Color de bordes */
+  --bg: #ffffff;      /* Background color */
+  --text: #000000;    /* Text color */
+  --accent: #111111;  /* Accent color */
+  --border: #e5e5e5;  /* Border color */
   --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 }
 ```
 
-**Modo oscuro - Líneas 74-80:**
+**Dark mode - Lines 74-80:**
 
 ```css
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #000000;      /* Fondo oscuro */
-    --text: #ffffff;    /* Texto claro */
-    --accent: #eeeeee;  /* Acento claro */
-    --border: #1a1a1a;  /* Bordes oscuros */
+    --bg: #000000;      /* Dark background */
+    --text: #ffffff;    /* Light text */
+    --accent: #eeeeee;  /* Light accent */
+    --border: #1a1a1a;  /* Dark borders */
   }
 }
 ```
 
-### CAMBIAR COLORES
+### CHANGE COLORS
 
-**Ejemplo: Tema azul**
+**Example: Blue theme**
 
 ```css
 :root {
-  --bg: #f0f4f8;      /* Fondo azul muy claro */
-  --text: #1a202c;    /* Texto azul oscuro */
-  --accent: #2c5282;  /* Acento azul */
-  --border: #cbd5e0;  /* Borde gris azulado */
+  --bg: #f0f4f8;      /* Very light blue background */
+  --text: #1a202c;    /* Dark blue text */
+  --accent: #2c5282;  /* Blue accent */
+  --border: #cbd5e0;  /* Bluish gray border */
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1a202c;      /* Fondo azul oscuro */
-    --text: #f7fafc;    /* Texto casi blanco */
-    --accent: #63b3ed;  /* Acento azul claro */
-    --border: #2d3748;  /* Borde gris oscuro */
+    --bg: #1a202c;      /* Dark blue background */
+    --text: #f7fafc;    /* Almost white text */
+    --accent: #63b3ed;  /* Light blue accent */
+    --border: #2d3748;  /* Dark gray border */
   }
 }
 ```
 
-### CAMBIAR FUENTE
+### CHANGE FONT
 
-**Archivo:** `src/styles/global.css` - **Línea 57:**
+**File:** `src/styles/global.css` - **Line 57:**
 
 ```css
 --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 ```
 
-**Opciones populares:**
+**Popular options:**
 
 ```css
-/* Fuente de sistema */
+/* System font */
 --mono: ui-monospace, 'SF Mono', 'Monaco', monospace;
 
-/* Fira Code (si la importas) */
+/* Fira Code (if you import it) */
 --mono: 'Fira Code', monospace;
 
 /* Roboto Mono */
@@ -1505,17 +1504,17 @@ Modal que muestra galería de imágenes con:
 --mono: 'Source Code Pro', monospace;
 ```
 
-**Para usar fuente personalizada,** añádela en:
+**To use custom font,** add it in:
 
-**Archivo:** `src/layouts/Layout.astro` - **Línea 238:**
+**File:** `src/layouts/Layout.astro` - **Line 238:**
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
 ```
 
-### TAMAÑOS DE TEXTO
+### TEXT SIZES
 
-**Archivo:** `src/styles/global.css` - **Líneas 213-251:**
+**File:** `src/styles/global.css` - **Lines 213-251:**
 
 ```css
 h1 {
@@ -1531,17 +1530,17 @@ h3 {
 }
 ```
 
-### ANIMACIONES
+### ANIMATIONS
 
-**Archivo:** `src/styles/global.css`
+**File:** `src/styles/global.css`
 
-**Velocidad fade-in - Líneas 505-514:**
+**Fade-in speed - Lines 505-514:**
 
 ```css
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);  /* Distancia del movimiento */
+    transform: translateY(20px);  /* Movement distance */
   }
   to {
     opacity: 1;
@@ -1550,73 +1549,73 @@ h3 {
 }
 ```
 
-### BORDES Y SOMBRAS
+### BORDERS AND SHADOWS
 
-**Archivo:** `src/styles/global.css`
+**File:** `src/styles/global.css`
 
-El template usa bordes simples. Para añadir sombras, modifica:
+The template uses simple borders. To add shadows, modify:
 
 ```css
 .project-card {
   border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* NUEVA LÍNEA */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* NEW LINE */
   transition: all 0.3s;
 }
 
 .project-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);  /* NUEVA LÍNEA */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);  /* NEW LINE */
 }
 ```
 
-### ESQUINAS REDONDEADAS
+### ROUNDED CORNERS
 
-**Archivo:** `src/styles/global.css`
+**File:** `src/styles/global.css`
 
-Por defecto el template NO usa border-radius (diseño cuadrado). Para añadirlo:
+By default, the template does NOT use border-radius (square design). To add it:
 
 ```css
 .project-card,
 .btn-primary,
 .btn-secondary,
 .filter-btn {
-  border-radius: 8px;  /* AÑADIR */
+  border-radius: 8px;  /* ADD */
 }
 ```
 
 ---
 
-## DESPLIEGUE
+## DEPLOYMENT
 
-El template genera un sitio estático que puede desplegarse en cualquier servicio de hosting.
+The template generates a static site that can be deployed on any hosting service.
 
-### BUILD DE PRODUCCIÓN
+### PRODUCTION BUILD
 
 ```bash
 npm run build
 ```
 
-Esto genera una carpeta `dist/` con:
-- HTML estático
-- CSS minificado
-- JavaScript optimizado
-- Imágenes y assets
+This generates a `dist/` folder with:
+- Static HTML
+- Minified CSS
+- Optimized JavaScript
+- Images and assets
 
-### PREVISUALIZAR BUILD
+### PREVIEW BUILD
 
 ```bash
 npm run preview
 ```
 
-Abre el build en `http://localhost:4321` para verificar antes de desplegar.
+Opens the build at `http://localhost:4321` to verify before deploying.
 
 ### VERCEL
 
-1. Crea cuenta en https://vercel.com
-2. Conecta tu repositorio GitHub
-3. Vercel detecta Astro automáticamente
-4. Clic en "Deploy"
+1. Create account at https://vercel.com
+2. Connect your GitHub repository
+3. Vercel detects Astro automatically
+4. Click "Deploy"
 
-**Configuración (si es necesario):**
+**Configuration (if needed):**
 
 ```
 Framework Preset: Astro
@@ -1627,15 +1626,15 @@ Install Command: npm install
 
 ### NETLIFY
 
-#### OPCIÓN A: Drag & Drop
+#### OPTION A: Drag & Drop
 
-1. Ejecuta `npm run build`
-2. Arrastra carpeta `dist/` a https://app.netlify.com/drop
+1. Run `npm run build`
+2. Drag `dist/` folder to https://app.netlify.com/drop
 
-#### OPCIÓN B: GitHub
+#### OPTION B: GitHub
 
-1. Conecta repositorio en https://app.netlify.com
-2. Configuración:
+1. Connect repository at https://app.netlify.com
+2. Configuration:
 
 ```
 Build command: npm run build
@@ -1644,7 +1643,7 @@ Publish directory: dist
 
 ### GITHUB PAGES
 
-1. Crea archivo `.github/workflows/deploy.yml`:
+1. Create file `.github/workflows/deploy.yml`:
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -1693,24 +1692,24 @@ jobs:
         uses: actions/deploy-pages@v1
 ```
 
-2. En Settings > Pages: Source = "GitHub Actions"
-3. Push a main y se despliega automáticamente
+2. In Settings > Pages: Source = "GitHub Actions"
+3. Push to main and it deploys automatically
 
-**IMPORTANTE:** Si tu sitio está en `usuario.github.io/repo`, actualiza:
+**IMPORTANT:** If your site is at `user.github.io/repo`, update:
 
-**Archivo:** `astro.config.mjs`
+**File:** `astro.config.mjs`
 
 ```javascript
 export default defineConfig({
-  site: 'https://usuario.github.io',
-  base: '/repo',  // AÑADIR ESTA LÍNEA
+  site: 'https://user.github.io',
+  base: '/repo',  // ADD THIS LINE
 });
 ```
 
 ### CLOUDFLARE PAGES
 
-1. Conecta repositorio en https://dash.cloudflare.com/pages
-2. Configuración:
+1. Connect repository at https://dash.cloudflare.com/pages
+2. Configuration:
 
 ```
 Framework preset: Astro
@@ -1720,34 +1719,34 @@ Build output directory: dist
 
 ### RENDER
 
-Render ofrece dos opciones de deployment: automático con `render.yaml` o manual. **Recomendamos la opción automática.**
+Render offers two deployment options: automatic with `render.yaml` or manual. **We recommend the automatic option.**
 
-#### OPCIÓN A: Deployment Automático (Recomendado)
+#### OPTION A: Automatic Deployment (Recommended)
 
-El template incluye un archivo `render.yaml` preconfigurado para deployment automático.
+The template includes a pre-configured `render.yaml` file for automatic deployment.
 
-1. **Crear cuenta en Render**
-   - Ve a https://render.com y crea una cuenta
-   - Conecta tu cuenta de GitHub
+1. **Create Render account**
+   - Go to https://render.com and create an account
+   - Connect your GitHub account
 
-2. **Crear nuevo Static Site**
-   - Click en "New +" → "Static Site"
-   - Conecta tu repositorio GitHub
-   - Render detectará automáticamente el archivo `render.yaml`
+2. **Create new Static Site**
+   - Click "New +" → "Static Site"
+   - Connect your GitHub repository
+   - Render will automatically detect the `render.yaml` file
 
 3. **Deploy**
-   - Click en "Create Static Site"
-   - Render detectará la configuración automáticamente:
+   - Click "Create Static Site"
+   - Render will automatically detect the configuration:
      - Build Command: `npm install && npm run build`
      - Publish Directory: `dist`
      - Node Version: 18
-   - El deployment inicia automáticamente
+   - Deployment starts automatically
 
-4. **Verificar deployment**
-   - Render te dará una URL: `https://tu-proyecto.onrender.com`
-   - El sitio se desplegará automáticamente con cada push a la rama principal
+4. **Verify deployment**
+   - Render will give you a URL: `https://your-project.onrender.com`
+   - The site will automatically redeploy with each push to the main branch
 
-**Configuración del render.yaml:**
+**render.yaml configuration:**
 
 ```yaml
 services:
@@ -1761,231 +1760,232 @@ services:
         value: 18
 ```
 
-#### OPCIÓN B: Deployment Manual
+#### OPTION B: Manual Deployment
 
-Si prefieres configurar manualmente:
+If you prefer manual configuration:
 
-1. **Crear nuevo Static Site**
-   - Ve a https://render.com
-   - Click en "New +" → "Static Site"
-   - Conecta tu repositorio
+1. **Create new Static Site**
+   - Go to https://render.com
+   - Click "New +" → "Static Site"
+   - Connect your repository
 
-2. **Configuración manual:**
+2. **Manual configuration:**
    ```
    Name: astro-686f6c61-template
    Build Command: npm install && npm run build
    Publish Directory: dist
    ```
 
-3. **Variables de entorno (opcional):**
+3. **Environment variables (optional):**
    ```
    NODE_VERSION: 18
    ```
 
 4. **Deploy**
-   - Click en "Create Static Site"
-   - Espera a que finalice el build (2-3 minutos)
+   - Click "Create Static Site"
+   - Wait for build to finish (2-3 minutes)
 
-#### Auto-Deploy con Git
+#### Auto-Deploy with Git
 
-Render automáticamente redespliega cuando:
-- Haces push a la rama principal
-- Merges un pull request
-- Actualizas el repositorio conectado
+Render automatically redeploys when:
+- You push to the main branch
+- You merge a pull request
+- You update the connected repository
 
-**Ventajas de Render:**
-- Deployment automático con `render.yaml`
-- SSL/HTTPS gratis
-- CDN global incluido
-- Auto-deploy en cada push
-- Preview environments para PRs
-- 100GB bandwidth gratis/mes
-- Headers personalizados (cache)
+**Render advantages:**
+- Automatic deployment with `render.yaml`
+- Free SSL/HTTPS
+- Global CDN included
+- Auto-deploy on every push
+- Preview environments for PRs
+- 100GB bandwidth free/month
+- Custom headers (cache)
 
-### CONFIGURACIÓN POST-DESPLIEGUE
+### POST-DEPLOYMENT CONFIGURATION
 
-Después de desplegar, actualiza:
+After deploying, update:
 
-1. **Archivo:** `astro.config.mjs` - **Línea 6:** Tu dominio real
-2. **Archivo:** `src/i18n/translations.ts` - URLs si cambian
-3. **Archivo:** `src/layouts/Layout.astro` - **Google Analytics** (si lo usas): Verifica que el tracking ID sea correcto
+1. **File:** `astro.config.mjs` - **Line 6:** Your real domain
+2. **File:** `src/i18n/translations.ts` - URLs if they change
+3. **File:** `src/layouts/Layout.astro` - **Google Analytics** (if you use it): Verify the tracking ID is correct
 
-### DOMINIO PERSONALIZADO
+### CUSTOM DOMAIN
 
 **Vercel:**
 1. Settings > Domains
-2. Añade tu dominio
-3. Configura DNS según instrucciones
+2. Add your domain
+3. Configure DNS according to instructions
 
 **Netlify:**
 1. Domain settings > Add custom domain
-2. Configura DNS
+2. Configure DNS
 
 **Cloudflare Pages:**
 1. Custom domains > Set up a domain
-2. DNS se configura automáticamente si usas Cloudflare DNS
+2. DNS is configured automatically if you use Cloudflare DNS
 
-### VARIABLES DE ENTORNO
+### ENVIRONMENT VARIABLES
 
-Si usas el archivo `.env.example`:
+If you use the `.env.example` file:
 
-1. Copia a `.env`:
+1. Copy to `.env`:
    ```bash
    cp .env.example .env
    ```
 
-2. En tu servicio de hosting, añade las variables en:
+2. In your hosting service, add variables in:
    - **Vercel**: Settings > Environment Variables
    - **Netlify**: Site settings > Build & deploy > Environment
    - **Cloudflare**: Settings > Environment variables
 
 ---
 
-## ESTRUCTURA DEL PROYECTO
+## PROJECT STRUCTURE
 
 ```
 portfolio/
-├── .git/                    # Control de versiones Git
-├── .vscode/                 # Configuración VS Code (opcional)
-├── node_modules/            # Dependencias (no editar)
-├── public/                  # Archivos estáticos (accesibles directamente)
-│   ├── assets/              # Archivos descargables
+├── .git/                    # Git version control
+├── .vscode/                 # VS Code configuration (optional)
+├── node_modules/            # Dependencies (don't edit)
+├── public/                  # Static files (directly accessible)
+│   ├── assets/              # Downloadable files
 │   │   └── example-data/
-│   ├── screenshots/         # Imágenes full-size de proyectos
-│   ├── thumbnails/          # Miniaturas de imágenes
-│   ├── favicon.ico          # Icono del sitio
-│   ├── favicon.svg          # Icono vectorial
-│   └── robots.txt           # Instrucciones para bots
-├── src/                     # Código fuente
-│   ├── components/          # Componentes reutilizables
+│   ├── screenshots/         # Full-size project images
+│   ├── thumbnails/          # Image thumbnails
+│   ├── favicon.ico          # Site icon
+│   ├── favicon.svg          # Vector icon
+│   └── robots.txt           # Instructions for bots
+├── src/                     # Source code
+│   ├── components/          # Reusable components
 │   │   ├── Footer.astro
 │   │   ├── Hero.astro
 │   │   ├── ImageGallery.astro
 │   │   ├── LanguageSwitcher.astro
 │   │   ├── Projects.astro
 │   │   └── ThemeToggle.astro
-│   ├── data/               # Datos del sitio
-│   │   └── projects-data.ts     # IMPORTANTE: Tus proyectos
-│   ├── i18n/               # Internacionalización
-│   │   └── translations.ts      # IMPORTANTE: Traducciones ES/EN
-│   ├── layouts/            # Plantillas de página
-│   │   └── Layout.astro         # Layout principal
-│   ├── lib/                # Utilidades
+│   ├── data/               # Site data
+│   │   └── projects-data.ts     # IMPORTANT: Your projects
+│   ├── i18n/               # Internationalization
+│   │   └── translations.ts      # IMPORTANT: ES/EN translations
+│   ├── layouts/            # Page templates
+│   │   └── Layout.astro         # Main layout
+│   ├── lib/                # Utilities
 │   │   ├── i18n.ts
 │   │   └── projects.ts
-│   ├── pages/              # Páginas del sitio
-│   │   ├── en/             # Versión inglés
+│   ├── pages/              # Site pages
+│   │   ├── en/             # English version
 │   │   │   └── index.astro
-│   │   ├── index.astro     # Página principal (español)
-│   │   └── sitemap.xml.ts  # Generador de sitemap
-│   └── styles/             # Estilos globales
-│       └── global.css      # CSS principal
-├── .env.example            # Plantilla variables de entorno
-├── .gitignore              # Archivos ignorados por Git
-├── astro.config.mjs        # IMPORTANTE: Configuración Astro
-├── LICENSE                 # Licencia MIT
-├── package.json            # Dependencias y scripts
-├── package-lock.json       # Lockfile de dependencias
-├── README.md               # Esta guía
-├── serve.json              # Configuración servidor preview
-└── tsconfig.json           # Configuración TypeScript
+│   │   ├── index.astro     # Main page (Spanish)
+│   │   └── sitemap.xml.ts  # Sitemap generator
+│   └── styles/             # Global styles
+│       └── global.css      # Main CSS
+├── .env.example            # Environment variables template
+├── .gitignore              # Files ignored by Git
+├── astro.config.mjs        # IMPORTANT: Astro configuration
+├── LICENSE                 # MIT License
+├── package.json            # Dependencies and scripts
+├── package-lock.json       # Dependencies lockfile
+├── README.md               # Spanish guide
+├── INSTRUCTIONS.md         # This guide (English)
+├── serve.json              # Preview server configuration
+└── tsconfig.json           # TypeScript configuration
 ```
 
-### ARCHIVOS QUE DEBES MODIFICAR
+### FILES YOU SHOULD MODIFY
 
-| Archivo | Qué cambiar | Prioridad |
-|---------|-------------|-----------|
-| `src/data/projects-data.ts` | Todos tus proyectos | ALTA |
-| `src/i18n/translations.ts` | Textos ES/EN | ALTA |
-| `src/components/Footer.astro` | Email, redes sociales | ALTA |
-| `astro.config.mjs` | Dominio | MEDIA |
-| `public/robots.txt` | URL sitemap | MEDIA |
-| `src/layouts/Layout.astro` | Meta tags, Analytics | MEDIA |
-| `package.json` | Nombre, descripción, autor | BAJA |
-| `src/styles/global.css` | Colores, fuentes | OPCIONAL |
+| File | What to change | Priority |
+|------|----------------|----------|
+| `src/data/projects-data.ts` | All your projects | HIGH |
+| `src/i18n/translations.ts` | ES/EN texts | HIGH |
+| `src/components/Footer.astro` | Email, social networks | HIGH |
+| `astro.config.mjs` | Domain | MEDIUM |
+| `public/robots.txt` | Sitemap URL | MEDIUM |
+| `src/layouts/Layout.astro` | Meta tags, Analytics | MEDIUM |
+| `package.json` | Name, description, author | LOW |
+| `src/styles/global.css` | Colors, fonts | OPTIONAL |
 
-### ARCHIVOS QUE NO DEBES MODIFICAR
+### FILES YOU SHOULD NOT MODIFY
 
-- `node_modules/` - Dependencias gestionadas por npm
-- `package-lock.json` - Lockfile automático
-- `.git/` - Control de versiones
-- `dist/` - Carpeta de build (se genera automáticamente)
-- `src/lib/` - Utilidades del template (salvo que sepas lo que haces)
-- Componentes en `src/components/` - Salvo personalización avanzada
+- `node_modules/` - Dependencies managed by npm
+- `package-lock.json` - Automatic lockfile
+- `.git/` - Version control
+- `dist/` - Build folder (auto-generated)
+- `src/lib/` - Template utilities (unless you know what you're doing)
+- Components in `src/components/` - Unless advanced customization
 
 ---
 
 ## TROUBLESHOOTING
 
-### EL SERVIDOR NO INICIA
+### SERVER WON'T START
 
 **Error:** `Port 4321 is in use`
 
-**Solución:**
+**Solution:**
 
 ```bash
-# Matar proceso en puerto 4321
+# Kill process on port 4321
 lsof -ti:4321 | xargs kill -9   # Mac/Linux
-netstat -ano | findstr :4321    # Windows - anota el PID y usa taskkill
+netstat -ano | findstr :4321    # Windows - note PID and use taskkill
 ```
 
-O cambia el puerto en:
+Or change the port in:
 
-**Archivo:** `package.json`
+**File:** `package.json`
 
 ```json
 "dev": "astro dev --port 3000"
 ```
 
-### IMÁGENES NO SE MUESTRAN
+### IMAGES DON'T SHOW
 
-**Problemas comunes:**
+**Common problems:**
 
-1. **Ruta incorrecta:** Verifica que la ruta empiece con `/`
+1. **Incorrect path:** Verify path starts with `/`
    ```typescript
-   images: ["/screenshots/proyecto/img"]  // ✓ Correcto
-   images: ["screenshots/proyecto/img"]   // ✗ Incorrecto
+   images: ["/screenshots/project/img"]  // ✓ Correct
+   images: ["screenshots/project/img"]   // ✗ Incorrect
    ```
 
-2. **Extensión incluida:** NO incluyas .png, .jpg, etc.
+2. **Extension included:** DON'T include .png, .jpg, etc.
    ```typescript
-   images: ["/screenshots/proyecto/img-01"]      // ✓ Correcto
-   images: ["/screenshots/proyecto/img-01.png"]  // ✗ Incorrecto
+   images: ["/screenshots/project/img-01"]      // ✓ Correct
+   images: ["/screenshots/project/img-01.png"]  // ✗ Incorrect
    ```
 
-3. **Archivo no existe:** Verifica que el archivo esté en `public/screenshots/`
+3. **File doesn't exist:** Verify file is in `public/screenshots/`
 
-### THUMBNAILS NO SE GENERAN
+### THUMBNAILS DON'T GENERATE
 
-Los thumbnails NO se generan automáticamente. Debes crearlos manualmente usando las opciones en la sección [IMÁGENES Y THUMBNAILS](#imágenes-y-thumbnails).
+Thumbnails are NOT auto-generated. You must create them manually using the options in the [IMAGES AND THUMBNAILS](#images-and-thumbnails) section.
 
-### TRADUCCIONES NO APARECEN
+### TRANSLATIONS DON'T APPEAR
 
-1. Verifica que hayas modificado AMBOS objetos: `es` y `en`
-2. Reinicia el servidor dev (`Ctrl+C` y `npm run dev`)
-3. Limpia caché del navegador (Ctrl+Shift+R)
+1. Verify you've modified BOTH objects: `es` and `en`
+2. Restart dev server (`Ctrl+C` and `npm run dev`)
+3. Clear browser cache (Ctrl+Shift+R)
 
-### CAMBIOS NO SE VEN
+### CHANGES DON'T SHOW
 
-1. **Reinicia el servidor:**
+1. **Restart server:**
    ```bash
-   # Ctrl+C para detener
-   npm run dev  # Reiniciar
+   # Ctrl+C to stop
+   npm run dev  # Restart
    ```
 
-2. **Limpia caché:**
+2. **Clear cache:**
    ```bash
    rm -rf node_modules/.vite
    npm run dev
    ```
 
-3. **Hard refresh en navegador:** Ctrl+Shift+R (Cmd+Shift+R en Mac)
+3. **Hard refresh in browser:** Ctrl+Shift+R (Cmd+Shift+R on Mac)
 
-### ERROR AL HACER BUILD
+### BUILD ERROR
 
 **Error:** `Module not found`
 
-**Solución:**
+**Solution:**
 
 ```bash
 rm -rf node_modules package-lock.json
@@ -1993,11 +1993,11 @@ npm install
 npm run build
 ```
 
-### PROYECTO NO APARECE
+### PROJECT DOESN'T APPEAR
 
-Verifica que:
+Verify that:
 
-1. Esté en el array `projectsData` en **Archivo:** `src/data/projects-data.ts`
+1. It's in the `projectsData` array in **File:** `src/data/projects-data.ts`
 2. Tenga los campos obligatorios: `title`, `description`, `tech`, `featured`
 3. La sintaxis JSON sea correcta (comas, llaves)
 4. No haya errores en consola del navegador (F12)
