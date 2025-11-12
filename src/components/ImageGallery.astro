@@ -94,9 +94,10 @@ const galleryId = `gallery-${projectTitle.toLowerCase().replace(/\s+/g, '-')}`;
  * Recommended tool: cwebp (Google's CLI)
  */
 const webpImages = images.map(img => {
-  if (img.endsWith('.gif')) return img;  // Keep animated GIFs
-  if (img.endsWith('.webp')) return img; // Already WebP
-  return img + '.webp';                  // Add .webp
+  // if (img.endsWith('.gif')) return img;  // Keep animated GIFs
+  // if (img.endsWith('.webp')) return img; // Already WebP
+  // return img + '.webp';                  // Add .webp
+  return img
 });
 
 /**
@@ -121,13 +122,14 @@ const webpImages = images.map(img => {
  * Tool: ImageMagick, Sharp, or cwebp with resize
  */
 const thumbnailImages = images.map(img => {
-  if (img.endsWith('.gif')) return img;  // Keep GIFs as they are
-  if (img.endsWith('.webp')) {
-    // For WebP: replace path and extension
-    return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/').replace(/\.webp$/, '_thumb.webp');
-  }
-  // For others: replace path and add _thumb.webp
-  return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/') + '_thumb.webp';
+  // if (img.endsWith('.gif')) return img;  // Keep GIFs as they are
+  // if (img.endsWith('.webp')) {
+  //   // For WebP: replace path and extension
+  //   return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/').replace(/\.webp$/, '_thumb.webp');
+  // }
+  // // For others: replace path and add _thumb.webp
+  // return img.replace(/^\/screenshots\//, '/thumbnails/screenshots/') + '_thumb.webp';
+  return img
 });
 ---
 
