@@ -123,7 +123,7 @@ export const translations: Record<string, Translations> = {
     contactLinks: "Links",
 
     // Footer
-    footerCopyright: "© {year} Muhammad Haekal M. A.", // {year} is automatically replaced
+    footerCopyright: "© {year} Muhammad Haekal M. A. forked from https://github.com/686f6c61/Portfolio-Astro-Template", // {year} is automatically replaced
     footerStatus: "● All systems operational"
   }
 };

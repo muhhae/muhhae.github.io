@@ -1,65 +1,9 @@
 ---
-/**
- * COMPONENT: Footer
- * ==================
- *
- * Portfolio footer with contact information and social media links.
- * Last section visitors see when scrolling the page.
- *
- * PURPOSE:
- * - Provide contact information (revealable email)
- * - Links to professional social networks
- * - Automatic copyright and current year
- * - Availability indicator (status)
- * - Professionally close the page
- *
- * FEATURES:
- * - Obfuscated email to prevent spam bots
- * - Button to reveal email (security + tracking)
- * - Configurable social links
- * - Dynamic year (no need to update it every year)
- * - Animated status indicator (available/busy)
- *
- * ARCHITECTURE:
- * - HTML: Semantic content with <footer>, <nav>, etc.
- * - CSS: Responsive grid layout + subtle animations
- * - JavaScript: Email revelation logic with Base64 obfuscation
- * - Internationalization: All content comes from translations.ts
- *
- * SECURITY - EMAIL OBFUSCATION:
- * The email is NOT visible in the initial HTML
- * It is built dynamically on click using Base64
- * This prevents scraper bots from getting your email
- *
- * CUSTOMIZATION:
- * 1. Texts: Edit src/i18n/translations.ts
- * 2. Email: Encode your email in Base64 (see comments in script)
- * 3. Social networks: Update the socialLinks array below
- */
-
-// IMPORTS
-// -------------
-// Internationalization utility to get translations
 import { useI18n } from '../lib/i18n.js';
-
 const { t } = useI18n();
-
-// DYNAMIC CURRENT YEAR
-// -------------------
-// Automatically calculated each time the site is generated
-// No need to manually update every year
 const currentYear = new Date().getFullYear();
 
-/**
- * CONFIGURATION: Social Links
- * --------------------------------
- * Array of your professional social networks.
- *
- * HOW TO CUSTOMIZE:
- * 1. Replace "yourusername" with your real username
- * 2. Add or remove networks as needed
- * 3. Links are rendered in the order of the array
- *
+/*
  * EXAMPLES OF ADDITIONAL NETWORKS:
  * { name: "Email", url: "mailto:your@email.com" },
  * { name: "Portfolio", url: "https://your-site.com" },
@@ -68,82 +12,25 @@ const currentYear = new Date().getFullYear();
  */
 const socialLinks = [
   { name: "GitHub", url: "https://github.com/muhhae" },      // Code repositories
+  { name: "itch.io", url: "https://itch.io/muhhae" },      // Code repositories
   { name: "Twitter", url: "https://x.com/haemuhh" },    // Social network / X
   { name: "LinkedIn", url: "https://linkedin.com/in/muhhae" } // Professional network
 ];
 ---
-
-<!--
-  FOOTER
-  =======
-
-  HTML STRUCTURE:
-  - <footer>: Main semantic container with id="contact"
-  - .border-top: Top separator line (global.css)
-  - .container: Class to center content (global.css)
-
-  SECTIONS:
-  1. footer-content: Main content (contact + networks)
-     - footer-main: Revealable email
-     - footer-links: Social links
-  2. footer-bottom: Copyright + status indicator
-
-  ACCESSIBILITY:
-  - id="contact": Allows direct navigation with #contact
-  - <nav>: Semantic container for navigation links
-  - target="_blank": External links open in a new tab
-  - rel="noopener noreferrer": Security for external links
--->
 <footer id="contact" class="footer border-top">
-  <!-- Centered container (global.css) -->
   <div class="container">
-    <!--
-      MAIN SECTION: Contact + Networks
-      2-column grid on desktop, 1 on mobile
-    -->
     <div class="footer-content">
-      <!--
-        COLUMN 1: Revealable Email
-        Email is shown only on click (anti-spam)
-      -->
       <div class="footer-main">
-        <!-- Contact section title -->
         <h2 class="mono">{t.contactTitle}</h2>
-
-        <!--
-          BUTTON: Reveal Email
-          - On click, disappears and shows the email
-          - Email is built dynamically (see script below)
-        -->
         <button class="reveal-email mono" id="reveal-email">
           {t.contactEmailButton}
         </button>
-
-        <!--
-          CONTAINER: Revealed Email
-          - Initially hidden (display: none)
-          - The script shows it and fills it with the email
-          - #email-text will be dynamically filled with a mailto: link
-        -->
         <div class="email-display mono" id="email-display" style="display: none;">
           <span class="email-link" id="email-text"></span>
         </div>
       </div>
-
-      <!--
-        COLUMN 2: Social Networks
-        Links to your professional profiles
-      -->
       <div class="footer-links">
-        <!-- Links section title -->
         <h3 class="mono">{t.contactLinks}</h3>
-
-        <!--
-          NAV: Social Links
-          - <nav>: Semantic element for navigation
-          - Dynamically generated from the socialLinks array
-          - Each link opens in a new tab (target="_blank")
-        -->
         <nav class="social-links">
           {socialLinks.map(link => (
             <a href={link.url} target="_blank" rel="noopener noreferrer">
@@ -153,18 +40,7 @@ const socialLinks = [
         </nav>
       </div>
     </div>
-
-    <!--
-      BOTTOM SECTION: Copyright + Status
-      Secondary information at the end of the footer
-    -->
     <div class="footer-bottom">
-      <!--
-        COPYRIGHT:
-        - Dynamically generated with current year
-        - t.footerCopyright contains "{year}" which is replaced
-        - Example: "© {year} Your Name" → "© 2025 Your Name"
-      -->
       <p class="mono">
         {t.footerCopyright.replace('{year}', currentYear.toString())}
       </p>
