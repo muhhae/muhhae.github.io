@@ -12,7 +12,7 @@ const currentYear = new Date().getFullYear();
  */
 const socialLinks = [
   { name: "GitHub", url: "https://github.com/muhhae" },      // Code repositories
-  { name: "itch.io", url: "https://itch.io/muhhae" },      // Code repositories
+  { name: "itch.io", url: "https://muhhae.itch.io/" },      // Code repositories
   { name: "Twitter", url: "https://x.com/haemuhh" },    // Social network / X
   { name: "LinkedIn", url: "https://linkedin.com/in/muhhae" } // Professional network
 ];
@@ -42,7 +42,8 @@ const socialLinks = [
     </div>
     <div class="footer-bottom">
       <p class="mono">
-        {t.footerCopyright.replace('{year}', currentYear.toString())}
+      <!-- {t.footerCopyright.replace('{year}', currentYear.toString())}, -->
+      forked from <a href='https://github.com/686f6c61/Portfolio-Astro-Template'>686f6c61/Portfolio-Astro-Template</a>
       </p>
 
       <!--
