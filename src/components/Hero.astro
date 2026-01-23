@@ -32,43 +32,51 @@ const { t } = useI18n();
 <section class="hero">
   <!-- Centered container (global.css) -->
   <div class="container">
-    <!-- Content with appearance animation -->
-    <div class="hero-content fade-in">
-      <!-- GREETING: Small introductory text -->
-      <p class="mono greeting">{t.heroGreeting}</p>
+    <!-- Hero wrapper with two columns: image and text -->
+    <div class="hero-wrapper">
+      <!-- Image column -->
+      <div class="hero-image fade-in">
+        <img src="photo.jpg" alt="Profile image" />
+      </div>
 
-      <!--
-        MAIN TITLE (h1):
-        - Name or personal brand
-        - Includes blinking cursor (_) with animation
-        - It is the most important SEO element of the page
-      -->
-      <h1>{t.heroTitle}<span class="blink">_</span></h1>
+      <!-- Content with appearance animation -->
+      <div class="hero-content fade-in">
+        <!-- GREETING: Small introductory text -->
+        <p class="mono greeting">{t.heroGreeting}</p>
 
-      <!--
-        SUBTITLE:
-        - Your role, specialty, or professional title
-        - E.g: "Full Stack Developer", "UI/UX Designer"
-      -->
-      <p class="subtitle mono">
-        {t.heroSubtitle}
-      </p>
+        <!--
+          MAIN TITLE (h1):
+          - Name or personal brand
+          - Includes blinking cursor (_) with animation
+          - It is the most important SEO element of the page
+        -->
+        <h1>{t.heroTitle}<span class="blink">_</span></h1>
 
-      <!--
-        DESCRIPTION:
-        - Brief summary of skills, experience, or value proposition
-        - set:html allows HTML in the text (e.g., <br>, <strong>)
-        - Caution: Only use with trusted content (not user input)
-      -->
-      <p class="description mono" set:html={t.heroDescription}></p>
+        <!--
+          SUBTITLE:
+          - Your role, specialty, or professional title
+          - E.g: "Full Stack Developer", "UI/UX Designer"
+        -->
+        <p class="subtitle mono">
+          {t.heroSubtitle}
+        </p>
 
-      <!--
-        CALL TO ACTIONS (CTAs):
-        - Primary button: Scroll to projects section (#projects)
-        - Secondary button: Link to the template repo on GitHub
-      -->
-      <div class="cta">
-        <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-primary mono">cat ~/cv.pdf</a>
+        <!--
+          DESCRIPTION:
+          - Brief summary of skills, experience, or value proposition
+          - set:html allows HTML in the text (e.g., <br>, <strong>)
+          - Caution: Only use with trusted content (not user input)
+        -->
+        <p class="description mono" set:html={t.heroDescription}></p>
+
+        <!--
+          CALL TO ACTIONS (CTAs):
+          - Primary button: Scroll to projects section (#projects)
+          - Secondary button: Link to the template repo on GitHub
+        -->
+        <div class="cta">
+          <a href="https://muhhae.github.io/resume/main.pdf" target="_blank" rel="noopener" class="btn-primary mono">cat ~/cv.pdf</a>
+        </div>
       </div>
     </div>
   </div>
@@ -114,13 +122,46 @@ const { t } = useI18n();
   }
 
   /**
+   * WRAPPER: .hero-wrapper
+   * ----------------------
+   * Two-column layout: text on left, image on right
+   * Uses flexbox for alignment
+   */
+  .hero-wrapper {
+    display: flex;      /* Two-column layout */
+    gap: 3rem;          /* 48px gap between columns */
+    align-items: center;  /* Vertically center the image */
+  }
+
+  /**
    * CONTENT: .hero-content
    * -------------------------
-   * Limits the width of the text for better readability
-   * Very wide text (>800px) is difficult to read
+   * Left column with text content
+   * Limits the width for better readability
    */
   .hero-content {
-    max-width: 800px;  /* Maximum width for optimal readability */
+    flex: 1;            /* Takes 50% of available space */
+    min-width: 0;       /* Allow shrinking below content size */
+  }
+
+  /**
+   * IMAGE COLUMN: .hero-image
+   * --------------------------
+   * Right column with the profile image
+   * Responsive sizing with aspect ratio
+   */
+  .hero-image {
+    flex: 1;            /* Takes 50% of available space */
+    display: flex;      /* Center the image */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;    /* Responsive width */
+    height: auto;       /* Maintain aspect ratio */
+    border-radius: 8px; /* Slight rounded corners */
+    aspect-ratio: 1;    /* Square image */
   }
 
   /**
@@ -291,6 +332,15 @@ const { t } = useI18n();
     }
 
     /**
+     * Stack columns vertically on mobile
+     * Image below text instead of beside it
+     */
+    .hero-wrapper {
+      flex-direction: column;  /* Stack vertically */
+      gap: 2rem;              /* Reduce gap on mobile */
+    }
+
+    /**
      * Buttons in a vertical column
      * Better for narrow screens
      */
@@ -305,6 +355,14 @@ const { t } = useI18n();
     .btn-primary,
     .btn-secondary {
       text-align: center;  /* Centers the button text */
+    }
+
+    /**
+     * Image size on mobile
+     * Limit max-width for smaller screens
+     */
+    .hero-image img {
+      max-width: 300px;  /* Smaller on mobile */
     }
   }
 </style>

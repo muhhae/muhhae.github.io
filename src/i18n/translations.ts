@@ -100,7 +100,7 @@ export const translations: Record<string, Translations> = {
     heroGreeting: "$ whoami",
     heroTitle: "Muhammad Haekal Muhyidin Al-Araby", // Change this to your real name
     heroSubtitle: "Undergraduate Researcher", // E.g: "Full Stack Developer", "Frontend Engineer", "Data Scientist"
-    heroDescription: "Senior undergraduate student at Sepuluh Nopember Institute of Technology with a strong interest in <strong>SYSTEM</strong> research, particularly in Cache mechanisms. Passionate about building efficient and robust systems.",
+    heroDescription: "Senior undergraduate student at Sepuluh Nopember Institute of Technology with a strong interest in <strong>SYSTEM</strong> research, particularly in Storage Systems. Passionate about building efficient and robust systems.",
     heroCta: "cd ~/projects",
     heroTemplateButton: "CV",
 
