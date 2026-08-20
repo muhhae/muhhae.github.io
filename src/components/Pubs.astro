@@ -31,7 +31,6 @@ const pubs = getAllPubs();
               );
             })}
           </div>
-          {/* Enlaces del proyecto (solo se muestran si existen) */}
           <div class="project-links">
             {project.artifact && (
               <a
@@ -45,20 +44,18 @@ const pubs = getAllPubs();
               </a>
             )}
 
-            {/* CODE: Link a repositorio GitHub */}
-            {project.link && (
+            {project.pdf&& (
               <a
-                href={project.link}
+                href={project.pdf}
                 target="_blank"
                 rel="noopener"
                 data-event="click_code"
                 data-project={project.title}
               >
-                <span class="mono">[link]</span>
+                <span class="mono">[pdf]</span>
               </a>
             )}
 
-            {/* WEB: Link a sitio web oficial */}
             {project.web && (
               <a
                 href={project.web}
@@ -117,7 +114,7 @@ const pubs = getAllPubs();
     GALERÍAS DE IMÁGENES
     ====================
 
-    Se generan componentes ImageGallery para cada proyecto que tenga imágenes.
+    Se generan components ImageGallery para cada proyecto que tenga imágenes.
     Las galerías son modales lightbox con navegación entre imágenes.
     JavaScript las conecta con los botones [images] de arriba.
   -->
@@ -448,7 +445,7 @@ const pubs = getAllPubs();
     position: relative; /* For pseudo-element positioning */
   }
 
-  
+
 
   .tech-stack {
     display: flex;
@@ -635,7 +632,7 @@ const pubs = getAllPubs();
    * 5. Tracking completo con Google Analytics
    * 6. Accesibilidad (focus trap, keyboard navigation)
    *
-   * COMPONENTES:
+   * COMPONENTS:
    * - Filter Toggle: Botón que muestra/oculta panel de filtros
    * - Filter Buttons: Botones de tecnologías para filtrar proyectos
    * - Image Buttons: Botones [images] que abren galerías
