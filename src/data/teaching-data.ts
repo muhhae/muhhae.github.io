@@ -11,25 +11,7 @@ export const teachingData: Teaching[] = [
   {
     university: "Sepuluh Nopember Institute of Technology",
     department: "Computer Engineering Department",
-    date: "Fall 2024",
-    courseTitle: "Teaching Assistant for Computer Security",
-  },
-  {
-    university: "Sepuluh Nopember Institute of Technology",
-    department: "Computer Engineering Department",
-    date: "Fall 2024",
-    courseTitle: "Teaching Assistant for Basic Programming",
-  },
-  {
-    university: "Sepuluh Nopember Institute of Technology",
-    department: "Computer Engineering Department",
-    date: "Spring 2024",
-    courseTitle: "Teaching Assistant for Digital Circuit",
-  },
-  {
-    university: "Sepuluh Nopember Institute of Technology",
-    department: "Computer Engineering Department",
-    date: "Fall 2023",
-    courseTitle: "Teaching Assistant for Basic Programming",
+    date: "Fall 2023 - Fall 2024",
+    courseTitle: "Teaching Assistant for Basic Programming, Digital Circuit, and Computer Security",
   },
 ];
